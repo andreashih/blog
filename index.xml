@@ -545,14 +545,14 @@ data-flex-basis="654px"
 &lt;p>今天&lt;del>因為不想寫計算語言學作業&lt;/del>更新了 blog 的 &lt;a class="link" href="https://andreashih.github.io/blog/menu/tags.html" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->tag page&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，還有打開 &lt;a class="link" href="https://andreashih.github.io/blog/rss-feed.xml" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->RSS&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，在此做些紀錄。&lt;/p>
-&lt;h3 id="tag-page">Tag Page&lt;/h3>
+&lt;h2 id="tag-page">Tag Page&lt;/h2>
 &lt;hr>
 &lt;p>隨著文章越來越多，分類就更顯重要。我用的這個 jekyll 模板本來就可以在各篇文章加入 tags，但是沒有一個獨立的 tag page，所以打算自己幫它加一個。我參考的是&lt;a class="link" href="https://nk910216.github.io/2017/08/11/UsingTagsForJekyll/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->這篇文章&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>的 code，只改了 css 讓按鈕變成我喜歡的顏色，顏色是在 &lt;a class="link" href="https://nipponcolors.com/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->NIPPON COLORS&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 挑的。&lt;/p>
 &lt;p>原本在本機一切順利，但是 push 上去卻發現我的 tags 按鈕不能顯示顏色。後來找到&lt;a class="link" href="https://stackoverflow.com/questions/49743535/jekyll-static-page-css-not-rendering" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->解決方法&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>才終於成功！&lt;/p>
-&lt;h3 id="rss-feed">RSS Feed&lt;/h3>
+&lt;h2 id="rss-feed">RSS Feed&lt;/h2>
 &lt;hr>
 &lt;p>其實我一直都知道這個模板可以用 RSS feed，但就是沒有把它打開，因為不知道可以幹嘛XD&lt;/p>
 &lt;p>直到最近才發現 RSS 其實蠻好用的。&lt;a class="link" href="https://zh.wikipedia.org/wiki/RSS" target="_blank" rel="noopener"
