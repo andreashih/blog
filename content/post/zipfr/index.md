@@ -20,7 +20,7 @@ tags:
 
 &nbsp;
 
-### 1. Introduction
+## Introduction
 
 在使用 `zipfR` 之前，要先認識 [**<u>Zipf’s law</u>**](https://nlp.stanford.edu/IR-book/html/htmledition/zipfs-law-modeling-the-distribution-of-terms-1.html)
 (Zipf
@@ -134,7 +134,7 @@ spectrum**，其中 `m` 代表出現次數，`Vm` 代表出現該次數的單詞
 
 &nbsp;
 
-### 2. Lexical Richness
+## 2. Lexical Richness
 ```r
 # 載入套件
 library(readr)
@@ -177,7 +177,7 @@ ptt_corpus <- c(g05, g10, g15, g20, w05, w10, w15, w20)
 # dcard
 dcard_corpus <- readLines("data\\dcard_corpus.txt", encoding="UTF-8")
 ```
-#### 2.1 Type-frequency List
+### Type-frequency List
 
 使用 `zipfR` 套件，可以簡單地得到 type-frequency list 和它的 Zipf
 ranking。為了進行接下來的比較，在這裡將套件內建的 `Brown.tfl` 一併匯入。
@@ -217,7 +217,7 @@ plot(dcard.tfl, main="Dcard", log="xy",
 ```
 ![](https://andreashih.github.io/img/rmd_posts/zipfr/all_tfl.png)
 
-#### 2.2 Frequency Spectrum
+### Frequency Spectrum
 
 透過剛剛的 type-frequency list，我們可以得到 frequency spectrum。Brown
 corpus 的 frequency spectrum 可直接從套件中匯入：
@@ -261,7 +261,7 @@ plot(dcard.spc, log="x", main="Dcard",
 占所有語料庫的比例都相當的高。接下來，我們可以透過 Vocabulary growth
 curves (VGC) 來觀察新詞增加的情況。
 
-#### 2.3 Vocabulary Growth Curves (VGC)
+### Vocabulary Growth Curves (VGC)
 
 同樣地，透過 `zipfR`，我們可以將語料轉成 `vgc` object。Brown corpus
 的資料一樣可以直接匯入：
@@ -307,7 +307,7 @@ corpus 的 V1 曲線上升後逐漸平緩，然而 PTT 與 Dcard 的 V1
 2014)。為了推得母體的真實情況，接下來將使用 Large-Number-of-Rare-Events
 (LNRE) models (Baayen 2002)。
 
-#### 2.4 Fitting the LNRE Model
+### Fitting the LNRE Model
 
 `zipfR` 套件中提供了三種 LNRE models，分別是 Generalized Inverse Gauss
 Poisson (`lnre.gigp`; Baayen, 2001, ch. 4)、Zipf-Mandelbrot (`lnre.zm`;
@@ -380,9 +380,9 @@ legend("topleft", legend = c("observed", "fZM model"),
 
 &nbsp;
 
-### 3. Lexical Coverage Estimation
+## Lexical Coverage Estimation
 
-#### 3.1 Out-Of-Vocabulary (OOV) types
+### Out-Of-Vocabulary (OOV) types
 
 我們可以藉由 Out-Of-Vocabulary (OOV) types 的比例來了解兩個 corpus
 的 lexical
@@ -414,7 +414,7 @@ Brown_Vseen <- V(Brown100k.spc) - Vm(Brown100k.spc, 1)
 ptt_Vseen <- V(ptt100k.spc) - Vm(ptt100k.spc, 1)
 dcard_Vseen <- V(dcard100k.spc) - Vm(dcard100k.spc, 1)
 ```
-#### 3.2 Fitting the LNRE Model
+### Fitting the LNRE Model
 ```r
 asbc100k.fzm <- lnre("fzm", asbc100k.spc)
 Brown100k.fzm <- lnre("fzm", Brown100k.spc)
@@ -449,7 +449,7 @@ Dcard 來得穩定且比例也較低。
 
 &nbsp;
 
-### 4. 結論
+## 結論
 
 利用 `zipfR` 並採用 LNRE model 對資料進行分析，取得語料的 `VGC` 和
 `OOV ratio`，就可以分析平衡語料庫、Brown corpus、PTT 和 Dcard 的 lexical
@@ -471,7 +471,7 @@ Web-as-Corpus，其前處理通常採用機器自動斷詞，龐大的 OOV
 
 &nbsp;
 
-### 5. References
+## References
 
 Baayen, R. H. (2002). *Word frequency distributions* (Vol. 18). Springer Science & Business Media.
 
@@ -483,7 +483,7 @@ Hsieh, S.-K. (2014, may). *Why Chinese Web-as-Corpus is Wacky? Or: How Big Data 
 
 &nbsp;
 
-### 6. Special Thanks
+## Special Thanks
 
 謝謝 Jessy 和 Yongfu 在 [**<u>HOCOR 2020</u>**](https://github.com/lopentu/Hands-on_Corpus_Linguistics) 提供的
 corpus data。
