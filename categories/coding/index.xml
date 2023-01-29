@@ -292,7 +292,7 @@
 (Baroni and Evert 2014) 所提供的方法，以 PTT 與 Dcard
 的語料進行中文斷詞問題的分析。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="1-introduction">1. Introduction&lt;/h3>
+&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>在使用 &lt;code>zipfR&lt;/code> 之前，要先認識 &lt;a class="link" href="https://nlp.stanford.edu/IR-book/html/htmledition/zipfs-law-modeling-the-distribution-of-terms-1.html" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Zipf’s law&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>
 (Zipf
@@ -322,7 +322,7 @@ spectrum&lt;/strong>，其中 &lt;code>m&lt;/code> 代表出現次數，&lt;code
 (香蕉、葡萄)，出現五次的單詞有一個
 (蘋果)。只出現過一次的單詞，我們稱之為 &lt;em>hapax legomena&lt;/em>。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="2-lexical-richness">2. Lexical Richness&lt;/h3>
+&lt;h2 id="2-lexical-richness">2. Lexical Richness&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -406,7 +406,7 @@ spectrum&lt;/strong>，其中 &lt;code>m&lt;/code> 代表出現次數，&lt;code
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard_corpus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\dcard_corpus.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="21-type-frequency-list">2.1 Type-frequency List&lt;/h4>
+&lt;/div>&lt;h3 id="type-frequency-list">Type-frequency List&lt;/h3>
 &lt;p>使用 &lt;code>zipfR&lt;/code> 套件，可以簡單地得到 type-frequency list 和它的 Zipf
 ranking。為了進行接下來的比較，在這裡將套件內建的 &lt;code>Brown.tfl&lt;/code> 一併匯入。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -483,7 +483,7 @@ sample size，&lt;code>V&lt;/code> 是 type count：&lt;/p>
 &lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_tfl.png"
 loading="lazy"
 >&lt;/p>
-&lt;h4 id="22-frequency-spectrum">2.2 Frequency Spectrum&lt;/h4>
+&lt;h3 id="frequency-spectrum">Frequency Spectrum&lt;/h3>
 &lt;p>透過剛剛的 type-frequency list，我們可以得到 frequency spectrum。Brown
 corpus 的 frequency spectrum 可直接從套件中匯入：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -563,7 +563,7 @@ loading="lazy"
 &lt;p>從上圖可以得知，&lt;em>hapax legomena&lt;/em> (只出現過一次的單詞)
 占所有語料庫的比例都相當的高。接下來，我們可以透過 Vocabulary growth
 curves (VGC) 來觀察新詞增加的情況。&lt;/p>
-&lt;h4 id="23-vocabulary-growth-curves-vgc">2.3 Vocabulary Growth Curves (VGC)&lt;/h4>
+&lt;h3 id="vocabulary-growth-curves-vgc">Vocabulary Growth Curves (VGC)&lt;/h3>
 &lt;p>同樣地，透過 &lt;code>zipfR&lt;/code>，我們可以將語料轉成 &lt;code>vgc&lt;/code> object。Brown corpus
 的資料一樣可以直接匯入：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -641,7 +641,7 @@ corpus 的 V1 曲線上升後逐漸平緩，然而 PTT 與 Dcard 的 V1
 也會不斷增加。這可能是中文斷詞錯誤所造成 (Hsieh
 2014)。為了推得母體的真實情況，接下來將使用 Large-Number-of-Rare-Events
 (LNRE) models (Baayen 2002)。&lt;/p>
-&lt;h4 id="24-fitting-the-lnre-model">2.4 Fitting the LNRE Model&lt;/h4>
+&lt;h3 id="fitting-the-lnre-model">Fitting the LNRE Model&lt;/h3>
 &lt;p>&lt;code>zipfR&lt;/code> 套件中提供了三種 LNRE models，分別是 Generalized Inverse Gauss
 Poisson (&lt;code>lnre.gigp&lt;/code>; Baayen, 2001, ch. 4)、Zipf-Mandelbrot (&lt;code>lnre.zm&lt;/code>;
 Evert, 2004)，和 finite Zipf-Mandelbrot (&lt;code>lnre.fzm&lt;/code>; Evert,
@@ -774,8 +774,8 @@ loading="lazy"
 >&lt;/p>
 &lt;p>上方的紅色曲線代表透過 fZM model 所產生的 expected value。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="3-lexical-coverage-estimation">3. Lexical Coverage Estimation&lt;/h3>
-&lt;h4 id="31-out-of-vocabulary-oov-types">3.1 Out-Of-Vocabulary (OOV) types&lt;/h4>
+&lt;h2 id="lexical-coverage-estimation">Lexical Coverage Estimation&lt;/h2>
+&lt;h3 id="out-of-vocabulary-oov-types">Out-Of-Vocabulary (OOV) types&lt;/h3>
 &lt;p>我們可以藉由 Out-Of-Vocabulary (OOV) types 的比例來了解兩個 corpus
 的 lexical
 coverage。基本上，一個實用的語言資源中，OOV
@@ -832,7 +832,7 @@ types。在這裡，我們將只出現過&lt;strong>一次&lt;/strong>的 type �
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard_Vseen&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">V&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard100k.spc&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="nf">Vm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard100k.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="32-fitting-the-lnre-model">3.2 Fitting the LNRE Model&lt;/h4>
+&lt;/div>&lt;h3 id="fitting-the-lnre-model-1">Fitting the LNRE Model&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -896,7 +896,7 @@ types。在這裡，我們將只出現過&lt;strong>一次&lt;/strong>的 type �
 &lt;/div>&lt;p>從上方得到的數值可以發現，ASBC 和 Brown corpus 的 OOV ratio 較 PTT 和
 Dcard 來得穩定且比例也較低。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="4-結論">4. 結論&lt;/h3>
+&lt;h2 id="結論">結論&lt;/h2>
 &lt;p>利用 &lt;code>zipfR&lt;/code> 並採用 LNRE model 對資料進行分析，取得語料的 &lt;code>VGC&lt;/code> 和
 &lt;code>OOV ratio&lt;/code>，就可以分析平衡語料庫、Brown corpus、PTT 和 Dcard 的 lexical
 richness 和 lexical coverage。目前的發現是：&lt;/p>
@@ -918,13 +918,13 @@ Web-as-Corpus，其前處理通常採用機器自動斷詞，龐大的 OOV
 可能來自於斷詞錯誤。這說明了在建造中文 Web-as-Corpus
 時，斷詞問題是很重要的考量之一。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="5-references">5. References&lt;/h3>
+&lt;h2 id="references">References&lt;/h2>
 &lt;p>Baayen, R. H. (2002). &lt;em>Word frequency distributions&lt;/em> (Vol. 18). Springer Science &amp;amp; Business Media.&lt;/p>
 &lt;p>Evert S, Baroni M (2007). “&lt;em>zipfR&lt;/em>: Word Frequency Distributions in R.” In &lt;em>Proceedings of the 45th Annual Meeting of the Association for Computational Linguistics, Posters and Demonstrations Sessions&lt;/em>, 29–32. (R package version 0.6-70 of 2020-10-10).&lt;/p>
 &lt;p>Kilgarriff, A., &amp;amp; Grefenstette, G. (2003). Introduction to the special issue on the web as corpus. &lt;em>Computational linguistics&lt;/em>, 29(3), 333-347.&lt;/p>
 &lt;p>Hsieh, S.-K. (2014, may). &lt;em>Why Chinese Web-as-Corpus is Wacky? Or: How Big Data is Killing Chinese Corpus Linguistics&lt;/em>. Paper presented at the Proceedings of the Ninth International Conference on Language Resources and Evaluation (LREC?14), Reykjavik, Iceland.&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="6-special-thanks">6. Special Thanks&lt;/h3>
+&lt;h2 id="special-thanks">Special Thanks&lt;/h2>
 &lt;p>謝謝 Jessy 和 Yongfu 在 &lt;a class="link" href="https://github.com/lopentu/Hands-on_Corpus_Linguistics" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->HOCOR 2020&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 提供的
 corpus data。&lt;/p>
