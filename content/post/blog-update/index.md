@@ -26,13 +26,13 @@ tags:
 
 今天~~因為不想寫計算語言學作業~~更新了 blog 的 [**<u>tag page</u>**](https://andreashih.github.io/blog/menu/tags.html)，還有打開 [**<u>RSS</u>**](https://andreashih.github.io/blog/rss-feed.xml)，在此做些紀錄。
 
-### Tag Page
+## Tag Page
 ---
 隨著文章越來越多，分類就更顯重要。我用的這個 jekyll 模板本來就可以在各篇文章加入 tags，但是沒有一個獨立的 tag page，所以打算自己幫它加一個。我參考的是[**<u>這篇文章</u>**](https://nk910216.github.io/2017/08/11/UsingTagsForJekyll/)的 code，只改了 css 讓按鈕變成我喜歡的顏色，顏色是在 [**<u>NIPPON COLORS</u>**](https://nipponcolors.com/) 挑的。
 
 原本在本機一切順利，但是 push 上去卻發現我的 tags 按鈕不能顯示顏色。後來找到[**<u>解決方法</u>**](https://stackoverflow.com/questions/49743535/jekyll-static-page-css-not-rendering)才終於成功！
 
-### RSS Feed
+## RSS Feed
 ---
 其實我一直都知道這個模板可以用 RSS feed，但就是沒有把它打開，因為不知道可以幹嘛XD
 
