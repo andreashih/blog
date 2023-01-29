@@ -24,12 +24,12 @@ tags:
 1. 堆疊長條圖 (Stacked bar chart) 避免太多顏色  
 之前在做不同類別變項的比較時，畫了一張堆疊長條圖，但是因為種類繁多，整張圖大概有五六種顏色，直接被老闆說太花了。作者在書中提出解方，以下圖左方為例，顏色花花綠綠包含太多雜訊，沒辦法一眼看到重點。此時應思考我們要引導觀眾注意哪裡，並且只在該處使用色彩，其餘部分則以灰階呈現，如下圖右方所示。
 
-![Stacked bar chart](stacked_bar_chart.png "堆疊長條圖（來源：Storytelling with Data (Knaflic, 2015)）") 
+![堆疊長條圖修正方式 (Knaflic, 2015)](stacked_bar_chart.png "Stacked bar chart") 
 
 1. 折線圖 (Line chart) 不要變成麵條圖  
 所謂麵條圖，就是像麵條一樣堆疊在一起的折線圖。之前在呈現不同時段的物料量趨勢時，畫出了一張麵條圖，導致報告時需要更多時間解釋。圖片中許多雜亂的線條，讓重點難以呈現。作者提出了幾種解決方式，包括以顏色強調重點線條，或將各折線以空間分開呈現等。下圖呈現書中強調線條的範例，與堆疊長條圖的修正方式類似，都是減少雜訊讓重點突出，以達到資料溝通的效率。
 
-![Line chart](line_chart.png "折線圖（來源：Storytelling with Data (Knaflic, 2015)）") 
+![麵條圖修正方式 (Knaflic, 2015)](line_chart.png "Line chart") 
 
 作者強調如何藉由人類視覺的特性，掌握觀眾的注意力，包括將[格式塔視覺法則](https://uiclub.tw/2015/09/05/visual-principles-gestalt-principles/)以及[前注意特徵](http://daydreamingnumbers.com/blog/preattentive-attributes-example/)運用在圖表製作中。除了視覺呈現外，如何用資料說出好故事也十分重要。作者借用了文學及戲劇中的敘事結構 [setup-conflict-resolution](https://towardsdatascience.com/how-to-build-a-narrative-from-data-85e327940c13) 來解釋如何描述資料故事。除了按照時間順序，也可以用結尾開頭，直接開門見山說明結論與解決行動。
 
