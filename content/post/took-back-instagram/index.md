@@ -14,7 +14,7 @@ I am writing this post not because I was hacked or accidentally forgot the passw
 
 &nbsp;
 
-### An Ordinary Night
+## An Ordinary Night
 
 ---
 
@@ -22,7 +22,7 @@ It was an ordinary night. Like any other typical night after I came back to my d
 
 &nbsp;
 
-### Reflection
+## Reflection
 
 ---
 
@@ -30,7 +30,7 @@ The first thing I did in the morning was to wake up my phone and tapped on insta
 
 &nbsp;
 
-### What I Have Done
+## What I Have Done
 
 ---
 
@@ -38,7 +38,7 @@ The first thing I did was to replace the insta icon with [**<u>a crossword game<
 
 &nbsp;
 
-### Another Reflection
+## Another Reflection
 
 ---
 
@@ -46,7 +46,7 @@ The three questions I asked myself led to the same conclusion: I was afraid of f
 
 &nbsp;
 
-### And Now...
+## And Now...
 
 ---
 
