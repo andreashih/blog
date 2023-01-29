@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>hugo on The Andrea Journal</title><link>https://andreashih.github.io/the-andrea-journal/tags/hugo/</link><description>Recent content in hugo on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 10 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.github.io/the-andrea-journal/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>個人網頁大更新</title><link>https://andreashih.github.io/the-andrea-journal/p/%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81%E5%A4%A7%E6%9B%B4%E6%96%B0/</link><pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81%E5%A4%A7%E6%9B%B4%E6%96%B0/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81%E5%A4%A7%E6%9B%B4%E6%96%B0/notebook.jpg" alt="Featured image of post 個人網頁大更新" />&lt;p>我的個人網頁原先是用靜態網頁生成器 &lt;a class="link" href="https://jekyllrb.com/" target="_blank" rel="noopener"
+>Jekyll&lt;/a> 製作，再用 github pages 進行部署。第一次架站時還是程式極新手，各種網頁知識的不足著實讓當時的我吃了不少苦頭（實作過程可以看&lt;a class="link" href="https://andreashih.com/blog/p/a-blog-is-born-%E4%B8%80%E5%80%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E8%AA%95%E7%94%9F/" target="_blank" rel="noopener"
+>這篇&lt;/a>以及&lt;a class="link" href="https://andreashih.com/blog/p/%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B0%8F%E6%9B%B4%E6%96%B0tag-page-rss-css.../" target="_blank" rel="noopener"
+>這篇&lt;/a>）。架好後也一直掛著 &lt;code>andreashih.github.io&lt;/code> 的網址，陪伴我整個碩士生涯。&lt;/p>
+&lt;p>最近突然萌生了購買自己網域的念頭，又想試試看 &lt;a class="link" href="https://gohugo.io/" target="_blank" rel="noopener"
+>Hugo&lt;/a> 到底多厲害，畢竟他官網首頁直接寫著 &lt;em>The world’s fastest framework for building websites&lt;/em>，索性重新架站。&lt;/p>
+&lt;p>本次架站步驟如下：&lt;/p>
+&lt;ol>
+&lt;li>購買喜歡的網域名 (domain name)
+- 我是在 &lt;a class="link" href="https://tw.godaddy.com/" target="_blank" rel="noopener"
+>GoDaddy&lt;/a> 買的&lt;/li>
+&lt;li>在本機下載 Hugo 及其主題 (theme)
+- profile 主題使用 &lt;a class="link" href="https://github.com/gurusabarish/hugo-profile" target="_blank" rel="noopener"
+>hugo-profile&lt;/a>
+- blog 主題使用 &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+>hugo-theme-stack&lt;/a>&lt;/li>
+&lt;li>上傳到 GitHub repo&lt;/li>
+&lt;li>部署到 github pages&lt;/li>
+&lt;li>更改域名&lt;/li>
+&lt;li>完成！🎉&lt;/li>
+&lt;/ol>
+&lt;p>用 Hugo 搭配 github pages 架站的網路資源十分豐富，有各種文章、影片，甚至是付費課程可以參考。在網路上搜尋時要注意發表日期，越新越好。以下詳列我使用到的資源：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://gohugo.io/getting-started/quick-start/" target="_blank" rel="noopener"
+>Hugo Documentation&lt;/a>：Hugo 的文件寫得十分清楚易懂&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.zoeydc.com/zh/posts/2021-05-23-hugo-website_github-pages_custom-domain/" target="_blank" rel="noopener"
+>Zoey 的程式日常&lt;/a>：非常詳細又簡明易瞭，而且是中文！&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.youtube.com/watch?v=dbgEWWBvIxY" target="_blank" rel="noopener"
+>YT 頻道 - codefoxx&lt;/a>：一步一步帶你完成 github pages 自訂網域的設定&lt;/li>
+&lt;/ul>
+&lt;p>體驗下來覺得 Hugo build 的速度真的很快，文件好理解，錯誤訊息的解法也算好找。目前舊的個人網頁已經移到&lt;a class="link" href="https://andreashih.com/original-profile/" target="_blank" rel="noopener"
+>這裡&lt;/a>保存，只是應該不會再更新了。&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>Photo by &lt;!-- raw HTML omitted -->Joanna Kosinska&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item></channel></rss>

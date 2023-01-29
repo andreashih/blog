@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>crawler on The Andrea Journal</title><link>https://andreashih.github.io/the-andrea-journal/tags/crawler/</link><description>Recent content in crawler on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 11 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.github.io/the-andrea-journal/tags/crawler/index.xml" rel="self" type="application/rss+xml"/><item><title>查詢萌典中的同義詞和反義詞</title><link>https://andreashih.github.io/the-andrea-journal/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</link><pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/book-shadow.jpg" alt="Featured image of post 查詢萌典中的同義詞和反義詞" />&lt;h2 id="關於萌典">關於萌典&lt;/h2>
+&lt;hr>
+&lt;p>萌典是一部由臺灣開源社群 &lt;a class="link" href="https://github.com/g0v" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->g0v 零時政府&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>開發的數位化漢語詞典。國語資料來源為《教育部重編國語辭典修訂本》，閩南語資料來自《臺灣閩南語常用詞辭典》，客家語資料則源自《臺灣客家語常用詞辭典》。除此之外，該計畫近日也新增了&lt;a class="link" href="https://amis.moedict.tw/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->阿美語萌典&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.moedict.tw" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->網站&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/g0v/moedict-webkit" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->GitHub&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="方法一-beautifulsoup">方法一： BeautifulSoup&lt;/h2>
+&lt;hr>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">requests&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">bs4&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">BeautifulSoup&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以「容忍」一詞為例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">word&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;容忍&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">res&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">requests&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s1">&amp;#39;https://www.moedict.tw/&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">word&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;lt;Response [200]&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>確認請求成功後，回到網頁，使用快捷鍵 &lt;code>Option+Command+U&lt;/code>（Windows: &lt;code>Ctrl + U&lt;/code>，或是右鍵 -&amp;gt; View Page Source），從網頁原始碼中可以看到同義詞和反義詞藏在 &amp;lt;span&amp;gt; tag 裡面。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">soup&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">BeautifulSoup&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;lxml&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">span_syn&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">soup&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">select&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;span.synonyms&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">span_ant&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">soup&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">select&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;span.antonyms&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">span_syn&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">syn&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">span_syn&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_text&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">syn&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">:]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;、&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">span_ant&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ant&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">span_ant&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_text&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ant&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">:]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;、&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">moe_relations&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;synonyms&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">syns&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;antonyms&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">ants&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>最後得到「容忍」的同義詞和反義詞如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">moe_relations&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## {&amp;#39;antonyms&amp;#39;: [&amp;#39;發作&amp;#39;, &amp;#39;拒絕&amp;#39;, &amp;#39;生氣&amp;#39;], &amp;#39;synonyms&amp;#39;: [&amp;#39;忍耐&amp;#39;]}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h2 id="方法二-urllib">方法二： urllib&lt;/h2>
+&lt;hr>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">urllib.request&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="nn">urllib.parse&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">json&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>同樣以「容忍」一詞為例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">word&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;容忍&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">word_urllib&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">urllib&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">parse&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">quote_plus&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">word&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">with&lt;/span> &lt;span class="n">urllib&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">urlopen&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s1">&amp;#39;https://www.moedict.tw/raw/&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">word_urllib&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">url&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">data&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">json&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">loads&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>將 &lt;code>json&lt;/code> 檔讀進來，結構如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">data&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## {&amp;#39;heteronyms&amp;#39;: [{&amp;#39;bopomofo&amp;#39;: &amp;#39;ㄖㄨㄥˊ ㄖㄣˇ&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;bopomofo2&amp;#39;: &amp;#39;rúng rěn&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;definitions&amp;#39;: [{&amp;#39;antonyms&amp;#39;: &amp;#39;發作,拒絕,生氣&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;def&amp;#39;: &amp;#39;包容、忍耐。&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;quote&amp;#39;: [&amp;#39;漢書．卷八十六．王嘉傳：「唯陛下留神於擇賢，記善忘過，容忍臣子，勿責以備。」&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;元．無名氏．連環計．第四折：「倒是呂布兄弟還容忍得過，若我白袍李肅呵，殺了那老賊多時也。」&amp;#39;],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;synonyms&amp;#39;: &amp;#39;忍耐&amp;#39;}],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;pinyin&amp;#39;: &amp;#39;róng rěn&amp;#39;}],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;title&amp;#39;: &amp;#39;容忍&amp;#39;}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>從 &lt;code>json&lt;/code> 檔中一層一層抓出同義詞和反義詞：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;heteronyms&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;definitions&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;synonyms&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;heteronyms&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;definitions&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;antonyms&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">syns&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">syns&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;,&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">ants&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ants&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;,&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">moe_relations&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;synonyms&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">syns&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;antonyms&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">ants&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>最後結果如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">moe_relations&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## {&amp;#39;antonyms&amp;#39;: [&amp;#39;發作&amp;#39;, &amp;#39;拒絕&amp;#39;, &amp;#39;生氣&amp;#39;], &amp;#39;synonyms&amp;#39;: [&amp;#39;忍耐&amp;#39;]}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h2 id="結論">結論&lt;/h2>
+&lt;hr>
+&lt;p>相較於以語意關係為主軸建置的&lt;a class="link" href="https://lopentu.github.io/CwnWeb/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->中文詞彙網路&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，萌典的語意關係資料較少，僅部分詞條具有同義及反義詞，且並未區分同義和近義。但萌典收錄的詞條較為完整，還有讀音、部首、筆劃等資訊，可以用於不同研究主題。&lt;/p>
+&lt;p>👩‍💻 本文程式碼&lt;a class="link" href="https://github.com/andreashih/semantic_relations/blob/main/moe_relations.ipynb" target="_blank" rel="noopener"
+>&lt;em>&lt;strong>&lt;!-- raw HTML omitted -->連結&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/em>&lt;/a>&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>Photo by &lt;!-- raw HTML omitted -->Richa Sharma&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>用 rvest 爬 Mobile01 的 iPhone 板</title><link>https://andreashih.github.io/the-andrea-journal/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</link><pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/iphone.jpg" alt="Featured image of post 用 rvest 爬 Mobile01 的 iPhone 板" />&lt;h3 id="1-用-rvest-爬資料">1. 用 &lt;code>rvest&lt;/code> 爬資料&lt;/h3>
+&lt;p>將 &lt;a class="link" href="https://www.mobile01.com/topiclist.php?f=383" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Mobile01 的 iPhone 板&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>前 1000 頁的貼文標題抓下來。&lt;/p>
+&lt;p>&lt;em>參考資料：&lt;!-- raw HTML omitted -->&lt;a class="link" href="http://r3dmaotech.blogspot.com/2016/05/r-rvest.html" target="_blank" rel="noopener"
+>http://r3dmaotech.blogspot.com/2016/05/r-rvest.html&lt;/a>&lt;!-- raw HTML omitted -->&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rvest&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dplyr&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Mobile 01 website links &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">links&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">paste0&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;https://www.mobile01.com/topiclist.php?f=383&amp;amp;p=&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">1000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">data&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">for&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">in&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">links&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">url&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">links[i]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">content&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">read_html&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span> &lt;span class="nf">html_nodes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;.u-ellipsis&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">html_text&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">temp&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">iconv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">content&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s">&amp;#39;utf8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">data&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">temp&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">##sleep time &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">Sys.sleep&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">runif&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">0.8&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">titles&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="nf">[seq&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">3&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Omit NAs&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">titles&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">titles[&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="nf">is.na&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">titles&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-寫好-regex-備用">2. 寫好 regex 備用&lt;/h3>
+&lt;p>先將可以抓出標題中各型號 iPhone 的 regex 寫好。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">i6S&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(6s|6S)(?! ?[pP])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i6SPlus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(6s|6S) ?(PLUS|Plus|plus)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iSE&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(SE|se)(?! ?2)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i7&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?7(?! ?[pP])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i7Plus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?7 ?(PLUS|Plus|plus)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i8&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?8(?! ?[pP])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i8Plus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?8 ?(PLUS|Plus|plus)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iX&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?[xX](?! ?[sS])(?! ?[rR])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iXS&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(XS|Xs|xs)(?! ?[mM])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iXSMax&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(XS|Xs|xs) ?(MAX|Max|max)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iXR&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(XR|Xr|xr)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i11&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(11) ?(?! ?[pP])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i11Pro&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(11) ?(PRO|Pro|pro)(?! ?[mM])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i11ProMax&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(11) ?(PRO|Pro|pro) ?(MAX|Max|max)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i9_SE2&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(9| ?(SE2|Se2|se2))&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iphones&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i6S&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i6SPlus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iSE&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i7&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i7Plus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i8Plus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iX&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXSMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXR&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11Pro&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11ProMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i9_SE2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3-使用-stringr">3. 使用 &lt;code>stringr&lt;/code>&lt;/h3>
+&lt;p>找出 iPhone 各型號分別有幾篇討論。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stringr&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iphones_in_posts&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">for &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">in&lt;/span> &lt;span class="nf">seq_along&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">iphones&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iphone_in_posts&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">str_detect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">titles&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iphones[i]&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iphones_in_posts[i]&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">iphone_in_posts&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4-製作表格">4. 製作表格&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">tibble&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">df&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">tibble&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;i6S&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i6S Plus&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iPhone SE&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i7&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i7 Plus&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i8&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i8 Plus&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iX&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iXS&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iXS Max&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iXR&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i11&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i11 Pro&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i11 Pro Max&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i9/SE2&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">n&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">iphones_in_posts&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">df&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">df&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">mutate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Order&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="nf">n&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">arrange&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">desc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">df&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## # A tibble: 15 x 3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## Model n Order&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 1 iX 1874 8&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 2 i7 1813 4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 3 i6S 1442 1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 4 i8 988 6&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 5 i7 Plus 767 5&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 6 i11 466 12&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 7 i8 Plus 406 7&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 8 i6S Plus 403 2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 9 iXR 403 11&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 10 iXS Max 385 10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 11 iXS 336 9&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 12 iPhone SE 334 3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 13 i11 Pro 182 13&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 14 i11 Pro Max 150 14&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 15 i9/SE2 30 15&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="5-visualization">5. Visualization&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ggplot2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">ggplot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">df&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">reorder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">n&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;#fcba03&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">xlab&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Model&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis.text.x&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">element_text&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">angle&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">45&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">hjust&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-6-1.png"
+loading="lazy"
+>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ggrepel&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">ggplot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">df&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Order&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">label&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Model&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_point&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">factor&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">)))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme_bw&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_text_repel&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">legend.position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;none&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-7-1.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="6-explanation">6. Explanation&lt;/h3>
+&lt;p>從 Mobile01 爬下的前 1000 頁標題資料中可以發現，文章數最多的
+iX、i7，以及 i6S
+都已經推出一段時間了，所以累積比較多討論。文章數最少的則是最晚推出的 i11
+Pro 和 i11 Pro Max，以及預計今年四月中才會發表的 i9
+(SE2)。原本預期會看到許多 i9 (SE2) 的討論，但 Mobile 01
+上似乎沒有此現象。i6S Plus 和 iPhone SE
+雖然是較早期機種，文章數卻比新機少很多，之後預計會爬內文進一步分析。&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Arnel Hasanovic&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item></channel></rss>

@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on The Andrea Journal</title><link>https://andreashih.github.io/the-andrea-journal/tags/python/</link><description>Recent content in python on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 11 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.github.io/the-andrea-journal/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>查詢萌典中的同義詞和反義詞</title><link>https://andreashih.github.io/the-andrea-journal/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</link><pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/book-shadow.jpg" alt="Featured image of post 查詢萌典中的同義詞和反義詞" />&lt;h2 id="關於萌典">關於萌典&lt;/h2>
+&lt;hr>
+&lt;p>萌典是一部由臺灣開源社群 &lt;a class="link" href="https://github.com/g0v" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->g0v 零時政府&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>開發的數位化漢語詞典。國語資料來源為《教育部重編國語辭典修訂本》，閩南語資料來自《臺灣閩南語常用詞辭典》，客家語資料則源自《臺灣客家語常用詞辭典》。除此之外，該計畫近日也新增了&lt;a class="link" href="https://amis.moedict.tw/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->阿美語萌典&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.moedict.tw" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->網站&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/g0v/moedict-webkit" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->GitHub&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p> &lt;/p>
+&lt;h2 id="方法一-beautifulsoup">方法一： BeautifulSoup&lt;/h2>
+&lt;hr>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">requests&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">bs4&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">BeautifulSoup&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以「容忍」一詞為例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">word&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;容忍&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">res&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">requests&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s1">&amp;#39;https://www.moedict.tw/&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">word&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;lt;Response [200]&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>確認請求成功後，回到網頁，使用快捷鍵 &lt;code>Option+Command+U&lt;/code>（Windows: &lt;code>Ctrl + U&lt;/code>，或是右鍵 -&amp;gt; View Page Source），從網頁原始碼中可以看到同義詞和反義詞藏在 &amp;lt;span&amp;gt; tag 裡面。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">soup&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">BeautifulSoup&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">res&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;lxml&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">span_syn&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">soup&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">select&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;span.synonyms&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">span_ant&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">soup&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">select&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;span.antonyms&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">span_syn&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">syn&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">span_syn&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_text&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">syn&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">:]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;、&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">span_ant&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ant&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">span_ant&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_text&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ant&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">:]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;、&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">moe_relations&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;synonyms&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">syns&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;antonyms&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">ants&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>最後得到「容忍」的同義詞和反義詞如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">moe_relations&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## {&amp;#39;antonyms&amp;#39;: [&amp;#39;發作&amp;#39;, &amp;#39;拒絕&amp;#39;, &amp;#39;生氣&amp;#39;], &amp;#39;synonyms&amp;#39;: [&amp;#39;忍耐&amp;#39;]}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h2 id="方法二-urllib">方法二： urllib&lt;/h2>
+&lt;hr>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">urllib.request&lt;/span>&lt;span class="o">,&lt;/span> &lt;span class="nn">urllib.parse&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">json&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>同樣以「容忍」一詞為例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">word&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;容忍&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">word_urllib&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">urllib&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">parse&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">quote_plus&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">word&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">with&lt;/span> &lt;span class="n">urllib&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">request&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">urlopen&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s1">&amp;#39;https://www.moedict.tw/raw/&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">word_urllib&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">url&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">data&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">json&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">loads&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">read&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">())&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>將 &lt;code>json&lt;/code> 檔讀進來，結構如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">data&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## {&amp;#39;heteronyms&amp;#39;: [{&amp;#39;bopomofo&amp;#39;: &amp;#39;ㄖㄨㄥˊ ㄖㄣˇ&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;bopomofo2&amp;#39;: &amp;#39;rúng rěn&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;definitions&amp;#39;: [{&amp;#39;antonyms&amp;#39;: &amp;#39;發作,拒絕,生氣&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;def&amp;#39;: &amp;#39;包容、忍耐。&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;quote&amp;#39;: [&amp;#39;漢書．卷八十六．王嘉傳：「唯陛下留神於擇賢，記善忘過，容忍臣子，勿責以備。」&amp;#39;,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;元．無名氏．連環計．第四折：「倒是呂布兄弟還容忍得過，若我白袍李肅呵，殺了那老賊多時也。」&amp;#39;],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;synonyms&amp;#39;: &amp;#39;忍耐&amp;#39;}],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;pinyin&amp;#39;: &amp;#39;róng rěn&amp;#39;}],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &amp;#39;title&amp;#39;: &amp;#39;容忍&amp;#39;}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>從 &lt;code>json&lt;/code> 檔中一層一層抓出同義詞和反義詞：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;heteronyms&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;definitions&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;synonyms&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;heteronyms&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;definitions&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;antonyms&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">syns&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">syns&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;,&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">syns&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="n">ants&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ants&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;,&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">ants&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">moe_relations&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;synonyms&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">syns&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;antonyms&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">ants&lt;/span>&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>最後結果如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">moe_relations&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## {&amp;#39;antonyms&amp;#39;: [&amp;#39;發作&amp;#39;, &amp;#39;拒絕&amp;#39;, &amp;#39;生氣&amp;#39;], &amp;#39;synonyms&amp;#39;: [&amp;#39;忍耐&amp;#39;]}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h2 id="結論">結論&lt;/h2>
+&lt;hr>
+&lt;p>相較於以語意關係為主軸建置的&lt;a class="link" href="https://lopentu.github.io/CwnWeb/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->中文詞彙網路&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，萌典的語意關係資料較少，僅部分詞條具有同義及反義詞，且並未區分同義和近義。但萌典收錄的詞條較為完整，還有讀音、部首、筆劃等資訊，可以用於不同研究主題。&lt;/p>
+&lt;p>👩‍💻 本文程式碼&lt;a class="link" href="https://github.com/andreashih/semantic_relations/blob/main/moe_relations.ipynb" target="_blank" rel="noopener"
+>&lt;em>&lt;strong>&lt;!-- raw HTML omitted -->連結&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/em>&lt;/a>&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>Photo by &lt;!-- raw HTML omitted -->Richa Sharma&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>DOCX Files Search and Manipulation</title><link>https://andreashih.github.io/the-andrea-journal/p/docx-files-search-and-manipulation/</link><pubDate>Mon, 29 Jun 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/docx-files-search-and-manipulation/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/docx-files-search-and-manipulation/books3.jpg" alt="Featured image of post DOCX Files Search and Manipulation" />&lt;p>這學期 (108-2) 修大學部的 python 課程，在期末用 &lt;a class="link" href="https://python-docx.readthedocs.io/en/latest/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->python-docx&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 搭配 python 內建函式庫做了一個&lt;a class="link" href="https://github.com/andreashih/docx-search-manipulation" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->迷你專案&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
+&lt;p>最初的想法如下圖：&lt;/p>
+&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/python_docx/python_docx.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="code">Code&lt;/h3>
+&lt;hr>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">os&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">os.path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">os&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">docx&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">docx&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Document&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">re&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">shutil&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">shutil&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">copyfile&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>使用者輸入原資料夾所在的路徑。若路徑存在則將 working directory 設為使用者輸入的路徑，若路徑不存在則印出警告訊息。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">path1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;123&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">while&lt;/span> &lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">path1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="kc">False&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path1&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Please enter the location of the original files:&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">path1&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">chdir&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">path1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># Set working directory&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Warning: Invalid path&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>使用者輸入關鍵字（可接受 regular expression），並將含有其關鍵字的 .docx 檔案存到 &lt;code>matched_files&lt;/code> 中，再做出各個含有關鍵字檔案的路徑，存到 &lt;code>matched_files_paths&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># A function that extracts files that match the pattern&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">search_file&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pattern&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">doc&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">docx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Document&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">text&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">para&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">doc&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">paragraphs&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">text&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">para&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">findall&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pattern&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="p">[]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">filename&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Search docx files with content matching particular pattern&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">pattern&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Please enter the keyword&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">matched_files&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">file&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">listdir&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">file&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">endswith&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;.docx&amp;#39;&lt;/span>&lt;span class="p">):&lt;/span> &lt;span class="k">continue&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">search_file&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">pattern&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">x&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">matched_files&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Extract matched files path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">matched_files_paths&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">matched_file&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">matched_files&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">path1&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">matched_file&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">matched_files_paths&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>有了 &lt;code>matched_files_paths&lt;/code>，就可以對含有關鍵字的 .docx 檔案進行操作。使用者可以輸入 &lt;code>move&lt;/code> 或 &lt;code>copy&lt;/code>，再輸入新路徑（欲移動或複製至哪一個資料夾），或是直接輸入 &lt;code>delete&lt;/code>，將含有關鍵字的 .docx 檔案刪除。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># A function that manipulates files (move, copy, or delete)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">file_manipulate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mode&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">matched_file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">to&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">mode&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;move&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shutil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">move&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">matched_file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">to&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">elif&lt;/span> &lt;span class="n">mode&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">shutil&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">copy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">matched_file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">to&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">elif&lt;/span> &lt;span class="n">mode&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;delete&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">remove&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">matched_file_path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="s1">&amp;#39;no such mode&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">mode&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;123&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">while&lt;/span> &lt;span class="n">mode&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;move&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;delete&amp;#39;&lt;/span>&lt;span class="p">]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mode&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;move, copy, or delete?&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">mode&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;delete&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">to&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">matched_file_path&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">matched_files_paths&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">file_manipulate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mode&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">matched_file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">to&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">elif&lt;/span> &lt;span class="n">mode&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;move&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;copy&amp;#39;&lt;/span>&lt;span class="p">]:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">to&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">input&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;Please provide the new file path&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">to&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="kc">False&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Warning: Invalid path&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">matched_file_path&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">matched_files_paths&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">file_manipulate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mode&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">matched_file_path&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">to&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Warning: Invalid mode&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;h3 id="murmuring">Murmuring&lt;/h3>
+&lt;hr>
+&lt;p>真心覺得對初學者來說，盡量不要同時學兩個程式。資質駑鈍如我無法同時參透兩個語言，因此這學期就是不斷把 R 寫在 python 裡或把 python 寫在 R 裡。寫完一整天的 python 要再回去寫 R，簡直像濃霧中漫步伸手不見五指。順攝抑制和倒攝抑制在我身上嶄露無遺。所以學程式不要貪快貪多，會消化不良（倘若列位看官是程式小天才則另當別論）。像這個簡單的小專案就讓我做了超級久（從適應 python 語法到寫出好像可以 run 的東西），而且還不大完善。最好的方式就是早一點開始學，不要像我一樣 code 到用時方恨少！&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="參考資料">參考資料&lt;/h3>
+&lt;hr>
+&lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/42682648/search-all-docx-files-with-python-docx-in-a-directory-batch" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Search all docx files with python-docx in a directory (batch)&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/22819948/searching-docx-files-in-python" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Searching docx Files in python&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/60682266/how-to-use-regular-expressions-with-python-docx" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->How to use regular expressions with python docx?&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://stackabuse.com/how-to-create-move-and-delete-files-in-python/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->How to Create, Move, and Delete Files in Python&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Iñaki del Olmo&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item></channel></rss>

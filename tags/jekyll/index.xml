@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>jekyll on The Andrea Journal</title><link>https://andreashih.github.io/the-andrea-journal/tags/jekyll/</link><description>Recent content in jekyll on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.github.io/the-andrea-journal/tags/jekyll/index.xml" rel="self" type="application/rss+xml"/><item><title>部落格的小更新：Tag Page, RSS, CSS...</title><link>https://andreashih.github.io/the-andrea-journal/p/%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B0%8F%E6%9B%B4%E6%96%B0tag-page-rss-css.../</link><pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B0%8F%E6%9B%B4%E6%96%B0tag-page-rss-css.../</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B0%8F%E6%9B%B4%E6%96%B0tag-page-rss-css.../table.jpg" alt="Featured image of post 部落格的小更新：Tag Page, RSS, CSS..." />&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">*2022/01/29 更新*
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">調色調上癮了，應該可以發現頁面上多了一些顏色。整理了 menu bar，把多餘的資訊拿掉，加一個 home 按鈕可以回到主頁。另外，為了版面乾淨，把 posts 和 tags 兩頁中的文章標題底線拿掉了。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*2021/09/06 更新*
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">把 read time 和它的 icon 都拿掉了，因為現在的計算方式是英文的 token，我找不到怎麼改算中文的。blog 首頁的預覽 truncate 也減成 250 字。原本是 350，對於中文來說有點太長了。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p> &lt;/p>
+&lt;p>今天&lt;del>因為不想寫計算語言學作業&lt;/del>更新了 blog 的 &lt;a class="link" href="https://andreashih.github.io/blog/menu/tags.html" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->tag page&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，還有打開 &lt;a class="link" href="https://andreashih.github.io/blog/rss-feed.xml" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->RSS&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，在此做些紀錄。&lt;/p>
+&lt;h3 id="tag-page">Tag Page&lt;/h3>
+&lt;hr>
+&lt;p>隨著文章越來越多，分類就更顯重要。我用的這個 jekyll 模板本來就可以在各篇文章加入 tags，但是沒有一個獨立的 tag page，所以打算自己幫它加一個。我參考的是&lt;a class="link" href="https://nk910216.github.io/2017/08/11/UsingTagsForJekyll/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->這篇文章&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>的 code，只改了 css 讓按鈕變成我喜歡的顏色，顏色是在 &lt;a class="link" href="https://nipponcolors.com/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->NIPPON COLORS&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 挑的。&lt;/p>
+&lt;p>原本在本機一切順利，但是 push 上去卻發現我的 tags 按鈕不能顯示顏色。後來找到&lt;a class="link" href="https://stackoverflow.com/questions/49743535/jekyll-static-page-css-not-rendering" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->解決方法&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>才終於成功！&lt;/p>
+&lt;h3 id="rss-feed">RSS Feed&lt;/h3>
+&lt;hr>
+&lt;p>其實我一直都知道這個模板可以用 RSS feed，但就是沒有把它打開，因為不知道可以幹嘛XD&lt;/p>
+&lt;p>直到最近才發現 RSS 其實蠻好用的。&lt;a class="link" href="https://zh.wikipedia.org/wiki/RSS" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->RSS&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 的全名是 Really Simple Syndication，可以讓你訂閱喜歡的 blog、podcast，甚至是 YouTube 頻道。當訂閱的網站有更新，就可以獲得通知。再也不用一個一個加到我的最愛，最後因為懶得點開看有沒有更新而遺忘他們的存在。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>要怎麼開始呢？&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>很多 blog 的頁面上都找得到 RSS 的 icon (長得很像 wifi 圖示)，點進去之後會出現一堆亂七八糟的文字，請不要害怕，複製最上方的網址就對了。如果沒有 RSS 圖示的話，在頁面上按右鍵再點選 View page source 通常也找得到，只是要 ctrl+F 搜一下 RSS 網址在哪裡。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>連結複製好了，然後呢？&lt;/strong>&lt;/p>
+&lt;/blockquote>
+&lt;p>現在有許多管理 RSS 的平台，最多人使用的應該屬 &lt;a class="link" href="https://feedly.com/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Feedly&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，直接將 RSS feed 複製貼上即可，但免費版有資料夾數量限制。Mac 用戶推薦使用 &lt;a class="link" href="https://www.vienna-rss.com/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Vienna&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，介面簡潔好用，資料夾數量沒有限制。&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>以上就是這次的小更新，也歡迎大家用 RSS 訂閱這個 blog！&lt;/p>
+&lt;p>Photo by &lt;!-- raw HTML omitted -->Kris Atomic&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>A Blog is Born: 一個部落格的誕生</title><link>https://andreashih.github.io/the-andrea-journal/p/a-blog-is-born-%E4%B8%80%E5%80%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E8%AA%95%E7%94%9F/</link><pubDate>Thu, 20 Feb 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/a-blog-is-born-%E4%B8%80%E5%80%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E8%AA%95%E7%94%9F/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/a-blog-is-born-%E4%B8%80%E5%80%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E8%AA%95%E7%94%9F/blog.jpg" alt="Featured image of post A Blog is Born: 一個部落格的誕生" />&lt;h2 id="緣起">緣起&lt;/h2>
+&lt;hr>
+&lt;p>這個部落格誕生於 2020 年 2 月，在我碩士一年級的寒假。原本不覺得自己有辦法做出一個部落格，一方面缺乏實作經驗，另一方面我並不擅長寫文章。然而在寒假的某天，當我一如往常打開電腦點進 YouTube 時，看到了這部&lt;a class="link" href="https://www.youtube.com/watch?v=U0idtvxVo9I" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->影片&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。它清楚的步驟介紹讓我有了「我也可以做到！」的錯覺。為什麼說是錯覺呢？因為接下來實作的過程中可說是困難重重，我費了一番心力才完成網頁架設及整理。當我對製作部落格還存有顧慮時，意外地讀到了 GitHub 創辦人之一 Tom Preston-Werner 所寫的&lt;a class="link" href="https://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->文章&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。內容實在太感人又有說服力了！因此加強了實作部落格的動機。&lt;/p>
+&lt;p>熟悉了製作 GitHub Pages 的流程後，我另外建立了 &lt;a class="link" href="https://andreashih.github.io/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Homepage&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，並將部落格連結到 Homepage 上。架設網站的主要目的是記錄自己在研究所期間所累積的成果，並留下曾經努力過的足跡。&lt;/p>
+&lt;p>以下的步驟說明我如何網路上開闢一片疆土。筆者使用之電腦為 Windows 系統，故將以在 Windows 上的做法為例。若內容有任何需要修改的地方，歡迎在文章下方留言，或&lt;a class="link" href="mailto:r08142004@ntu.edu.tw" >&lt;strong>&lt;!-- raw HTML omitted -->寫信&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>告訴我。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="preparation">Preparation&lt;/h2>
+&lt;hr>
+&lt;h3 id="1-github-帳號">1. GitHub 帳號&lt;/h3>
+&lt;p>在開始之前，必須先&lt;a class="link" href="https://github.com/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->創一個 GitHub 帳號&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
+&lt;h3 id="2-檢查電腦中是否已載有-ruby">2. 檢查電腦中是否已載有 Ruby&lt;/h3>
+&lt;p>可以先在 command line 上輸入 &lt;code>ruby -v&lt;/code> 檢查電腦中是否已經載有 Ruby。如果沒有，請跳到步驟 3。若電腦中已有 Ruby，將會回傳它的版本號碼。&lt;/p>
+&lt;p>接著，輸入 &lt;code>gem -v&lt;/code> 檢查 RubyGems。如果很幸運地兩個 command 都成功了，請輸入 &lt;code>sudo gem install jekyll&lt;/code> 開始安裝 Jekyll。&lt;/p>
+&lt;p>最後，輸入 &lt;code>jekyll -v&lt;/code> 檢查 Jekyll 是否安裝成功。&lt;/p>
+&lt;p>&lt;a class="link" href="https://onextrapixel.com/start-jekyll-blog-github-pages-free/" target="_blank" rel="noopener"
+>&lt;em>&lt;!-- raw HTML omitted -->資料來源&lt;!-- raw HTML omitted -->&lt;/em>&lt;/a>&lt;/p>
+&lt;h3 id="3-下載-ruby">3. 下載 Ruby&lt;/h3>
+&lt;p>請前往 &lt;a class="link" href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->RubyInstaller&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，並點選 &lt;strong>Ruby+Devkit 2.6.5-1 (x64)&lt;/strong> 開始下載。（我第一次下載了 &lt;strong>Ruby+Devkit 2.7.0-1 (x64)&lt;/strong> ，但後來版本不相容無法運作）。&lt;/p>
+&lt;p>執行下載時 RubyInstaller 會打開一個 command prompt，安裝時請遵照 default options，如此一來就會成功了。&lt;/p>
+&lt;p>最後，請輸入 &lt;code>ridk install&lt;/code> 以完成最後一個步驟。&lt;/p>
+&lt;h3 id="4-安裝-jekyll">4. 安裝 Jekyll&lt;/h3>
+&lt;p>請打開一個新的 command prompt，並輸入&lt;code>gem install jekyll bundler&lt;/code>。接著，輸入 &lt;code>jekyll -v&lt;/code> 檢查是否安裝成功。&lt;/p>
+&lt;p>如果電腦上有 &lt;a class="link" href="https://docs.microsoft.com/en-us/windows/wsl/about?redirectedfrom=MSDN" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Windows Subsystem for Linux&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，請參考 &lt;a class="link" href="https://jekyllrb.com/docs/installation/windows/#installation-via-bash-on-windows-10" target="_blank" rel="noopener"
+>&lt;strong>Jekyll on Windows&lt;/strong>&lt;/a> 裡詳細的安裝步驟。&lt;/p>
+&lt;p>Windows 電腦特別會有 Timezone 的問題，&lt;a class="link" href="https://jekyllrb.com/docs/installation/windows/#time-zone-management" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Jekyll on Windows&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 也提供了解決辦法。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="get-your-hands-dirty">Get Your Hands Dirty&lt;/h2>
+&lt;hr>
+&lt;p>接下來的步驟是參考這部&lt;a class="link" href="https://www.youtube.com/watch?v=U0idtvxVo9I" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->影片&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>撰寫而成。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="1-jekyll-themes">1. Jekyll Themes&lt;/h3>
+&lt;p>到 &lt;a class="link" href="http://jekyllthemes.org/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Jekyll Themes&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 上挑選一個喜歡的模板。點進縮圖後可以點選 &lt;strong>Demo&lt;/strong> 進行預覽。&lt;/p>
+&lt;p>決定模版之後，點選 &lt;strong>Homepage&lt;/strong>，進入模板的 repo (repository)。以下將以本部落格的模板 &lt;a class="link" href="https://github.com/LeNPaul/Lagrange" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Lagrange&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 為例進行說明。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="2-repository-settings">2. Repository Settings&lt;/h3>
+&lt;p>進入模板的 repo 後，請點選右側的 &lt;strong>Fork&lt;/strong>，將模板複製到自己的 repo。此時畫面中，repo 的名字會變成 &lt;strong>你的帳號/Lagrange&lt;/strong>。&lt;/p>
+&lt;p>接著要更改 4 個設定。&lt;/p>
+&lt;p>(1) 將左方的 &lt;strong>Branch&lt;/strong> 設為 &lt;strong>Master&lt;/strong>。如果下拉式選單中沒有這個選項，在搜尋欄位中打 &amp;ldquo;Master&amp;rdquo; 就可以搜尋到了。&lt;/p>
+&lt;p>(2) 在右方 &lt;strong>Settings&lt;/strong> 中點選左側的 &lt;strong>Branches&lt;/strong>，將 &lt;strong>Default branch&lt;/strong> 設定為 &lt;strong>Master&lt;/strong>。請記得點選 &lt;strong>Update&lt;/strong> 以完成變更。&lt;/p>
+&lt;p>(3) 在 &lt;strong>Settings&lt;/strong> 中點選左方的 &lt;strong>Options&lt;/strong>，將 &lt;strong>Repository name&lt;/strong> 設定為&lt;strong>你的帳號.github.io&lt;/strong>。也可以設定別的名字，但最後 GitHub Page 的網址會長得不一樣，可以改改看。&lt;/p>
+&lt;p>(4) 滑到頁面下方，看到 &lt;strong>GitHub Pages&lt;/strong> 的欄位後停下來，把 &lt;strong>Source&lt;/strong> 改成 &lt;strong>master branch&lt;/strong>。上方的網址就是新建立的部落格的網址，如果點進去顯示 404，可能要稍後片刻（我曾經等過 20 分鐘）。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="3-github-desktop">3. GitHub Desktop&lt;/h3>
+&lt;p>安裝 &lt;a class="link" href="https://desktop.github.com/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->GitHub Desktop&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 並完成設定。&lt;/p>
+&lt;p>回到自己的 repo，點選右側綠色的 &lt;strong>Clone or download&lt;/strong>，再點選 &lt;strong>Open in Desktop&lt;/strong>，repo 中的內容就會下載到自己的電腦上新增一個資料夾。同時 &lt;strong>GitHub Desktop&lt;/strong> 中左上角的 &lt;strong>Current Repository&lt;/strong> 會顯示自己的 repo 名稱。在電腦上對資料夾中檔案進行的修改會顯示在 &lt;strong>GitHub Desktop&lt;/strong> 上。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="4-local-installation">4. Local Installation&lt;/h3>
+&lt;p>在 command prompt 中 cd 到資料夾，再輸入 &lt;code>bundle install&lt;/code>。接著，輸入 &lt;code>bundle exec jekyll serve&lt;/code>，就可以在瀏覽器上輸入 &lt;code>localhost:4000&lt;/code> 進行預覽。（有時須依照 command prompt 出現的提示加新指令到資料夾裡的 &lt;code>Gemfile&lt;/code> 中。）&lt;/p>
+&lt;p>我的 Windows 電腦曾遇過數次 &lt;code>TZInfo::DataSourceNotFound&lt;/code> 錯誤訊息。此時只要在 &lt;code>Gemfile&lt;/code> 中新增 &lt;code>gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]&lt;/code>，就可以成功運作。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="personalize-your-blog">Personalize Your Blog&lt;/h2>
+&lt;hr>
+&lt;p>接著依照 repo 中 &lt;code>README.md&lt;/code> 的說明修改各檔案成自己的內容。我使用的編輯器是 &lt;a class="link" href="https://code.visualstudio.com/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Visual Studio Code&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。介面右方可以開啟 markdown preview，覺得很方便！在編輯過程中，與其直接刪除不需要執行的 lines ，在它們前面加上 &lt;code>#&lt;/code> 對我來說是比較保險的做法。&lt;/p>
+&lt;p>修改完並儲存後，重新整理 &lt;code>localhost:4000&lt;/code>，就可以看到更新的內容。根據我的經驗，&lt;code>_config.yml&lt;/code> 需花費較長時間更新。&lt;/p>
+&lt;p>回到 &lt;strong>GitHub Desktop&lt;/strong>，輸入 &lt;strong>Summary&lt;/strong> 後，點選左下角 &lt;strong>Commit to master&lt;/strong>，再點選右上角的 &lt;strong>Fetch origin&lt;/strong>，就可以將更新的檔案上傳到 GitHub 中的 repo，以更新正式的網頁。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="and-thats-it">And That&amp;rsquo;s It!&lt;/h2>
+&lt;hr>
+&lt;p>接下來就可以開開心心地用 &lt;a class="link" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Markdown&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 撰寫內文了！如果要預覽 blog，可以依照 &lt;code>4. Local Installation&lt;/code> 的方法執行，但不需要再 run 一次 &lt;code>bundle install&lt;/code>。&lt;/p>
+&lt;p>上述過程讓我感受最深的是，你必須試了才知道結果會如何。不知道怎麼做就試一下，再依結果去調整。不斷地找到問題，再不斷地解決問題，我認為這就是學習新事物困難但有趣的地方。&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Jess Bailey&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item></channel></rss>

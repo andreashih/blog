@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>R on The Andrea Journal</title><link>https://andreashih.github.io/the-andrea-journal/tags/r/</link><description>Recent content in R on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.github.io/the-andrea-journal/tags/r/index.xml" rel="self" type="application/rss+xml"/><item><title>PTT 與 Dcard 語料斷詞問題探討</title><link>https://andreashih.github.io/the-andrea-journal/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/</link><pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/cards2.jpg" alt="Featured image of post PTT 與 Dcard 語料斷詞問題探討" />&lt;p>這學期修了老闆的課──語料處理方法，認識了一個強大的 R 套件
+&lt;a class="link" href="https://cran.r-project.org/web/packages/zipfR/index.html" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->zipfR&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>
+(Evert and Baroni 2007) 以及 LNRE model (Baayen
+2002)。這篇文章將參考老師的研究 (Hsieh 2014)，並依據 &lt;a class="link" href="https://rdrr.io/cran/zipfR/f/inst/doc/zipfr-tutorial.pdf" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->The zipfR package for lexical statistics: A tutorial introduction&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>
+(Baroni and Evert 2014) 所提供的方法，以 PTT 與 Dcard
+的語料進行中文斷詞問題的分析。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="1-introduction">1. Introduction&lt;/h3>
+&lt;p>在使用 &lt;code>zipfR&lt;/code> 之前，要先認識 &lt;a class="link" href="https://nlp.stanford.edu/IR-book/html/htmledition/zipfs-law-modeling-the-distribution-of-terms-1.html" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Zipf’s law&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>
+(Zipf
+1949)。簡單說明，即是在自然語言的語料庫中，一個單詞出現的頻率越高，在頻率表裡的排名越前面。且第一名的單詞出現的頻率大約是第二名單詞的兩倍、第三名單詞的三倍，以此類推。&lt;/p>
+&lt;p>接下來要了解 token 和 type 的意義。這裡有一個範例詞表：&lt;/p>
+&lt;blockquote>
+&lt;p>蘋果, 橘子, 香蕉, 香蕉, 葡萄, 蘋果, 香蕉, 蘋果, 葡萄, 蘋果, 葡萄, 蘋果&lt;/p>
+&lt;/blockquote>
+&lt;p>這個詞表總共有 12 個 token (sample size = 12)，以及 4 個 type
+(vocabulary size = 4)。在這裡我們把它表示成&lt;/p>
+&lt;blockquote>
+&lt;p>N = 12&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>V = 4&lt;/p>
+&lt;/blockquote>
+&lt;p>根據範例詞表，我們可以得到一個 &lt;strong>type-frequency list&lt;/strong>：&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>接著，我們又可以得到一個 &lt;strong>Zipf Ranking&lt;/strong>，這裡的 &lt;code>r&lt;/code>
+將頻率由大到小排序，&lt;code>fr&lt;/code> 則是指頻率：&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>透過 &lt;strong>type-frequency
+list&lt;/strong>，我們可以得到一個計算上非常重要的資料：&lt;strong>frequency
+spectrum&lt;/strong>，其中 &lt;code>m&lt;/code> 代表出現次數，&lt;code>Vm&lt;/code> 代表出現該次數的單詞共有幾個：&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>在範例中，出現一次的單詞有一個 (橘子)，出現三次的單詞有兩個
+(香蕉、葡萄)，出現五次的單詞有一個
+(蘋果)。只出現過一次的單詞，我們稱之為 &lt;em>hapax legomena&lt;/em>。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="2-lexical-richness">2. Lexical Richness&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 載入套件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">readr&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">zipfR&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>首先，將平衡語料庫 (ASBC)、PTT 和 Dcard 語料匯入並整理。PTT 語料來自
+&lt;code>2005&lt;/code>、&lt;code>2010&lt;/code>、&lt;code>2015&lt;/code>，以及 &lt;code>2020&lt;/code>
+共四個年度的八卦板與女板，且對其進行抽樣。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#asbc&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc_corpus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">paste0&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\asbc.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">10000&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#39;UTF-8&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span>&lt;span class="n">collapse&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34; &amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc_corpus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc_corpus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># PTT Gossiping board (sampled)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">g05&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sample&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\Gossiping_2005_seg.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">1250&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">g10&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sample&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\Gossiping_2010_seg.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">1250&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">g15&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sample&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\Gossiping_2015_seg.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">1250&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">g20&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sample&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\Gossiping_2020_seg.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">1250&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">g05&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">g05&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">g10&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">g10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">g15&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">g15&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">g20&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">g20&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># PTT WomenTalk board (sampled)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w05&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sample&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\WomenTalk_2005_seg.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">1250&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w10&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sample&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\WomenTalk_2010_seg.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">1250&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w15&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sample&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\WomenTalk_2015_seg.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">1250&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w20&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sample&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\WomenTalk_2020_seg.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="m">1250&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w05&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">w05&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w10&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">w10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w15&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">w15&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">w20&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">unlist&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">strsplit&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">w20&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;\\s&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># PTT&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt_corpus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">g05&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">g10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">g15&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">g20&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">w05&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">w10&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">w15&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">w20&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># dcard&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard_corpus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">readLines&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;data\\dcard_corpus.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">encoding&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;UTF-8&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="21-type-frequency-list">2.1 Type-frequency List&lt;/h4>
+&lt;p>使用 &lt;code>zipfR&lt;/code> 套件，可以簡單地得到 type-frequency list 和它的 Zipf
+ranking。為了進行接下來的比較，在這裡將套件內建的 &lt;code>Brown.tfl&lt;/code> 一併匯入。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc.tfl&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2tfl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc_corpus&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">data&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Brown.tfl&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt.tfl&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2tfl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt_corpus&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard.tfl&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2tfl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard_corpus&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>看一下資料的樣子。其中 &lt;code>k&lt;/code> 代表 Zipf’s ranking，&lt;code>f&lt;/code> 代表頻率，&lt;code>N&lt;/code> 是
+sample size，&lt;code>V&lt;/code> 是 type count：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">head&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.tfl&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## k f type&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 的 1 3039 的&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 是 2 1578 是&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 我 3 1506 我&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 不 4 1123 不&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 了 5 1070 了&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 有 6 846 有&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## N V&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 77826 12837&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>zipfR&lt;/code> 也可以讓我們輕鬆將資料視覺化：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">par&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mfrow&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="c1"># 2*2 plot area&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.tfl&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;ASBC&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">log&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;xy&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># logarithmic scale&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;rank&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;frequency&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.tfl&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Brown&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">log&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;xy&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;rank&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;frequency&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.tfl&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;PTT&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">log&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;xy&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;rank&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;frequency&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.tfl&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Dcard&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">log&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;xy&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;rank&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;frequency&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_tfl.png"
+loading="lazy"
+>&lt;/p>
+&lt;h4 id="22-frequency-spectrum">2.2 Frequency Spectrum&lt;/h4>
+&lt;p>透過剛剛的 type-frequency list，我們可以得到 frequency spectrum。Brown
+corpus 的 frequency spectrum 可直接從套件中匯入：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">tfl2spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.tfl&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">data&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Brown.spc&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">tfl2spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.tfl&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">tfl2spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.tfl&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>看一下資料的樣子。此處的 &lt;code>m&lt;/code> 是指出現次數，&lt;code>Vm&lt;/code> 代表出現該次數的 type
+共有幾個：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">head&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## m Vm&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 1 1 7784&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 2 2 1850&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 3 3 777&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 4 4 481&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 5 5 267&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 6 6 209&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## N V&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 77826 12837&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>取 log 值後，下圖提供前五十筆 spectrum element 的資料：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">par&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mfrow&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">log&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;x&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;ASBC&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">log&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;x&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Brown&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">log&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;x&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;PTT&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">log&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;x&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Dcard&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_spc.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>從上圖可以得知，&lt;em>hapax legomena&lt;/em> (只出現過一次的單詞)
+占所有語料庫的比例都相當的高。接下來，我們可以透過 Vocabulary growth
+curves (VGC) 來觀察新詞增加的情況。&lt;/p>
+&lt;h4 id="23-vocabulary-growth-curves-vgc">2.3 Vocabulary Growth Curves (VGC)&lt;/h4>
+&lt;p>同樣地，透過 &lt;code>zipfR&lt;/code>，我們可以將語料轉成 &lt;code>vgc&lt;/code> object。Brown corpus
+的資料一樣可以直接匯入：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc.vgc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2vgc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc_corpus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">m.max&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">data&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Brown.emp.vgc&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt.vgc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2vgc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt_corpus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">m.max&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard.vgc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2vgc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard_corpus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">m.max&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>來看一下 &lt;code>ptt.vgc&lt;/code> 裡面是什麼 :&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">head&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.vgc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## N V V1 V2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 1 1 1 1 0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 2 392 272 221 30&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 3 783 505 412 49&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 4 1174 711 566 73&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 5 1565 906 723 87&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 6 1956 1080 849 113&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以 row 2 為例，表示在前 &lt;code>392&lt;/code> 個 token 中，共有 &lt;code>272&lt;/code> 個
+type，而在其中有 &lt;code>221&lt;/code> 個單詞只出現過一次。&lt;/p>
+&lt;p>將資料畫成圖表：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">par&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mfrow&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">add.m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;ASBC&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.emp.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">add.m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Brown&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">add.m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;PTT&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">add.m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Dcard&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_vgc.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>上圖中顏色較深的曲線是 V，較淺的曲線是 V1。從圖中可以發現 ASBC 與 Brown
+corpus 的 V1 曲線上升後逐漸平緩，然而 PTT 與 Dcard 的 V1
+曲線呈現持續上升的趨勢，意指隨著 sample size 增加，&lt;em>hapax legomena&lt;/em>
+也會不斷增加。這可能是中文斷詞錯誤所造成 (Hsieh
+2014)。為了推得母體的真實情況，接下來將使用 Large-Number-of-Rare-Events
+(LNRE) models (Baayen 2002)。&lt;/p>
+&lt;h4 id="24-fitting-the-lnre-model">2.4 Fitting the LNRE Model&lt;/h4>
+&lt;p>&lt;code>zipfR&lt;/code> 套件中提供了三種 LNRE models，分別是 Generalized Inverse Gauss
+Poisson (&lt;code>lnre.gigp&lt;/code>; Baayen, 2001, ch. 4)、Zipf-Mandelbrot (&lt;code>lnre.zm&lt;/code>;
+Evert, 2004)，和 finite Zipf-Mandelbrot (&lt;code>lnre.fzm&lt;/code>; Evert,
+2004)，我們首先採用 &lt;code>fzm&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc.fzm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;fzm&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">spc&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">asbc.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Brown.fzm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;fzm&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">spc&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">Brown.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt.fzm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;fzm&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">spc&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">ptt.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard.fzm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;fzm&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">spc&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">dcard.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># frequency spectrum&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc.fzm.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre.spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">N&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.spc&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Brown.fzm.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre.spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">N&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.spc&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt.fzm.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre.spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">N&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.spc&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard.fzm.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre.spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">N&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.spc&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># VGC&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc.fzm.vgc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre.vgc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">N&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.vgc&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">m.max&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">variances&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">TRUE&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Brown.fzm.vgc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre.vgc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">N&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.emp.vgc&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">m.max&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">variances&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">TRUE&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt.fzm.vgc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre.vgc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">N&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.vgc&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">m.max&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">variances&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">TRUE&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard.fzm.vgc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre.vgc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">N&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.vgc&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">m.max&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">variances&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">TRUE&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Observed and expected frequency spectra:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">par&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mfrow&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">asbc.fzm.spc&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;ASBC&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">legend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;topright&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">legend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;observed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;fZM model&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Brown.fzm.spc&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Brown&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">legend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;topright&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">legend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;observed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;fZM model&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ptt.fzm.spc&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;PTT&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">legend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;topright&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">legend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;observed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;fZM model&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">dcard.fzm.spc&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Dcard&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">legend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;topright&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">legend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;observed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;fZM model&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_spc_exp.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>Observed and expected VGC:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">par&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">mfrow&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">asbc.fzm.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">add.m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;ASBC&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">legend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;topleft&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">legend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;observed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;fZM model&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown.emp.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Brown.fzm.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">add.m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Brown&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">legend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;topleft&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">legend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;observed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;fZM model&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ptt.fzm.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">add.m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;PTT&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">legend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;topleft&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">legend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;observed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;fZM model&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">plot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">dcard.fzm.vgc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">add.m&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">main&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Dcard&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">legend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;topleft&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">legend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;observed&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;fZM model&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_vgc_exp.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>上方的紅色曲線代表透過 fZM model 所產生的 expected value。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="3-lexical-coverage-estimation">3. Lexical Coverage Estimation&lt;/h3>
+&lt;h4 id="31-out-of-vocabulary-oov-types">3.1 Out-Of-Vocabulary (OOV) types&lt;/h4>
+&lt;p>我們可以藉由 Out-Of-Vocabulary (OOV) types 的比例來了解兩個 corpus
+的 lexical
+coverage。基本上，一個實用的語言資源中，OOV
+所佔的比例應保持在一定標準之下。&lt;/p>
+&lt;p>我們先採前十萬個 lemma：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc100k&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">head&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc_corpus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">100000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">data&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Brown100k.spc&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt100k&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">head&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt_corpus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">100000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard100k&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">head&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard_corpus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">100000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>同樣地，將他們轉成 &lt;code>spc&lt;/code> object：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc100k.tfl&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2tfl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc100k&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt100k.tfl&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2tfl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt100k&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard100k.tfl&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">vec2tfl&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard100k&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc100k.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">tfl2spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc100k.tfl&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt100k.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">tfl2spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt100k.tfl&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard100k.spc&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">tfl2spc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard100k.tfl&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>首先，我們要計算 lexical of seen
+types。在這裡，我們將只出現過&lt;strong>一次&lt;/strong>的 type 都算成 OOV。也就是說，我們想要知道語料中至少出現過&lt;strong>兩次&lt;/strong>的 type 總共有幾個：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc_Vseen&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">V&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc100k.spc&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="nf">Vm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc100k.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Brown_Vseen&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">V&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown100k.spc&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="nf">Vm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown100k.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt_Vseen&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">V&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt100k.spc&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="nf">Vm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt100k.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard_Vseen&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">V&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard100k.spc&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="nf">Vm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard100k.spc&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="32-fitting-the-lnre-model">3.2 Fitting the LNRE Model&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">asbc100k.fzm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;fzm&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">asbc100k.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Brown100k.fzm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;fzm&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Brown100k.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ptt100k.fzm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;fzm&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ptt100k.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">dcard100k.fzm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lnre&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;fzm&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">dcard100k.spc&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以 Brown corpus 為例，假設我們用 &lt;code>1, 10, or 100 million tokens&lt;/code>
+進行計算，expected OOV 分別會是：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># ASBC&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">1&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">asbc_Vseen&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="nf">EV&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">asbc100k.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1e6&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">10e6&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">100e6&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## [1] 0.7751460 0.7844322 0.7844322&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Brown&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">1&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">Brown_Vseen&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="nf">EV&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Brown100k.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1e6&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">10e6&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">100e6&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## [1] 0.7299293 0.7347804 0.7347804&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># PTT&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">1&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">ptt_Vseen&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="nf">EV&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ptt100k.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1e6&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">10e6&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">100e6&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## [1] 0.8847203 0.9098196 0.9098338&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Dcard&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">1&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">dcard_Vseen&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="nf">EV&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dcard100k.fzm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1e6&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">10e6&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">100e6&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## [1] 0.8608032 0.8905452 0.8905602&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>從上方得到的數值可以發現，ASBC 和 Brown corpus 的 OOV ratio 較 PTT 和
+Dcard 來得穩定且比例也較低。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="4-結論">4. 結論&lt;/h3>
+&lt;p>利用 &lt;code>zipfR&lt;/code> 並採用 LNRE model 對資料進行分析，取得語料的 &lt;code>VGC&lt;/code> 和
+&lt;code>OOV ratio&lt;/code>，就可以分析平衡語料庫、Brown corpus、PTT 和 Dcard 的 lexical
+richness 和 lexical coverage。目前的發現是：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>不同於 ASBC 和 Brown Corpus 最後達成平緩的趨勢，PTT 與 Dcard 的
+&lt;code>VGC&lt;/code> V1 曲線都隨著 sample size 的增加持續上升。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>從 expected OOV ratio 來看，PTT 與 Dcard 語料的 OOV
+除比例較高外，也隨著 corpus size 的增加而持續上升，並不如 ASBC 與
+Brown corpus 穩定。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>可能的原因是，ASBC 是機器斷詞後再進行人工校正而成的語料庫，而 Brown
+Corpus
+是英文語料，字詞與字詞之間已有空白分隔，所以這兩個語料庫較無斷詞錯誤導致新詞不斷增加的問題。然而現今的
+Web-as-Corpus，其前處理通常採用機器自動斷詞，龐大的 OOV
+可能來自於斷詞錯誤。這說明了在建造中文 Web-as-Corpus
+時，斷詞問題是很重要的考量之一。&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="5-references">5. References&lt;/h3>
+&lt;p>Baayen, R. H. (2002). &lt;em>Word frequency distributions&lt;/em> (Vol. 18). Springer Science &amp;amp; Business Media.&lt;/p>
+&lt;p>Evert S, Baroni M (2007). “&lt;em>zipfR&lt;/em>: Word Frequency Distributions in R.” In &lt;em>Proceedings of the 45th Annual Meeting of the Association for Computational Linguistics, Posters and Demonstrations Sessions&lt;/em>, 29–32. (R package version 0.6-70 of 2020-10-10).&lt;/p>
+&lt;p>Kilgarriff, A., &amp;amp; Grefenstette, G. (2003). Introduction to the special issue on the web as corpus. &lt;em>Computational linguistics&lt;/em>, 29(3), 333-347.&lt;/p>
+&lt;p>Hsieh, S.-K. (2014, may). &lt;em>Why Chinese Web-as-Corpus is Wacky? Or: How Big Data is Killing Chinese Corpus Linguistics&lt;/em>. Paper presented at the Proceedings of the Ninth International Conference on Language Resources and Evaluation (LREC?14), Reykjavik, Iceland.&lt;/p>
+&lt;p> &lt;/p>
+&lt;h3 id="6-special-thanks">6. Special Thanks&lt;/h3>
+&lt;p>謝謝 Jessy 和 Yongfu 在 &lt;a class="link" href="https://github.com/lopentu/Hands-on_Corpus_Linguistics" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->HOCOR 2020&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 提供的
+corpus data。&lt;/p>
+&lt;p>Click &lt;a class="link" href="https://drive.google.com/file/d/1yDQhGMLhrKpON63fhBcugxSY5xTqtXTn/view?usp=sharing" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->here&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> for poster version (made with
+&lt;a class="link" href="https://github.com/brentthorne/posterdown" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->posterdown&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>)&lt;/p></description></item><item><title>Nerd vs. Geek</title><link>https://andreashih.github.io/the-andrea-journal/p/nerd-vs.-geek/</link><pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/nerd-vs.-geek/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/nerd-vs.-geek/nerd.jpg" alt="Featured image of post Nerd vs. Geek" />&lt;p>最近在老師的研究安排下讀了 &lt;a class="link" href="https://benjamins.com/sites/z.195/" target="_blank" rel="noopener"
+>&lt;em>&lt;strong>&lt;!-- raw HTML omitted -->How to do Linguistics with
+R&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/em>&lt;/a> 的第十二章 &lt;em>Probabilistic
+multifactorial grammar and lexicology: Binominal logistic
+regression&lt;/em>。本章介紹了如何以 logistic regression
+解釋並預測兩個近似詞的使用情形。接下來將使用 &lt;code>Rling&lt;/code> 中的資料集 &lt;code>nerd&lt;/code>
+做練習。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Following the instructions of the book:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># install.packages(c(&amp;#34;rms&amp;#34;, &amp;#34;visreg&amp;#34;, &amp;#34;car&amp;#34;))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># To install `Rling`:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># install.packages(pkgs = file.choose(), repos = NULL, type = &amp;#34;source&amp;#34;)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Rling&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rms&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dplyr&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ggplot2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="1-取得-rling-中的資料集-nerd">1. 取得 &lt;code>Rling&lt;/code> 中的資料集 &lt;code>nerd&lt;/code>&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">data&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">nerd&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">summary&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">nerd&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Noun Num Century Register Eval &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## geek:670 pl:436 XX :515 ACAD: 54 Neg :132 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## nerd:646 sg:880 XXI:801 MAG :622 Neutral :896 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## NEWS:343 Positive:288 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## SPOK:297&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-資料視覺化">2. 資料視覺化&lt;/h3>
+&lt;p>由下圖所示，在 20 世紀時，&lt;code>nerd&lt;/code> 出現的次數比 &lt;code>geek&lt;/code> 多。但在 21
+世紀，&lt;code>geek&lt;/code> 的使用次數超過前一世紀的兩倍，而 &lt;code>nerd&lt;/code>
+在兩世紀的次數無明顯差異，因此 &lt;code>geek&lt;/code> 在 21 世紀的出現次數超過 &lt;code>nerd&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">nerd&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">group_by&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Noun&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Century&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">count&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Noun&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">ungroup&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">ggplot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Century&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Noun&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;dodge&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.3&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/nerdgeek/1.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>接下來看看不同世紀使用 &lt;code>nerd&lt;/code> 與 &lt;code>geek&lt;/code> 時的 polarities。可以發現不論在
+20 或 21 世紀，使用 &lt;code>nerd&lt;/code> 和 &lt;code>geek&lt;/code> 時大部分都是 neutrual
+polarity。特別的是，&lt;code>geek&lt;/code> 在 21 世紀時被使用於 positive polarity
+的次數很高。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">nerd&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">group_by&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Noun&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Century&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Eval&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">summarise&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">n&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">ungroup&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">ggplot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Noun&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Eval&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">facet_wrap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">~&lt;/span>&lt;span class="n">Century&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;dodge&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/nerdgeek/2.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>因為好奇，到 &lt;a class="link" href="https://dictionary.cambridge.org/" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Cambridge Dictionary&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>
+上查了兩字的釋義：&lt;/p>
+&lt;blockquote>
+&lt;p>nerd (n.)&lt;br>
+(1) &lt;em>a person, especially a man, who is not attractive and is awkward
+or socially embarrassing&lt;/em>&lt;br>
+(2) &lt;em>a person who is extremely interested in one subject, especially
+computers, and knows a lot of facts about it&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>geek (n.)&lt;br>
+&lt;em>someone who is intelligent but not fashionable or popular&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;p>看起來 &lt;code>geek&lt;/code> 似乎真的比 &lt;code>nerd&lt;/code> 還來得正面一些，至少有 intelligent
+的部分~&lt;/p>
+&lt;p>再看看兩詞在不同領域中的使用情形。在 20 與 21 世紀，&lt;code>geek&lt;/code> 和 &lt;code>nerd&lt;/code>
+出現次數於學術領域最少，雜誌最多，而新聞又比口語多一些。且 21 世紀時，
+&lt;code>geek&lt;/code> 在雜誌出現的次數增加許多。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">nerd&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">group_by&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Century&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Noun&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Register&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Eval&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">summarise&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">n&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">ungroup&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">ggplot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Register&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Noun&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">facet_wrap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">~&lt;/span>&lt;span class="n">Century&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.4&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/nerdgeek/3.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="3-logistic-regression-model">3. Logistic Regression Model&lt;/h3>
+&lt;p>試著用書上的方式 (p.258) 跑 lrm。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">m.lrm&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">lrm&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Noun&lt;/span> &lt;span class="o">~&lt;/span> &lt;span class="n">Num&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">Century&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">Register&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">Eval&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">data&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">nerd&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">m.lrm&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Logistic Regression Model&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## lrm(formula = Noun ~ Num + Century + Register + Eval, data = nerd)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Model Likelihood Discrimination Rank Discrim. &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Ratio Test Indexes Indexes &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Obs 1316 LR chi2 180.32 R2 0.171 C 0.687 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## geek 670 d.f. 7 g 0.905 Dxy 0.374 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## nerd 646 Pr(&amp;gt; chi2) &amp;lt;0.0001 gr 2.471 gamma 0.394 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## max |deriv| 3e-08 gp 0.200 tau-a 0.187 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Brier 0.219 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Coef S.E. Wald Z Pr(&amp;gt;|Z|)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Intercept 1.5038 0.3515 4.28 &amp;lt;0.0001 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Num=sg -0.2724 0.1291 -2.11 0.0348 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Century=XXI -0.8063 0.1220 -6.61 &amp;lt;0.0001 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Register=MAG -0.7457 0.3208 -2.32 0.0201 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Register=NEWS -0.5962 0.3301 -1.81 0.0709 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Register=SPOK -0.5729 0.3310 -1.73 0.0835 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Eval=Neutral 0.0991 0.1942 0.51 0.6098 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## Eval=Positive -1.5084 0.2375 -6.35 &amp;lt;0.0001 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="31-model-likelihood-ratio-test">3.1 Model Likelihood Ratio Test&lt;/h4>
+&lt;p>從 &lt;code>Model Likelihood Ratio Test&lt;/code> 的欄位中，可以得知 &lt;em>p&lt;/em>-value 小於
+0.05，代表這個 model 的顯著。&lt;/p>
+&lt;h4 id="32-discrimination-indexes">3.2 Discrimination Indexes&lt;/h4>
+&lt;p>在 &lt;code>Discrimination Indexes&lt;/code> 欄中可以看到 R2 值。R2 值介於 0 和 1
+之間，這個 model 的 R2 值為 0.171，代表預測能力低。但書中提到 logistic
+regression 的 R2 值通常會比 linear regression models
+的來得低，因此並不建議採用 R2 值作為評斷。&lt;/p>
+&lt;h4 id="33-rank-discrim-indexes">3.3 Rank Discrim. Indexes&lt;/h4>
+&lt;p>在 &lt;code>Rank Discrim. Indexes&lt;/code> 欄中，&lt;em>C&lt;/em> 代表 &lt;a class="link" href="https://www.itread01.com/content/1541051301.html" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->concordance index
+(一致性指數)&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，說明
+model 的預測能力。表中可見 &lt;em>C&lt;/em> = 0.687，預測能力普通。&lt;/p>
+&lt;h4 id="34-coef">3.4 Coef&lt;/h4>
+&lt;p>接著來到 &lt;code>Coef&lt;/code> 欄。以變數 &lt;code>Register&lt;/code> 為例，&lt;code>ACAD&lt;/code> 是 reference
+level，因此不在表上。與 &lt;code>ACAD&lt;/code> 差異最大的是 &lt;code>MAG&lt;/code>（Coef =
+-0.7457），其中 &lt;em>p&lt;/em> = 0.0201 (&amp;lt;0.05) 代表顯著。&lt;/p>
+&lt;p>&lt;code>Century=XXI&lt;/code> 的 Coef = -0.8063，表示 &lt;code>nerd&lt;/code> 對 &lt;code>geek&lt;/code> 的 odds 在 21
+世紀降低了。也可以說，&lt;code>geek&lt;/code> 在 21 世紀時出現次數較 &lt;code>nerd&lt;/code> 頻繁。&lt;/p>
+&lt;p>相較於 &lt;code>Eval=Neutral&lt;/code>，&lt;code>Eval=Positive&lt;/code> 的 Coef 更小且為負數，表示 &lt;code>geek&lt;/code>
+在使用上較 &lt;code>nerd&lt;/code> 有更多 positive connotation。&lt;/p>
+&lt;p>&lt;code>Num=sg&lt;/code> 的 Coef = -0.2724，表示 &lt;code>geek&lt;/code> 較 &lt;code>nerd&lt;/code> 更常以單數出現。&lt;/p>
+&lt;h3 id="4-murmuring">4. Murmuring&lt;/h3>
+&lt;p>照著書上的步驟跑了一個 Logistic Regression
+Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微了解一點點。統計知識真的要補足啊！&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->James Pond&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>用 rvest 爬 Mobile01 的 iPhone 板</title><link>https://andreashih.github.io/the-andrea-journal/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</link><pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/the-andrea-journal/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</guid><description>&lt;img src="https://andreashih.github.io/the-andrea-journal/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/iphone.jpg" alt="Featured image of post 用 rvest 爬 Mobile01 的 iPhone 板" />&lt;h3 id="1-用-rvest-爬資料">1. 用 &lt;code>rvest&lt;/code> 爬資料&lt;/h3>
+&lt;p>將 &lt;a class="link" href="https://www.mobile01.com/topiclist.php?f=383" target="_blank" rel="noopener"
+>&lt;strong>&lt;!-- raw HTML omitted -->Mobile01 的 iPhone 板&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>前 1000 頁的貼文標題抓下來。&lt;/p>
+&lt;p>&lt;em>參考資料：&lt;!-- raw HTML omitted -->&lt;a class="link" href="http://r3dmaotech.blogspot.com/2016/05/r-rvest.html" target="_blank" rel="noopener"
+>http://r3dmaotech.blogspot.com/2016/05/r-rvest.html&lt;/a>&lt;!-- raw HTML omitted -->&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rvest&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">dplyr&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Mobile 01 website links &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">links&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">paste0&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;https://www.mobile01.com/topiclist.php?f=383&amp;amp;p=&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">1000&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">data&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">for&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">in&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">links&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">url&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">links[i]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">content&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">read_html&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span> &lt;span class="nf">html_nodes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;.u-ellipsis&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">html_text&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">temp&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">iconv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">content&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="s">&amp;#39;utf8&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">data&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">temp&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">##sleep time &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">Sys.sleep&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">runif&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">0.8&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">titles&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="nf">[seq&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">by&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">3&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Omit NAs&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">titles&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">titles[&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="nf">is.na&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">titles&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2-寫好-regex-備用">2. 寫好 regex 備用&lt;/h3>
+&lt;p>先將可以抓出標題中各型號 iPhone 的 regex 寫好。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="n">i6S&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(6s|6S)(?! ?[pP])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i6SPlus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(6s|6S) ?(PLUS|Plus|plus)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iSE&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(SE|se)(?! ?2)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i7&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?7(?! ?[pP])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i7Plus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?7 ?(PLUS|Plus|plus)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i8&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?8(?! ?[pP])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i8Plus&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?8 ?(PLUS|Plus|plus)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iX&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?[xX](?! ?[sS])(?! ?[rR])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iXS&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(XS|Xs|xs)(?! ?[mM])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iXSMax&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(XS|Xs|xs) ?(MAX|Max|max)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iXR&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(XR|Xr|xr)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i11&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(11) ?(?! ?[pP])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i11Pro&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(11) ?(PRO|Pro|pro)(?! ?[mM])&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i11ProMax&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(11) ?(PRO|Pro|pro) ?(MAX|Max|max)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">i9_SE2&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="s">&amp;#34;[iI](PHONE|Phone|phone)? ?(9| ?(SE2|Se2|se2))&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iphones&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i6S&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i6SPlus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iSE&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i7&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i7Plus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i8Plus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iX&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXSMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXR&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11Pro&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11ProMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i9_SE2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3-使用-stringr">3. 使用 &lt;code>stringr&lt;/code>&lt;/h3>
+&lt;p>找出 iPhone 各型號分別有幾篇討論。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stringr&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iphones_in_posts&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">for &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">in&lt;/span> &lt;span class="nf">seq_along&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">iphones&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iphone_in_posts&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">str_detect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">titles&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iphones[i]&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iphones_in_posts[i]&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">iphone_in_posts&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4-製作表格">4. 製作表格&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">tibble&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">df&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">tibble&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="o">=&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;i6S&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i6S Plus&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iPhone SE&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i7&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i7 Plus&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i8&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i8 Plus&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iX&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iXS&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iXS Max&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;iXR&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i11&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i11 Pro&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i11 Pro Max&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;i9/SE2&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">n&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">iphones_in_posts&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">df&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">df&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">mutate&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Order&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="nf">n&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">arrange&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">desc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">df&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## # A tibble: 15 x 3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## Model n Order&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt; &amp;lt;int&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 1 iX 1874 8&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 2 i7 1813 4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 3 i6S 1442 1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 4 i8 988 6&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 5 i7 Plus 767 5&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 6 i11 466 12&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 7 i8 Plus 406 7&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 8 i6S Plus 403 2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 9 iXR 403 11&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 10 iXS Max 385 10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 11 iXS 336 9&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 12 iPhone SE 334 3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 13 i11 Pro 182 13&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 14 i11 Pro Max 150 14&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 15 i9/SE2 30 15&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="5-visualization">5. Visualization&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ggplot2&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">ggplot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">df&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">reorder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">n&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;#fcba03&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">xlab&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Model&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis.text.x&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">element_text&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">angle&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">45&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">hjust&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-6-1.png"
+loading="lazy"
+>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">require&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ggrepel&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">ggplot&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">df&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">x&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">y&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Order&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">label&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Model&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_point&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">aes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">color&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nf">factor&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Model&lt;/span>&lt;span class="p">)))&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme_bw&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_text_repel&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">+&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">legend.position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;none&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-7-1.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="6-explanation">6. Explanation&lt;/h3>
+&lt;p>從 Mobile01 爬下的前 1000 頁標題資料中可以發現，文章數最多的
+iX、i7，以及 i6S
+都已經推出一段時間了，所以累積比較多討論。文章數最少的則是最晚推出的 i11
+Pro 和 i11 Pro Max，以及預計今年四月中才會發表的 i9
+(SE2)。原本預期會看到許多 i9 (SE2) 的討論，但 Mobile 01
+上似乎沒有此現象。i6S Plus 和 iPhone SE
+雖然是較早期機種，文章數卻比新機少很多，之後預計會爬內文進一步分析。&lt;/p>
+&lt;p> &lt;/p>
+&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Arnel Hasanovic&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item></channel></rss>
