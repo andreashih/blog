@@ -209,7 +209,7 @@ menu:
 
         - identifier: rss
           name: rss
-          url: https://andreashih.github.io/blog/index.xml
+          url: https://andreashih.github.io/the-andrea-journal/index.xml
           params:
               icon: rss
 
