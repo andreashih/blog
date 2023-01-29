@@ -1,4 +1,4 @@
-baseurl: https://andreashih.github.io/the-andrea-journal
+baseurl: https://andreashih.github.io/blog
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
@@ -209,7 +209,7 @@ menu:
 
         - identifier: rss
           name: rss
-          url: https://andreashih.github.io/the-andrea-journal/index.xml
+          url: https://andreashih.github.io/blog/index.xml
           params:
               icon: rss
 
