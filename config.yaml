@@ -54,7 +54,7 @@ params:
 
     sidebar:
         emoji: 🌸
-        subtitle: Welcome to my blog!
+        subtitle: Think, write, and think again 💭
         avatar:
             enabled: true
             local: true
