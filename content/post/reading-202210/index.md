@@ -1,5 +1,5 @@
 ---
-title: 2022 9~10 月份閱讀
+title: 2022 09~10 月份閱讀
 description: 📚 Designing Your Work Life | 生命中不能承受之輕 | 槍砲、病菌與鋼鐵：人類社會的命運 | 原子習慣：細微改變帶來巨大成就的實證法則
 date: 2022-10-31
 slug: 
