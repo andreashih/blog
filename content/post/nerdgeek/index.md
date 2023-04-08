@@ -28,7 +28,7 @@ library(dplyr)
 library(ggplot2)
 ```
 
-### 1. 取得 `Rling` 中的資料集 `nerd`
+## 取得 `Rling` 中的資料集 `nerd`
 
 ```r
 data(nerd)
@@ -41,7 +41,7 @@ summary(nerd)
 ##                                SPOK:297
 ```
 
-### 2. 資料視覺化
+## 資料視覺化
 
 由下圖所示，在 20 世紀時，`nerd` 出現的次數比 `geek` 多。但在 21
 世紀，`geek` 的使用次數超過前一世紀的兩倍，而 `nerd`
@@ -106,7 +106,7 @@ nerd %>%
 
 ![](https://andreashih.github.io/img/rmd_posts/nerdgeek/3.png)
 
-### 3. Logistic Regression Model
+## Logistic Regression Model
 
 試著用書上的方式 (p.258) 跑 lrm。
 
@@ -138,25 +138,25 @@ m.lrm
 ## 
 ```
 
-#### 3.1 Model Likelihood Ratio Test
+### Model Likelihood Ratio Test
 
 從 `Model Likelihood Ratio Test` 的欄位中，可以得知 *p*-value 小於
 0.05，代表這個 model 的顯著。
 
-#### 3.2 Discrimination Indexes
+### Discrimination Indexes
 
 在 `Discrimination Indexes` 欄中可以看到 R2 值。R2 值介於 0 和 1
 之間，這個 model 的 R2 值為 0.171，代表預測能力低。但書中提到 logistic
 regression 的 R2 值通常會比 linear regression models
 的來得低，因此並不建議採用 R2 值作為評斷。
 
-#### 3.3 Rank Discrim. Indexes
+### Rank Discrim. Indexes
 
 在 `Rank Discrim. Indexes` 欄中，*C* 代表 [**<u>concordance index
 (一致性指數)</u>**](https://www.itread01.com/content/1541051301.html)，說明
 model 的預測能力。表中可見 *C* = 0.687，預測能力普通。
 
-#### 3.4 Coef
+### Coef
 
 接著來到 `Coef` 欄。以變數 `Register` 為例，`ACAD` 是 reference
 level，因此不在表上。與 `ACAD` 差異最大的是 `MAG`（Coef =
@@ -170,7 +170,7 @@ level，因此不在表上。與 `ACAD` 差異最大的是 `MAG`（Coef =
 
 `Num=sg` 的 Coef = -0.2724，表示 `geek` 較 `nerd` 更常以單數出現。
 
-### 4. Murmuring
+## Murmuring
 
 照著書上的步驟跑了一個 Logistic Regression
 Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微了解一點點。統計知識真的要補足啊！

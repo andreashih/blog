@@ -8,6 +8,7 @@ categories:
     - reading
 tags:
     - books
+    - data science
 ---
 
 ## Storytelling with Data

@@ -11,7 +11,7 @@ tags:
     - crawler
 ---
 
-### 1. 用 `rvest` 爬資料
+## 用 `rvest` 爬資料
 
 將 [**<u>Mobile01 的 iPhone 板</u>**](https://www.mobile01.com/topiclist.php?f=383)前 1000 頁的貼文標題抓下來。
 
@@ -39,7 +39,7 @@ titles <- data[seq(1, length(data), by = 3)]
 # Omit NAs
 titles <- titles[!is.na(titles)]
 ```
-### 2. 寫好 regex 備用
+## 寫好 regex 備用
 
 先將可以抓出標題中各型號 iPhone 的 regex 寫好。
 ```r
@@ -61,7 +61,7 @@ i9_SE2 <- "[iI](PHONE|Phone|phone)? ?(9| ?(SE2|Se2|se2))"
 
 iphones <- c(i6S, i6SPlus, iSE, i7, i7Plus, i8, i8Plus, iX, iXS, iXSMax, iXR, i11, i11Pro, i11ProMax, i9_SE2)
 ```
-### 3. 使用 `stringr`
+## 使用 `stringr`
 
 找出 iPhone 各型號分別有幾篇討論。
 ```r
@@ -73,7 +73,7 @@ for (i in seq_along(iphones)){
   iphones_in_posts[i] <- iphone_in_posts
 }
 ```
-### 4. 製作表格
+## 製作表格
 ```r
 library(tibble)
 
@@ -104,7 +104,7 @@ df
     ## 14 i11 Pro Max   150    14
     ## 15 i9/SE2         30    15
 ```
-### 5. Visualization
+## Visualization
 ```r
 library(ggplot2)
 
@@ -128,7 +128,7 @@ ggplot(df, aes(x = n, y = Order, label = Model)) +
 ```
 ![](https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-7-1.png)
 
-### 6. Explanation
+## Explanation
 
 從 Mobile01 爬下的前 1000 頁標題資料中可以發現，文章數最多的
 iX、i7，以及 i6S
