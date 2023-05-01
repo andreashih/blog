@@ -18,8 +18,9 @@ tags:
 
 📄 演講投影片：[bit.ly/20230427_nsysu_nlp](https://bit.ly/20230427_nsysu_nlp)
 
-![](poster.JPG)
+<img src="poster.JPG" alt="理工長廊上的海報" width="230" height="300" title="理工長廊上的海報">
 
-![](presentation.JPG)
+<img src="presentation.JPG" alt="演講途中" width="400" height="280" title="演講途中">
+
 
 Photo by <a href="https://unsplash.com/ko/@andrewtneel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Andrew Neel</a> on <a href="https://unsplash.com/s/photos/chatgpt?orientation=landscape&utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
