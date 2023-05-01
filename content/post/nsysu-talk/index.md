@@ -3,7 +3,7 @@ title: 中山大學演講
 description: "與 ChatGPT 對話：自然語言處理如何改變我們與世界的互動"
 date: 2023-05-01
 slug: 
-image: chatgpt.jpg
+image: laptop.jpg
 categories:
     - blogging
 tags:
@@ -18,22 +18,8 @@ tags:
 
 📄 演講投影片：[bit.ly/20230427_nsysu_nlp](https://bit.ly/20230427_nsysu_nlp)
 
-<p align = "center">
-<img src = "https://andreashih.github.io/img/nsysu-talk/poster.jpg" width="280" height="400">
-</p>
-<p align = "center">
-<font size=2>
-在理工長廊上的海報
-</font>
-</p>
+![](poster.JPG)
 
-<p align = "center">
-<img src = "https://andreashih.github.io/img/nsysu-talk/presentation.jpg" width="280" height="400">
-</p>
-<p align = "center">
-<font size=2>
-演講途中
-</font>
-</p>
+![](presentation.JPG)
 
 Photo by <a href="https://unsplash.com/ko/@andrewtneel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Andrew Neel</a> on <a href="https://unsplash.com/s/photos/chatgpt?orientation=landscape&utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
