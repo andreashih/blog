@@ -209,7 +209,7 @@
 &lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/python_docx/python_docx.png"
 loading="lazy"
 >&lt;/p>
-&lt;h3 id="code">Code&lt;/h3>
+&lt;h2 id="code">Code&lt;/h2>
 &lt;hr>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -385,11 +385,11 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p> &lt;/p>
-&lt;h3 id="murmuring">Murmuring&lt;/h3>
+&lt;h2 id="murmuring">Murmuring&lt;/h2>
 &lt;hr>
 &lt;p>真心覺得對初學者來說，盡量不要同時學兩個程式。資質駑鈍如我無法同時參透兩個語言，因此這學期就是不斷把 R 寫在 python 裡或把 python 寫在 R 裡。寫完一整天的 python 要再回去寫 R，簡直像濃霧中漫步伸手不見五指。順攝抑制和倒攝抑制在我身上嶄露無遺。所以學程式不要貪快貪多，會消化不良（倘若列位看官是程式小天才則另當別論）。像這個簡單的小專案就讓我做了超級久（從適應 python 語法到寫出好像可以 run 的東西），而且還不大完善。最好的方式就是早一點開始學，不要像我一樣 code 到用時方恨少！&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="參考資料">參考資料&lt;/h3>
+&lt;h2 id="參考資料">參考資料&lt;/h2>
 &lt;hr>
 &lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/42682648/search-all-docx-files-with-python-docx-in-a-directory-batch" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Search all docx files with python-docx in a directory (batch)&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/p>

@@ -938,7 +938,7 @@ corpus data。&lt;/p>
 &lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/python_docx/python_docx.png"
 loading="lazy"
 >&lt;/p>
-&lt;h3 id="code">Code&lt;/h3>
+&lt;h2 id="code">Code&lt;/h2>
 &lt;hr>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1114,11 +1114,11 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p> &lt;/p>
-&lt;h3 id="murmuring">Murmuring&lt;/h3>
+&lt;h2 id="murmuring">Murmuring&lt;/h2>
 &lt;hr>
 &lt;p>真心覺得對初學者來說，盡量不要同時學兩個程式。資質駑鈍如我無法同時參透兩個語言，因此這學期就是不斷把 R 寫在 python 裡或把 python 寫在 R 裡。寫完一整天的 python 要再回去寫 R，簡直像濃霧中漫步伸手不見五指。順攝抑制和倒攝抑制在我身上嶄露無遺。所以學程式不要貪快貪多，會消化不良（倘若列位看官是程式小天才則另當別論）。像這個簡單的小專案就讓我做了超級久（從適應 python 語法到寫出好像可以 run 的東西），而且還不大完善。最好的方式就是早一點開始學，不要像我一樣 code 到用時方恨少！&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="參考資料">參考資料&lt;/h3>
+&lt;h2 id="參考資料">參考資料&lt;/h2>
 &lt;hr>
 &lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/42682648/search-all-docx-files-with-python-docx-in-a-directory-batch" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Search all docx files with python-docx in a directory (batch)&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/p>
@@ -1158,7 +1158,7 @@ regression&lt;/em>。本章介紹了如何以 logistic regression
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ggplot2&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="1-取得-rling-中的資料集-nerd">1. 取得 &lt;code>Rling&lt;/code> 中的資料集 &lt;code>nerd&lt;/code>&lt;/h3>
+&lt;/div>&lt;h2 id="取得-rling-中的資料集-nerd">取得 &lt;code>Rling&lt;/code> 中的資料集 &lt;code>nerd&lt;/code>&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -1181,7 +1181,7 @@ regression&lt;/em>。本章介紹了如何以 logistic regression
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## SPOK:297&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="2-資料視覺化">2. 資料視覺化&lt;/h3>
+&lt;/div>&lt;h2 id="資料視覺化">資料視覺化&lt;/h2>
 &lt;p>由下圖所示，在 20 世紀時，&lt;code>nerd&lt;/code> 出現的次數比 &lt;code>geek&lt;/code> 多。但在 21
 世紀，&lt;code>geek&lt;/code> 的使用次數超過前一世紀的兩倍，而 &lt;code>nerd&lt;/code>
 在兩世紀的次數無明顯差異，因此 &lt;code>geek&lt;/code> 在 21 世紀的出現次數超過 &lt;code>nerd&lt;/code>。&lt;/p>
@@ -1275,7 +1275,7 @@ computers, and knows a lot of facts about it&lt;/em>&lt;/p>
 &lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/nerdgeek/3.png"
 loading="lazy"
 >&lt;/p>
-&lt;h3 id="3-logistic-regression-model">3. Logistic Regression Model&lt;/h3>
+&lt;h2 id="logistic-regression-model">Logistic Regression Model&lt;/h2>
 &lt;p>試著用書上的方式 (p.258) 跑 lrm。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1333,20 +1333,20 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## &lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="31-model-likelihood-ratio-test">3.1 Model Likelihood Ratio Test&lt;/h4>
+&lt;/div>&lt;h3 id="model-likelihood-ratio-test">Model Likelihood Ratio Test&lt;/h3>
 &lt;p>從 &lt;code>Model Likelihood Ratio Test&lt;/code> 的欄位中，可以得知 &lt;em>p&lt;/em>-value 小於
 0.05，代表這個 model 的顯著。&lt;/p>
-&lt;h4 id="32-discrimination-indexes">3.2 Discrimination Indexes&lt;/h4>
+&lt;h3 id="discrimination-indexes">Discrimination Indexes&lt;/h3>
 &lt;p>在 &lt;code>Discrimination Indexes&lt;/code> 欄中可以看到 R2 值。R2 值介於 0 和 1
 之間，這個 model 的 R2 值為 0.171，代表預測能力低。但書中提到 logistic
 regression 的 R2 值通常會比 linear regression models
 的來得低，因此並不建議採用 R2 值作為評斷。&lt;/p>
-&lt;h4 id="33-rank-discrim-indexes">3.3 Rank Discrim. Indexes&lt;/h4>
+&lt;h3 id="rank-discrim-indexes">Rank Discrim. Indexes&lt;/h3>
 &lt;p>在 &lt;code>Rank Discrim. Indexes&lt;/code> 欄中，&lt;em>C&lt;/em> 代表 &lt;a class="link" href="https://www.itread01.com/content/1541051301.html" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->concordance index
 (一致性指數)&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，說明
 model 的預測能力。表中可見 &lt;em>C&lt;/em> = 0.687，預測能力普通。&lt;/p>
-&lt;h4 id="34-coef">3.4 Coef&lt;/h4>
+&lt;h3 id="coef">Coef&lt;/h3>
 &lt;p>接著來到 &lt;code>Coef&lt;/code> 欄。以變數 &lt;code>Register&lt;/code> 為例，&lt;code>ACAD&lt;/code> 是 reference
 level，因此不在表上。與 &lt;code>ACAD&lt;/code> 差異最大的是 &lt;code>MAG&lt;/code>（Coef =
 -0.7457），其中 &lt;em>p&lt;/em> = 0.0201 (&amp;lt;0.05) 代表顯著。&lt;/p>
@@ -1355,11 +1355,11 @@ level，因此不在表上。與 &lt;code>ACAD&lt;/code> 差異最大的是 &lt;
 &lt;p>相較於 &lt;code>Eval=Neutral&lt;/code>，&lt;code>Eval=Positive&lt;/code> 的 Coef 更小且為負數，表示 &lt;code>geek&lt;/code>
 在使用上較 &lt;code>nerd&lt;/code> 有更多 positive connotation。&lt;/p>
 &lt;p>&lt;code>Num=sg&lt;/code> 的 Coef = -0.2724，表示 &lt;code>geek&lt;/code> 較 &lt;code>nerd&lt;/code> 更常以單數出現。&lt;/p>
-&lt;h3 id="4-murmuring">4. Murmuring&lt;/h3>
+&lt;h2 id="murmuring">Murmuring&lt;/h2>
 &lt;p>照著書上的步驟跑了一個 Logistic Regression
 Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微了解一點點。統計知識真的要補足啊！&lt;/p>
 &lt;p> &lt;/p>
-&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->James Pond&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>用 rvest 爬 Mobile01 的 iPhone 板</title><link>https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</link><pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/iphone.jpg" alt="Featured image of post 用 rvest 爬 Mobile01 的 iPhone 板" />&lt;h3 id="1-用-rvest-爬資料">1. 用 &lt;code>rvest&lt;/code> 爬資料&lt;/h3>
+&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->James Pond&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>用 rvest 爬 Mobile01 的 iPhone 板</title><link>https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</link><pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/iphone.jpg" alt="Featured image of post 用 rvest 爬 Mobile01 的 iPhone 板" />&lt;h2 id="用-rvest-爬資料">用 &lt;code>rvest&lt;/code> 爬資料&lt;/h2>
 &lt;p>將 &lt;a class="link" href="https://www.mobile01.com/topiclist.php?f=383" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Mobile01 的 iPhone 板&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>前 1000 頁的貼文標題抓下來。&lt;/p>
 &lt;p>&lt;em>參考資料：&lt;!-- raw HTML omitted -->&lt;a class="link" href="http://r3dmaotech.blogspot.com/2016/05/r-rvest.html" target="_blank" rel="noopener"
@@ -1412,7 +1412,7 @@ Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">titles&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">titles[&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="nf">is.na&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">titles&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">]&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="2-寫好-regex-備用">2. 寫好 regex 備用&lt;/h3>
+&lt;/div>&lt;h2 id="寫好-regex-備用">寫好 regex 備用&lt;/h2>
 &lt;p>先將可以抓出標題中各型號 iPhone 的 regex 寫好。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1454,7 +1454,7 @@ Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iphones&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i6S&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i6SPlus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iSE&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i7&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i7Plus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i8Plus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iX&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXSMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXR&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11Pro&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11ProMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i9_SE2&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="3-使用-stringr">3. 使用 &lt;code>stringr&lt;/code>&lt;/h3>
+&lt;/div>&lt;h2 id="使用-stringr">使用 &lt;code>stringr&lt;/code>&lt;/h2>
 &lt;p>找出 iPhone 各型號分別有幾篇討論。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1476,7 +1476,7 @@ Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="4-製作表格">4. 製作表格&lt;/h3>
+&lt;/div>&lt;h2 id="製作表格">製作表格&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -1539,7 +1539,7 @@ Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 15 i9/SE2 30 15&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="5-visualization">5. Visualization&lt;/h3>
+&lt;/div>&lt;h2 id="visualization">Visualization&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -1586,7 +1586,7 @@ loading="lazy"
 &lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-7-1.png"
 loading="lazy"
 >&lt;/p>
-&lt;h3 id="6-explanation">6. Explanation&lt;/h3>
+&lt;h2 id="explanation">Explanation&lt;/h2>
 &lt;p>從 Mobile01 爬下的前 1000 頁標題資料中可以發現，文章數最多的
 iX、i7，以及 i6S
 都已經推出一段時間了，所以累積比較多討論。文章數最少的則是最晚推出的 i11

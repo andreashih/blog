@@ -202,7 +202,7 @@
 &lt;p>👩‍💻 本文程式碼&lt;a class="link" href="https://github.com/andreashih/semantic_relations/blob/main/moe_relations.ipynb" target="_blank" rel="noopener"
 >&lt;em>&lt;strong>&lt;!-- raw HTML omitted -->連結&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/em>&lt;/a>&lt;/p>
 &lt;p> &lt;/p>
-&lt;p>Photo by &lt;!-- raw HTML omitted -->Richa Sharma&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>用 rvest 爬 Mobile01 的 iPhone 板</title><link>https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</link><pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/iphone.jpg" alt="Featured image of post 用 rvest 爬 Mobile01 的 iPhone 板" />&lt;h3 id="1-用-rvest-爬資料">1. 用 &lt;code>rvest&lt;/code> 爬資料&lt;/h3>
+&lt;p>Photo by &lt;!-- raw HTML omitted -->Richa Sharma&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>用 rvest 爬 Mobile01 的 iPhone 板</title><link>https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</link><pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/iphone.jpg" alt="Featured image of post 用 rvest 爬 Mobile01 的 iPhone 板" />&lt;h2 id="用-rvest-爬資料">用 &lt;code>rvest&lt;/code> 爬資料&lt;/h2>
 &lt;p>將 &lt;a class="link" href="https://www.mobile01.com/topiclist.php?f=383" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Mobile01 的 iPhone 板&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>前 1000 頁的貼文標題抓下來。&lt;/p>
 &lt;p>&lt;em>參考資料：&lt;!-- raw HTML omitted -->&lt;a class="link" href="http://r3dmaotech.blogspot.com/2016/05/r-rvest.html" target="_blank" rel="noopener"
@@ -255,7 +255,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">titles&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">titles[&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="nf">is.na&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">titles&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">]&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="2-寫好-regex-備用">2. 寫好 regex 備用&lt;/h3>
+&lt;/div>&lt;h2 id="寫好-regex-備用">寫好 regex 備用&lt;/h2>
 &lt;p>先將可以抓出標題中各型號 iPhone 的 regex 寫好。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -297,7 +297,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iphones&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i6S&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i6SPlus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iSE&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i7&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i7Plus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i8&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i8Plus&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iX&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXS&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXSMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iXR&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11Pro&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i11ProMax&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i9_SE2&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="3-使用-stringr">3. 使用 &lt;code>stringr&lt;/code>&lt;/h3>
+&lt;/div>&lt;h2 id="使用-stringr">使用 &lt;code>stringr&lt;/code>&lt;/h2>
 &lt;p>找出 iPhone 各型號分別有幾篇討論。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -319,7 +319,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="4-製作表格">4. 製作表格&lt;/h3>
+&lt;/div>&lt;h2 id="製作表格">製作表格&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -382,7 +382,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">## 15 i9/SE2 30 15&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="5-visualization">5. Visualization&lt;/h3>
+&lt;/div>&lt;h2 id="visualization">Visualization&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -429,7 +429,7 @@ loading="lazy"
 &lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-7-1.png"
 loading="lazy"
 >&lt;/p>
-&lt;h3 id="6-explanation">6. Explanation&lt;/h3>
+&lt;h2 id="explanation">Explanation&lt;/h2>
 &lt;p>從 Mobile01 爬下的前 1000 頁標題資料中可以發現，文章數最多的
 iX、i7，以及 i6S
 都已經推出一段時間了，所以累積比較多討論。文章數最少的則是最晚推出的 i11
