@@ -3,24 +3,8 @@
 &lt;p>感謝來參與的同學們，在 QA 時間同學們的發問及討論讓我獲得很多啟發。像是大型語言模型的訓練方式、著作權問題，甚至是計算語言學的未來等，都讓我重新思考了 ChatGPT 帶來的影響。除此之外，同學們也發問了和語言所、資料科學、及未來求職相關的問題，也有同學和我分享他們的跨域經驗，不論是自學或參加專題都非常厲害。也很開心本次演講獲得深入淺出、生動有趣且實用的回饋！&lt;/p>
 &lt;p>📄 演講投影片：&lt;a class="link" href="https://bit.ly/20230427_nsysu_nlp" target="_blank" rel="noopener"
 >bit.ly/20230427_nsysu_nlp&lt;/a>&lt;/p>
-&lt;p>&lt;img src="https://andreashih.github.io/blog/blog/p/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8%E6%BC%94%E8%AC%9B/poster.JPG"
-width="800"
-height="1067"
-srcset="https://andreashih.github.io/blog/blog/p/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8%E6%BC%94%E8%AC%9B/poster_hu8f050873c56a2c80d08e36e1fd99b37f_281452_480x0_resize_q75_box.JPG 480w, https://andreashih.github.io/blog/blog/p/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8%E6%BC%94%E8%AC%9B/poster_hu8f050873c56a2c80d08e36e1fd99b37f_281452_1024x0_resize_q75_box.JPG 1024w"
-loading="lazy"
-class="gallery-image"
-data-flex-grow="74"
-data-flex-basis="179px"
->&lt;/p>
-&lt;p>&lt;img src="https://andreashih.github.io/blog/blog/p/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8%E6%BC%94%E8%AC%9B/presentation.JPG"
-width="1477"
-height="1108"
-srcset="https://andreashih.github.io/blog/blog/p/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8%E6%BC%94%E8%AC%9B/presentation_huca9f89d0087434dee592ac1779d9bcc7_326741_480x0_resize_q75_box.JPG 480w, https://andreashih.github.io/blog/blog/p/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8%E6%BC%94%E8%AC%9B/presentation_huca9f89d0087434dee592ac1779d9bcc7_326741_1024x0_resize_q75_box.JPG 1024w"
-loading="lazy"
-class="gallery-image"
-data-flex-grow="133"
-data-flex-basis="319px"
->&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;!-- raw HTML omitted -->
 &lt;p>Photo by &lt;!-- raw HTML omitted -->Andrew Neel&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>個人網頁大更新</title><link>https://andreashih.github.io/blog/p/%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81%E5%A4%A7%E6%9B%B4%E6%96%B0/</link><pubDate>Sat, 10 Sep 2022 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81%E5%A4%A7%E6%9B%B4%E6%96%B0/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E5%80%8B%E4%BA%BA%E7%B6%B2%E9%A0%81%E5%A4%A7%E6%9B%B4%E6%96%B0/notebook.jpg" alt="Featured image of post 個人網頁大更新" />&lt;p>我的個人網頁原先是用靜態網頁生成器 &lt;a class="link" href="https://jekyllrb.com/" target="_blank" rel="noopener"
 >Jekyll&lt;/a> 製作，再用 github pages 進行部署。第一次架站時還是程式極新手，各種網頁知識的不足著實讓當時的我吃了不少苦頭（實作過程可以看&lt;a class="link" href="https://andreashih.com/blog/p/a-blog-is-born-%E4%B8%80%E5%80%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E8%AA%95%E7%94%9F/" target="_blank" rel="noopener"
 >這篇&lt;/a>以及&lt;a class="link" href="https://andreashih.com/blog/p/%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B0%8F%E6%9B%B4%E6%96%B0tag-page-rss-css.../" target="_blank" rel="noopener"
