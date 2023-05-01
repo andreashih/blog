@@ -19,7 +19,7 @@ tags:
 📄 演講投影片：[bit.ly/20230427_nsysu_nlp](https://bit.ly/20230427_nsysu_nlp)
 
 <p align = "center">
-<img src = "https://andreashih.github.io/img/nsysu_talk/poster.jpg" width="280" height="400">
+<img src = "https://andreashih.github.io/img/nsysu-talk/poster.jpg" width="280" height="400">
 </p>
 <p align = "center">
 <font size=2>
@@ -28,7 +28,7 @@ tags:
 </p>
 
 <p align = "center">
-<img src = "https://andreashih.github.io/img/nsysu_talk/presentation.jpg" width="280" height="400">
+<img src = "https://andreashih.github.io/img/nsysu-talk/presentation.jpg" width="280" height="400">
 </p>
 <p align = "center">
 <font size=2>
