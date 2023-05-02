@@ -534,7 +534,10 @@ data-flex-basis="654px"
 &lt;h2 id="work-from-home">Work from home&lt;/h2>
 &lt;hr>
 &lt;p>Work from home 的小確幸就是 8:30 上班可以 8:00 再起床，悠悠哉哉地開電腦。壞處就是沒有看到 mentor 本人，會有不知道工作做得如何的不安感。想一直回報進度又怕對方正在忙其他事情。後來終於回到辦公室，雖然大家都是各忙各的，但有人在旁邊真的會比較有動力。&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;figure>&lt;img src="https://andreashih.github.io/blog/images/desk.jpg" width="50%" height="auto"/>&lt;figcaption>
+&lt;h4>我的辦公桌 (雖然只進公司兩天)、識別證和證書&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
 &lt;p> &lt;/p>
 &lt;h2 id="自我反省">自我反省&lt;/h2>
 &lt;hr>
@@ -543,7 +546,10 @@ data-flex-basis="654px"
 &lt;h2 id="結語">結語&lt;/h2>
 &lt;hr>
 &lt;p>回想起來，我的打工或實習似乎總是離不開資料：升大學的暑假在補習班管理學生資料，大二在教育局整理學校資料，碩班在 lab 的研究還有 NTU cool 的工讀也都在碰資料。兩個月的實習很像跑步，剛起步的時候春風得意，好像什麼事都難不倒。跑一段時間後氣喘吁吁，開始有撞牆的感覺。習慣了之後又找回步調，穩定前進。快到終點時好像有道無法突破的檻，覺得看不到希望。不過堅持到最後就輕鬆了，應該說比較不擔心了。小時候學鋼琴，老師說我彈琴看起來很怕，好像琴鍵會咬我一樣。長大後學程式也總是怕怕的，戒慎恐懼敲著鍵盤，好像 error message 會讓電腦爆炸一樣。希望自己可以好好善待心裡莫名的恐懼，反正只要穩紮穩打大步慢走就好了 (Lopers 內梗，get it?)&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;figure>&lt;img src="https://andreashih.github.io/blog/images/card.jpg" width="50%" height="auto"/>&lt;figcaption>
+&lt;h4>HR 辦實習超用心，每個實習生都收到一張主管寫的小卡&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
 &lt;p> &lt;/p>
 &lt;p>Photo by &lt;!-- raw HTML omitted -->Lauren Mancke&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>部落格的小更新：Tag Page, RSS, CSS...</title><link>https://andreashih.github.io/blog/p/%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B0%8F%E6%9B%B4%E6%96%B0tag-page-rss-css.../</link><pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B0%8F%E6%9B%B4%E6%96%B0tag-page-rss-css.../</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E5%B0%8F%E6%9B%B4%E6%96%B0tag-page-rss-css.../table.jpg" alt="Featured image of post 部落格的小更新：Tag Page, RSS, CSS..." />&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
