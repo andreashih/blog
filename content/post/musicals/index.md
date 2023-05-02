@@ -60,7 +60,7 @@ tags:
 
 ### 1. 《芝加哥》*Chicago*
 
-{{< figure src="chicago.jpg" title="" width="60%" height="auto">}}
+{{< figure src="chicago.PNG" title="" width="60%" height="auto">}}
 
 犯罪與貪婪，是《芝加哥》的兩大關鍵字。爵士曲風讓整齣戲多了一股詭譎卻詼諧的黑色幽默。[*And All That Jazz*](https://www.youtube.com/watch?v=Le8a7u1pANU) 中長號的拖拉與鋼琴的清脆呈現出對比，拉開一樁驚世駭俗謀殺案的序幕。[*All I Care About*](https://www.youtube.com/watch?v=6tP38xLLreg) 中男主角的口哨 solo 和女主角 Roxie 獨唱的 [*Nowadays*](https://www.youtube.com/watch?v=HGetrf2KVrs) 也充分呈現出「拖拉」的特色：轉音、滑音及後半拍的運用。Renée Zellweger 慵懶甜美的唱腔精準詮釋天真又危險的 Roxie，帶有不疾不徐，蔑笑人生百態的韻味。
 
