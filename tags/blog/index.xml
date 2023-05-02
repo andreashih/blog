@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>blog on The Andrea Journal</title><link>https://andreashih.github.io/blog/tags/blog/</link><description>Recent content in blog on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 03 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.github.io/blog/tags/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>三款日記應用程式分享 - Daylio、Five Minute Journal、Day One</title><link>https://andreashih.github.io/blog/p/%E4%B8%89%E6%AC%BE%E6%97%A5%E8%A8%98%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%88%86%E4%BA%AB-dayliofive-minute-journalday-one/</link><pubDate>Thu, 03 Mar 2022 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E4%B8%89%E6%AC%BE%E6%97%A5%E8%A8%98%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%88%86%E4%BA%AB-dayliofive-minute-journalday-one/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E4%B8%89%E6%AC%BE%E6%97%A5%E8%A8%98%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%88%86%E4%BA%AB-dayliofive-minute-journalday-one/journals.jpg" alt="Featured image of post 三款日記應用程式分享 - Daylio、Five Minute Journal、Day One" />&lt;p>最近找到了三個實用而且版面漂亮的日記應用程式。雖然紙筆的地位無法取代，但寫東西在紙上時容易瞻前顧後，怕自己字寫醜了，或是隨手亂放被旁人看到。這時使用 app 在手機上隨手記錄就非常方便。以下介紹的三個應用程式都可以免費使用，且在 ios 和 android 上都可以取得，就讓我們看下去吧！&lt;/p>
 &lt;h2 id="udayliouhttpsdaylionet">&lt;a class="link" href="https://daylio.net/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Daylio&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/h2>
-&lt;hr>
 &lt;p>✅ 支援中文版&lt;br>
 ✅ 可備份&lt;br>
 ❎ 不可加密碼 (需升級到 premium)&lt;br>
 ✅ 有 premium 版&lt;/p>
 &lt;p>Daylio 主打心情紀錄，不用書寫文字。除了預設之外還有很多可愛的表情可以新增，顏色也可以自由更換（當然免費版的選擇會比較少）。隨手點一點就可以記錄當下的心情，一天當中可以記錄很多次，還可以選擇現在正在做的事情，幫助我們了解做什麼事情會帶來怎麼樣的心情（例如：去跑步-&amp;gt;覺得開心、煮飯-&amp;gt;覺得平靜）。&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;figure>&lt;img src="daylio-1.gif" width="30%" height="auto"/>
+&lt;/figure>
 &lt;p>Daylio 還有很棒的功能：週報和月報，可以了解一段期間內的心情變化，還會計算情緒分數和繪製心情折線圖。資料可以匯出成 csv 格式。&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;figure>&lt;img src="daylio-2.gif" width="30%" height="auto"/>
+&lt;/figure>
 &lt;p>除此之外，Daylio 也可以用來設定目標，根據不同的目的（例如：幫助睡眠、釋放壓力&amp;hellip;）推薦不同的活動，並設定一週要從事幾次。&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;figure>&lt;img src="daylio-3.gif" width="30%" height="auto"/>
+&lt;/figure>
 &lt;blockquote>
 &lt;p>總結：&lt;/p>
 &lt;/blockquote>
@@ -23,7 +25,6 @@
 &lt;p> &lt;/p>
 &lt;h2 id="ufive-minute-journaluhttpswwwintelligentchangecomproductsfive-minute-journal-app">&lt;a class="link" href="https://www.intelligentchange.com/products/five-minute-journal-app" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Five Minute Journal&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/h2>
-&lt;hr>
 &lt;p>❎ 無中文版&lt;br>
 ✅ 可備份&lt;br>
 ✅ 可加密碼 (或 touch/face ID)&lt;br>
@@ -40,7 +41,8 @@
 &lt;li>How could I have made today even better&lt;/li>
 &lt;/ul>
 &lt;p>早上的問題可以提升動力，晚上的 wrap up 則提供了反思的機會。問答的設計很像在跟一個虛擬好友聊天，溫暖的奶茶色背景也讓人感到很放鬆。&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;figure>&lt;img src="journal.gif" width="30%" height="auto"/>
+&lt;/figure>
 &lt;p>Five Minute Journal 也有類似 Daylio 的心情記錄功能，還可以在日記中加入照片，但要升級為 premium 版才能使用。不過免費版也有 frequent words 功能，可以看到自己常常用哪些字。&lt;/p>
 &lt;blockquote>
 &lt;p>總結：&lt;/p>
@@ -53,13 +55,13 @@
 &lt;p> &lt;/p>
 &lt;h2 id="uday-oneuhttpsdayoneappcom">&lt;a class="link" href="https://dayoneapp.com/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Day One&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/h2>
-&lt;hr>
 &lt;p>✅ 支援中文版&lt;br>
 ✅ 可備份&lt;br>
 ✅ 可加密碼 (或 touch/face ID)&lt;br>
 ✅ 有 premium 版&lt;/p>
 &lt;p>Day One 是一個老牌日記 app，介面很簡潔，版面顏色可以自己選擇。乍看有點像 ios 內建的備忘錄，也有加 tag 分類的功能。可以將日記匯出成 pdf、plain text 或 markdown 等不同格式，還可以分享連結。除了文字外也可以加上地點、天氣和照片，但免費版只能放一張。Premium 版可以放影片和錄音，支援手寫，還可以與 instagram 連動。還有一個很酷的功能：在 app 上編輯日記封面，幫你印成一本書，不過這是需要額外付費的。&lt;/p>
-&lt;!-- raw HTML omitted -->
+&lt;figure>&lt;img src="day-one.jpg" width="30%" height="auto"/>
+&lt;/figure>
 &lt;p>如果面對空白頁面不知如何下筆，Day One 也提供了許多模板，例如 daily gratitude、daily self&amp;hellip;等。模板中會有一些預設的問題引導你書寫，像是 daily self 模板中的五個問題是：&lt;/p>
 &lt;ul>
 &lt;li>Where I&amp;rsquo;ve been&amp;hellip;&lt;/li>
