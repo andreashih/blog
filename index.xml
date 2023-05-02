@@ -812,9 +812,8 @@ sample size，&lt;code>V&lt;/code> 是 type count：&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;rank&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;frequency&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_tfl.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="all_tfl.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;h3 id="frequency-spectrum">Frequency Spectrum&lt;/h3>
 &lt;p>透過剛剛的 type-frequency list，我們可以得到 frequency spectrum。Brown
 corpus 的 frequency spectrum 可直接從套件中匯入：&lt;/p>
@@ -889,9 +888,8 @@ corpus 的 frequency spectrum 可直接從套件中匯入：&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_spc.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="all_spc.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>從上圖可以得知，&lt;em>hapax legomena&lt;/em> (只出現過一次的單詞)
 占所有語料庫的比例都相當的高。接下來，我們可以透過 Vocabulary growth
 curves (VGC) 來觀察新詞增加的情況。&lt;/p>
@@ -964,9 +962,8 @@ type，而在其中有 &lt;code>221&lt;/code> 個單詞只出現過一次。&lt;
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_vgc.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="all_vgc.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>上圖中顏色較深的曲線是 V，較淺的曲線是 V1。從圖中可以發現 ASBC 與 Brown
 corpus 的 V1 曲線上升後逐漸平緩，然而 PTT 與 Dcard 的 V1
 曲線呈現持續上升的趨勢，意指隨著 sample size 增加，&lt;em>hapax legomena&lt;/em>
@@ -1057,9 +1054,8 @@ Evert, 2004)，和 finite Zipf-Mandelbrot (&lt;code>lnre.fzm&lt;/code>; Evert,
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_spc_exp.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="all_spc_exp.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>Observed and expected VGC:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1101,9 +1097,8 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/zipfr/all_vgc_exp.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="all_vgc_exp.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>上方的紅色曲線代表透過 fZM model 所產生的 expected value。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="lexical-coverage-estimation">Lexical Coverage Estimation&lt;/h2>
@@ -1407,9 +1402,10 @@ corpus data。&lt;/p>
 >&lt;strong>&lt;!-- raw HTML omitted -->python-docx&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 搭配 python 內建函式庫做了一個&lt;a class="link" href="https://github.com/andreashih/docx-search-manipulation" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->迷你專案&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
 &lt;p>最初的想法如下圖：&lt;/p>
-&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/python_docx/python_docx.png"
-loading="lazy"
->&lt;/p>
+&lt;figure>&lt;img src="python_docx.png" width="60%" height="auto"/>&lt;figcaption>
+&lt;h4>專案發想&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
 &lt;h2 id="code">Code&lt;/h2>
 &lt;hr>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -1675,9 +1671,8 @@ regression&lt;/em>。本章介紹了如何以 logistic regression
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;dodge&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.3&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/nerdgeek/1.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="1.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>接下來看看不同世紀使用 &lt;code>nerd&lt;/code> 與 &lt;code>geek&lt;/code> 時的 polarities。可以發現不論在
 20 或 21 世紀，使用 &lt;code>nerd&lt;/code> 和 &lt;code>geek&lt;/code> 時大部分都是 neutrual
 polarity。特別的是，&lt;code>geek&lt;/code> 在 21 世紀時被使用於 positive polarity
@@ -1702,9 +1697,8 @@ polarity。特別的是，&lt;code>geek&lt;/code> 在 21 世紀時被使用於 p
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;dodge&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/nerdgeek/2.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="2.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>因為好奇，到 &lt;a class="link" href="https://dictionary.cambridge.org/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Cambridge Dictionary&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>
 上查了兩字的釋義：&lt;/p>
@@ -1744,9 +1738,8 @@ computers, and knows a lot of facts about it&lt;/em>&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.4&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/nerdgeek/3.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="3.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;h2 id="logistic-regression-model">Logistic Regression Model&lt;/h2>
 &lt;p>試著用書上的方式 (p.258) 跑 lrm。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -1834,7 +1827,6 @@ Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微
 &lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->James Pond&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>音樂劇</title><link>https://andreashih.github.io/blog/p/%E9%9F%B3%E6%A8%82%E5%8A%87/</link><pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E9%9F%B3%E6%A8%82%E5%8A%87/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E9%9F%B3%E6%A8%82%E5%8A%87/chicago.jpg" alt="Featured image of post 音樂劇" />&lt;p>提到音樂劇，最經典的印象大概是演員走一走突然開始跳舞，講一講突然開始唱歌。和我年紀相仿的同學們，第一部觀賞的音樂劇電影很有可能是音樂老師在課堂上播放的《真善美》或《歌劇魅影》。小時候不大懂這種表演類型，沒有好好欣賞研究，只覺得歌曲好聽，卻不了解音樂跟劇本身的連結。直到大學，在系上風氣促使之下，我才真正變成一個業餘音樂劇迷。從中山外文畢業的學生們或多或少都接受過音樂劇的薰陶，每年五月演出的大英劇華麗炫目，台上台下外文學子們的貢獻促成了劇場的成功。即使深刻地了解自己並不是劇場人才，在大學時接觸音樂劇的經驗也為我帶來許多啟發。這篇文章是我的劇場回憶錄，文末也推薦了我最喜歡的三部音樂劇。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="音樂劇的組成">音樂劇的組成&lt;/h2>
-&lt;hr>
 &lt;blockquote>
 &lt;p>&lt;em>The overture is about to start,&lt;br>
 You cross your fingers and hold your heart,&lt;br>
@@ -1862,11 +1854,9 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;p>而音樂劇的誕生除了演員外，背後還有一群強大的製作群與幕後團隊。根據參與系上演出的經驗，職務通常包括導演、副導、製作、舞監、舞台助理、音效、佈景、服裝、大小道具、動畫、燈光、招待、總務、劇務、美宣、網宣。音樂劇的舞台搭建更是一門學問，光是地板上的黑膠就讓演員及幕後人員舖了一整晚（真的很重）。最有趣的應屬煙霧機，放煙霧時特殊的味道，聞久了覺得其實蠻好聞的。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="2018-中山外文大英劇">2018 中山外文大英劇&lt;/h2>
-&lt;hr>
 &lt;p>我的劇場經驗較同屆的同學晚了一整年。大部分有志參與大英劇的同學會在一年級當舞台助理，二年級上台演出，並在三年級擔任製作群。而我則是在大三直接參加演員甄選。2018 演出的是 &lt;em>Grease&lt;/em>，一齣活潑熱情的美式校園劇。音樂是我很喜歡的 1950s 風格，因此每次最期待的就是練唱。圖中大家身上的禮服出現在劇中最經典的 prom 一景，女演員手上都戴著 corsage，復刻 50 年代美國高中舞會。&lt;/p>
-&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/musical/ged.jpg"
-loading="lazy"
->&lt;/p>
+&lt;figure>&lt;img src="ged.jpg" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>以下是我在大英劇訓練下習得的一些特殊技能，雖然跟劇沒有直接關係，但下戲後仍牢牢地嵌在我的生活經驗裡。&lt;/p>
 &lt;h3 id="1-快速換裝技能">1. 快速換裝技能&lt;/h3>
 &lt;p>在各個 scene 之間常常需要換裝，但時間往往不到兩分鐘。因此演員都學會了如何快速剝去上一場的戲服再踩進下一場的衣服。「踩」這個動詞最能描述當時的情境。換裝 partner 會幫你將戲服攤開在地上，因此只要踩進去，拉上來，就可以到台上 stand by 了。最高紀錄從洋裝換禮服再戴上配件甚至不到三十秒就完成。從此之後，我換衣服的速度變得極快，也因此有更多時間可以賴床。&lt;/p>
@@ -1874,29 +1864,25 @@ loading="lazy"
 &lt;p>英劇練習幾乎佔滿了平日所有晚上及週末兩整天，這對當時仍是 GPA 小偷的我來說是一大挑戰。因此我學會了如何逐水草而讀書，例如：吃完飯在化妝間讀書，休息時間在走廊站著讀書，練習開始前坐在地上用鞋盒當桌子讀書。當時也練就了快速專心的技能，但凡事都有過與不及，下戲後我反而不知道該如何在一大塊完整的時間內讀書。此事困擾我許久，至今雖然大致解決，但仍留有一點後遺症。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="我心目中的音樂劇-top-3">我心目中的音樂劇 Top 3&lt;/h2>
-&lt;hr>
 &lt;p>因為熱愛音樂，在接受大英劇訓練後開始以不同角度欣賞音樂劇中的樂曲。以下將介紹我心目中的音樂劇 Top 3 以及其中我最喜歡的曲目。&lt;/p>
 &lt;h3 id="1-芝加哥chicago">1. 《芝加哥》&lt;em>Chicago&lt;/em>&lt;/h3>
-&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/musical/chicago.PNG"
-loading="lazy"
->
-犯罪與貪婪，是《芝加哥》的兩大關鍵字。爵士曲風讓整齣戲多了一股詭譎卻詼諧的黑色幽默。&lt;a class="link" href="https://www.youtube.com/watch?v=Le8a7u1pANU" target="_blank" rel="noopener"
+&lt;figure>&lt;img src="chicago.PNG" width="60%" height="auto"/>
+&lt;/figure>
+&lt;p>犯罪與貪婪，是《芝加哥》的兩大關鍵字。爵士曲風讓整齣戲多了一股詭譎卻詼諧的黑色幽默。&lt;a class="link" href="https://www.youtube.com/watch?v=Le8a7u1pANU" target="_blank" rel="noopener"
 >&lt;em>And All That Jazz&lt;/em>&lt;/a> 中長號的拖拉與鋼琴的清脆呈現出對比，拉開一樁驚世駭俗謀殺案的序幕。&lt;a class="link" href="https://www.youtube.com/watch?v=6tP38xLLreg" target="_blank" rel="noopener"
 >&lt;em>All I Care About&lt;/em>&lt;/a> 中男主角的口哨 solo 和女主角 Roxie 獨唱的 &lt;a class="link" href="https://www.youtube.com/watch?v=HGetrf2KVrs" target="_blank" rel="noopener"
 >&lt;em>Nowadays&lt;/em>&lt;/a> 也充分呈現出「拖拉」的特色：轉音、滑音及後半拍的運用。Renée Zellweger 慵懶甜美的唱腔精準詮釋天真又危險的 Roxie，帶有不疾不徐，蔑笑人生百態的韻味。&lt;/p>
 &lt;h3 id="2-吉屋出租rent">2. 《吉屋出租》&lt;em>RENT&lt;/em>&lt;/h3>
-&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/musical/rent.PNG"
-loading="lazy"
->&lt;/p>
+&lt;figure>&lt;img src="rent.PNG" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>&lt;em>RENT&lt;/em> 劇中角色秉持著自由、藝術與愛，面臨了人生的不同轉折。除了搖滾，作曲家 Jonathan Larson 也在序曲 &lt;a class="link" href="https://www.youtube.com/watch?v=wsj15wPpjLY" target="_blank" rel="noopener"
 >&lt;em>Seasons of Love&lt;/em>&lt;/a> 中加入了福音元素。&lt;a class="link" href="https://www.youtube.com/watch?v=c7H1zqvKObM" target="_blank" rel="noopener"
 >&lt;em>Light My Candle&lt;/em>&lt;/a> 及 &lt;a class="link" href="https://www.youtube.com/watch?v=v3FbN7ynh4M" target="_blank" rel="noopener"
 >&lt;em>Tango: Maureen&lt;/em>&lt;/a> 皆是富有劇情的男女對唱。&lt;em>Light My Candle&lt;/em> 描述戀情初萌芽的情侶彼此試探，男女主角一人一句，節奏明快地串接整首曲子。&lt;em>Tango: Maureen&lt;/em> 呈現一位風流女子的前男女友，彼此狹路相逢卻同仇敵愾，同時又相互較勁的複雜情感，其中的合音讓人精神大振，頗有一吐為快的舒暢感。&lt;a class="link" href="https://www.youtube.com/watch?v=JaPUzbY_uVA" target="_blank" rel="noopener"
 >&lt;em>What You Own&lt;/em>&lt;/a> 則是經典搖滾曲風，可說是總結整齣劇的曲目。&lt;/p>
 &lt;h3 id="3-一個美國人在巴黎an-american-in-paris">3. 《一個美國人在巴黎》&lt;em>An American in Paris&lt;/em>&lt;/h3>
-&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/musical/american.PNG"
-loading="lazy"
->&lt;/p>
+&lt;figure>&lt;img src="american.PNG" width="60%" height="auto"/>
+&lt;/figure>
 &lt;p>年輕的心靈漫步在浪漫的花都，是《一個美國人在巴黎》呈現的美好畫面。精緻的芭蕾舞蹈，細膩的光影及優雅的換場將觀眾帶進作曲家 &lt;a class="link" href="https://www.youtube.com/watch?v=BskzP8D-R6U" target="_blank" rel="noopener"
 >George Gershwin&lt;/a> 的巴黎假期。結合了古典、爵士與藍調，&lt;a class="link" href="https://www.youtube.com/watch?v=S4CXZJFxvSw&amp;amp;list=PLM_1csaEG9kewZn1ILEa7g6OpD_4sDbpz&amp;amp;index=15" target="_blank" rel="noopener"
 >&lt;em>An American in Paris&lt;/em>&lt;/a> 的編曲讓管弦樂團揮灑出一幅水彩畫。&lt;a class="link" href="https://www.youtube.com/watch?v=8p7O45VV51M&amp;amp;list=PLM_1csaEG9kewZn1ILEa7g6OpD_4sDbpz&amp;amp;index=6" target="_blank" rel="noopener"
@@ -2106,9 +2092,8 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis.text.x&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">element_text&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">angle&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">45&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">hjust&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">))&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-6-1.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="unnamed-chunk-6-1.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -2129,9 +2114,8 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">legend.position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;none&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-7-1.png"
-loading="lazy"
->&lt;/p>
+&lt;/div>&lt;figure>&lt;img src="unnamed-chunk-7-1.png" width="60%" height="auto"/>
+&lt;/figure>
 &lt;h2 id="explanation">Explanation&lt;/h2>
 &lt;p>從 Mobile01 爬下的前 1000 頁標題資料中可以發現，文章數最多的
 iX、i7，以及 i6S

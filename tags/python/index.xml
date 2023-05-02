@@ -206,9 +206,10 @@
 >&lt;strong>&lt;!-- raw HTML omitted -->python-docx&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 搭配 python 內建函式庫做了一個&lt;a class="link" href="https://github.com/andreashih/docx-search-manipulation" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->迷你專案&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
 &lt;p>最初的想法如下圖：&lt;/p>
-&lt;p>&lt;img src="https://andreashih.github.io/img/rmd_posts/python_docx/python_docx.png"
-loading="lazy"
->&lt;/p>
+&lt;figure>&lt;img src="python_docx.png" width="60%" height="auto"/>&lt;figcaption>
+&lt;h4>專案發想&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
 &lt;h2 id="code">Code&lt;/h2>
 &lt;hr>
 &lt;div class="highlight">&lt;div class="chroma">

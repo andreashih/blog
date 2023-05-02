@@ -136,7 +136,7 @@ sample size，<code>V</code> 是 type count：</p><div class=highlight><div clas
 </span></span><span class=line><span class=cl>        <span class=n>xlab</span><span class=o>=</span><span class=s>&#34;rank&#34;</span><span class=p>,</span> <span class=n>ylab</span><span class=o>=</span><span class=s>&#34;frequency&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=nf>plot</span><span class=p>(</span><span class=n>dcard.tfl</span><span class=p>,</span> <span class=n>main</span><span class=o>=</span><span class=s>&#34;Dcard&#34;</span><span class=p>,</span> <span class=n>log</span><span class=o>=</span><span class=s>&#34;xy&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>        <span class=n>xlab</span><span class=o>=</span><span class=s>&#34;rank&#34;</span><span class=p>,</span> <span class=n>ylab</span><span class=o>=</span><span class=s>&#34;frequency&#34;</span><span class=p>)</span>
-</span></span></code></pre></td></tr></table></div></div><p><img src=https://andreashih.github.io/img/rmd_posts/zipfr/all_tfl.png loading=lazy></p><h3 id=frequency-spectrum>Frequency Spectrum</h3><p>透過剛剛的 type-frequency list，我們可以得到 frequency spectrum。Brown
+</span></span></code></pre></td></tr></table></div></div><figure><img src=all_tfl.png width=60% height=auto></figure><h3 id=frequency-spectrum>Frequency Spectrum</h3><p>透過剛剛的 type-frequency list，我們可以得到 frequency spectrum。Brown
 corpus 的 frequency spectrum 可直接從套件中匯入：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
@@ -188,7 +188,7 @@ corpus 的 frequency spectrum 可直接從套件中匯入：</p><div class=highl
 </span></span><span class=line><span class=cl>        <span class=n>xlab</span><span class=o>=</span><span class=s>&#34;m&#34;</span><span class=p>,</span> <span class=n>ylab</span><span class=o>=</span><span class=s>&#34;Vm&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=nf>plot</span><span class=p>(</span><span class=n>dcard.spc</span><span class=p>,</span> <span class=n>log</span><span class=o>=</span><span class=s>&#34;x&#34;</span><span class=p>,</span> <span class=n>main</span><span class=o>=</span><span class=s>&#34;Dcard&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>        <span class=n>xlab</span><span class=o>=</span><span class=s>&#34;m&#34;</span><span class=p>,</span> <span class=n>ylab</span><span class=o>=</span><span class=s>&#34;Vm&#34;</span><span class=p>)</span>
-</span></span></code></pre></td></tr></table></div></div><p><img src=https://andreashih.github.io/img/rmd_posts/zipfr/all_spc.png loading=lazy></p><p>從上圖可以得知，<em>hapax legomena</em> (只出現過一次的單詞)
+</span></span></code></pre></td></tr></table></div></div><figure><img src=all_spc.png width=60% height=auto></figure><p>從上圖可以得知，<em>hapax legomena</em> (只出現過一次的單詞)
 占所有語料庫的比例都相當的高。接下來，我們可以透過 Vocabulary growth
 curves (VGC) 來觀察新詞增加的情況。</p><h3 id=vocabulary-growth-curves-vgc>Vocabulary Growth Curves (VGC)</h3><p>同樣地，透過 <code>zipfR</code>，我們可以將語料轉成 <code>vgc</code> object。Brown corpus
 的資料一樣可以直接匯入：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -236,7 +236,7 @@ type，而在其中有 <code>221</code> 個單詞只出現過一次。</p><p>將
 </span></span><span class=line><span class=cl>        <span class=n>xlab</span><span class=o>=</span><span class=s>&#34;N&#34;</span><span class=p>,</span> <span class=n>ylab</span><span class=o>=</span><span class=s>&#34;V(N)/V1(N)&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=nf>plot</span><span class=p>(</span><span class=n>dcard.vgc</span><span class=p>,</span> <span class=n>add.m</span><span class=o>=</span><span class=m>1</span><span class=p>,</span> <span class=n>main</span><span class=o>=</span><span class=s>&#34;Dcard&#34;</span><span class=p>,</span>
 </span></span><span class=line><span class=cl>        <span class=n>xlab</span><span class=o>=</span><span class=s>&#34;N&#34;</span><span class=p>,</span> <span class=n>ylab</span><span class=o>=</span><span class=s>&#34;V(N)/V1(N)&#34;</span><span class=p>)</span>
-</span></span></code></pre></td></tr></table></div></div><p><img src=https://andreashih.github.io/img/rmd_posts/zipfr/all_vgc.png loading=lazy></p><p>上圖中顏色較深的曲線是 V，較淺的曲線是 V1。從圖中可以發現 ASBC 與 Brown
+</span></span></code></pre></td></tr></table></div></div><figure><img src=all_vgc.png width=60% height=auto></figure><p>上圖中顏色較深的曲線是 V，較淺的曲線是 V1。從圖中可以發現 ASBC 與 Brown
 corpus 的 V1 曲線上升後逐漸平緩，然而 PTT 與 Dcard 的 V1
 曲線呈現持續上升的趨勢，意指隨著 sample size 增加，<em>hapax legomena</em>
 也會不斷增加。這可能是中文斷詞錯誤所造成 (Hsieh
@@ -310,7 +310,7 @@ Evert, 2004)，和 finite Zipf-Mandelbrot (<code>lnre.fzm</code>; Evert,
 </span></span><span class=line><span class=cl>        <span class=n>main</span><span class=o>=</span><span class=s>&#34;Dcard&#34;</span><span class=p>,</span> <span class=n>xlab</span><span class=o>=</span><span class=s>&#34;m&#34;</span><span class=p>,</span> <span class=n>ylab</span><span class=o>=</span><span class=s>&#34;Vm&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=nf>legend</span><span class=p>(</span><span class=s>&#34;topright&#34;</span><span class=p>,</span> <span class=n>legend</span> <span class=o>=</span> <span class=nf>c</span><span class=p>(</span><span class=s>&#34;observed&#34;</span><span class=p>,</span> <span class=s>&#34;fZM model&#34;</span><span class=p>),</span> 
 </span></span><span class=line><span class=cl>        <span class=n>fill</span> <span class=o>=</span> <span class=m>1</span><span class=o>:</span><span class=m>2</span><span class=p>,</span> <span class=n>cex</span> <span class=o>=</span> <span class=m>0.5</span><span class=p>)</span>
-</span></span></code></pre></td></tr></table></div></div><p><img src=https://andreashih.github.io/img/rmd_posts/zipfr/all_spc_exp.png loading=lazy></p><p>Observed and expected VGC:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span></span></code></pre></td></tr></table></div></div><figure><img src=all_spc_exp.png width=60% height=auto></figure><p>Observed and expected VGC:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
@@ -344,7 +344,7 @@ Evert, 2004)，和 finite Zipf-Mandelbrot (<code>lnre.fzm</code>; Evert,
 </span></span><span class=line><span class=cl>        <span class=n>main</span><span class=o>=</span><span class=s>&#34;Dcard&#34;</span><span class=p>,</span> <span class=n>xlab</span><span class=o>=</span><span class=s>&#34;N&#34;</span><span class=p>,</span> <span class=n>ylab</span><span class=o>=</span><span class=s>&#34;V(N)/V1(N)&#34;</span><span class=p>)</span>
 </span></span><span class=line><span class=cl><span class=nf>legend</span><span class=p>(</span><span class=s>&#34;topleft&#34;</span><span class=p>,</span> <span class=n>legend</span> <span class=o>=</span> <span class=nf>c</span><span class=p>(</span><span class=s>&#34;observed&#34;</span><span class=p>,</span> <span class=s>&#34;fZM model&#34;</span><span class=p>),</span>
 </span></span><span class=line><span class=cl>        <span class=n>fill</span> <span class=o>=</span> <span class=m>1</span><span class=o>:</span><span class=m>2</span><span class=p>,</span> <span class=n>cex</span> <span class=o>=</span> <span class=m>0.5</span><span class=p>)</span>
-</span></span></code></pre></td></tr></table></div></div><p><img src=https://andreashih.github.io/img/rmd_posts/zipfr/all_vgc_exp.png loading=lazy></p><p>上方的紅色曲線代表透過 fZM model 所產生的 expected value。</p><p> </p><h2 id=lexical-coverage-estimation>Lexical Coverage Estimation</h2><h3 id=out-of-vocabulary-oov-types>Out-Of-Vocabulary (OOV) types</h3><p>我們可以藉由 Out-Of-Vocabulary (OOV) types 的比例來了解兩個 corpus
+</span></span></code></pre></td></tr></table></div></div><figure><img src=all_vgc_exp.png width=60% height=auto></figure><p>上方的紅色曲線代表透過 fZM model 所產生的 expected value。</p><p> </p><h2 id=lexical-coverage-estimation>Lexical Coverage Estimation</h2><h3 id=out-of-vocabulary-oov-types>Out-Of-Vocabulary (OOV) types</h3><p>我們可以藉由 Out-Of-Vocabulary (OOV) types 的比例來了解兩個 corpus
 的 lexical
 coverage。基本上，一個實用的語言資源中，OOV
 所佔的比例應保持在一定標準之下。</p><p>我們先採前十萬個 lemma：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
