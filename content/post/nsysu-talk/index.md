@@ -18,8 +18,8 @@ tags:
 
 📄 演講投影片：[bit.ly/20230427_nsysu_nlp](https://bit.ly/20230427_nsysu_nlp)
 
-{{< figure src="poster.JPG" title="理工長廊上的海報" width="40%" >}}
+{{< figure src="poster.JPG" title="理工長廊上的海報" width="40%" height="auto">}}
 
-{{< figure src="presentation.JPG" title="演講途中" width="40%" >}}
+{{< figure src="presentation.JPG" title="演講途中" width="50%" height="auto">}}
 
 Photo by <a href="https://unsplash.com/ko/@teapowered?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Patrick Robert Doyle</a> on <a href="https://unsplash.com/photos/yUvZYHV2Zbw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
