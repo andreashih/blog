@@ -171,7 +171,6 @@ data-flex-basis="654px"
 >這裡&lt;/a>保存，只是應該不會再更新了。&lt;/p>
 &lt;p> &lt;/p>
 &lt;p>Photo by &lt;!-- raw HTML omitted -->Joanna Kosinska&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>查詢萌典中的同義詞和反義詞</title><link>https://andreashih.github.io/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</link><pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/book-shadow.jpg" alt="Featured image of post 查詢萌典中的同義詞和反義詞" />&lt;h2 id="關於萌典">關於萌典&lt;/h2>
-&lt;hr>
 &lt;p>萌典是一部由臺灣開源社群 &lt;a class="link" href="https://github.com/g0v" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->g0v 零時政府&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>開發的數位化漢語詞典。國語資料來源為《教育部重編國語辭典修訂本》，閩南語資料來自《臺灣閩南語常用詞辭典》，客家語資料則源自《臺灣客家語常用詞辭典》。除此之外，該計畫近日也新增了&lt;a class="link" href="https://amis.moedict.tw/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->阿美語萌典&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
@@ -183,7 +182,6 @@ data-flex-basis="654px"
 &lt;/ul>
 &lt;p> &lt;/p>
 &lt;h2 id="方法一-beautifulsoup">方法一： BeautifulSoup&lt;/h2>
-&lt;hr>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -265,7 +263,6 @@ data-flex-basis="654px"
 &lt;/div>
 &lt;/div>&lt;p> &lt;/p>
 &lt;h2 id="方法二-urllib">方法二： urllib&lt;/h2>
-&lt;hr>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -368,7 +365,6 @@ data-flex-basis="654px"
 &lt;/div>
 &lt;/div>&lt;p> &lt;/p>
 &lt;h2 id="結論">結論&lt;/h2>
-&lt;hr>
 &lt;p>相較於以語意關係為主軸建置的&lt;a class="link" href="https://lopentu.github.io/CwnWeb/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->中文詞彙網路&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，萌典的語意關係資料較少，僅部分詞條具有同義及反義詞，且並未區分同義和近義。但萌典收錄的詞條較為完整，還有讀音、部首、筆劃等資訊，可以用於不同研究主題。&lt;/p>
 &lt;p>👩‍💻 本文程式碼&lt;a class="link" href="https://github.com/andreashih/semantic_relations/blob/main/moe_relations.ipynb" target="_blank" rel="noopener"
@@ -1280,25 +1276,20 @@ corpus data。&lt;/p>
 &lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Andy Wang&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>How I Took Back My IG Account</title><link>https://andreashih.github.io/blog/p/how-i-took-back-my-ig-account/</link><pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/how-i-took-back-my-ig-account/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/how-i-took-back-my-ig-account/ig.jpg" alt="Featured image of post How I Took Back My IG Account" />&lt;p>I am writing this post not because I was hacked or accidentally forgot the password to the dazzling world of social media. Actually, I have my account logged in readily. All I have to do is to pick up my phone and click on the pink bright little icon right on the home screen. Instagram takes you to places you&amp;rsquo;ve been long to, gives you access to peak lives of others (whether familiar or unfamiliar), and offers you tons of dopamine that keep you excited. Though it seems no problem with instagram participating in my leisure time, the hidden risk has gradually dominated my daily life. Now I am going to share with you how I was aware of the impact of insta and how I finally &lt;em>took back&lt;/em> my insta account.&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="an-ordinary-night">An Ordinary Night&lt;/h2>
-&lt;hr>
 &lt;p>It was an ordinary night. Like any other typical night after I came back to my dorm. Even though I was exhausted and really needed a cold shower, I&amp;rsquo;d lie on my mattress, hold my phone in hand, and swipe instagram page for thirty minutes or so. After checking friends&amp;rsquo; stories and posts, I clicked on the magnifying glass icon to find something interesting. All of a sudden, it struck me that I was not happy with it anymore. All I got from scrolling was emptiness. I was jealous of people enjoying vacations. I even criticised myself seeing pictures of beautiful girls. The worst thing was that I had wasted a bunch of time that I could have read a book, worked on a project, or simply got a good night&amp;rsquo;s sleep.&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="reflection">Reflection&lt;/h2>
-&lt;hr>
 &lt;p>The first thing I did in the morning was to wake up my phone and tapped on insta for no reason. The last thing I did at night was to scroll insta to my heart&amp;rsquo;s content, there&amp;rsquo;s no reason either. Sometimes when I felt like posting a story, I spent time coming up with the best filter, gifs, and caption. After I posted, I worried about others&amp;rsquo; opinions toward my story. Was I happier with the accompany of instagram? The answer was definitely no. But why was I so stuck on this cute evil platform? I found no reason. Therefore, the practice of quitting instagram has started to take back my life.&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="what-i-have-done">What I Have Done&lt;/h2>
-&lt;hr>
 &lt;p>The first thing I did was to replace the insta icon with &lt;a class="link" href="https://apps.apple.com/us/app/new-york-times-crossword/id307569751" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->a crossword game&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>. Whenever I felt the urge to click on instagram, I tapped on the same position and opened a crossword. I also set rules for myself. The only pastime I could do on my phone was watching YouTube videos. It was really painful to kick a habit in the beginning. After all, I had been addicted to insta for more than 3 months. I was so eager to get rid of instagram that guiltiness surged over me when I accidentally click on the pink icon. After three days of hard work, I found a more peaceful way to deal with my addiction. Whenever the idea of browsing insta popped up, I admitted it and let the thought run in my head. I&amp;rsquo;d asked myself three questions: a) why I have to use insta, b) am I happy with browsing insta, and c) what I can do if I save these scrolling time. The truth was that if I blamed myself for having these thoughts, things got worse and I felt more terrible (see the &lt;a class="link" href="https://en.wikipedia.org/wiki/Ironic_process_theory" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->ironic process theory&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>).&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="another-reflection">Another Reflection&lt;/h2>
-&lt;hr>
 &lt;p>The three questions I asked myself led to the same conclusion: I was afraid of failures. It seemed ridiculous, but it was real. I was afraid of not doing well on studies or projects, so I hid in a virtual world where anxiety was covered by eye-catching pictures and videos (although they did bring much more anxiety that I was not aware of). Gliding the smooth turf was way more soothing than thinking or solving problems. I could have kept this habit and lived happily (but boringly). However, I was not satisfied with it, so the loop kept going.&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="and-now">And Now&amp;hellip;&lt;/h2>
-&lt;hr>
 &lt;p>After talking to myself for one or two weeks, I finally face my weaknesses regarding social media addiction. At present, instagram seldom pops up in my head. We have reached a peaceful balance. It feels really powerful and satisfying when things are getting in control. I no longer feel itchy when seeing those bright pink circles on the homepage. I can enjoy me-time without pictures and memes sparkling like a haunted nightmare. I can do whatever I want without insta, and it does no harm to my life (actually it has been better without its harassment). I don&amp;rsquo;t agree that hiding from social media is the most ideal choice. After all, social media provides the most instant way to build connections with friends and families. However, I learned that it is important to give myself a break. All these struggles of dealing with insta addiction have put me back in the driving seat of my body, mind, and spirit.&lt;/p>
 &lt;p> &lt;/p>
 &lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Jakob Owens&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>霧台魯凱語田野調查</title><link>https://andreashih.github.io/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/budai.jpg" alt="Featured image of post 霧台魯凱語田野調查" />&lt;p>對台大語言所碩一的同學們來說，下學期的重頭戲無疑是田野調查。這門讓大家期待了大半年的課程果真充實無比，田調的過程更是充滿驚奇與挑戰。這學期我們學習了魯凱語，課程一開始老師請了族語老師到所上讓我們採集語料。較熟悉魯凱語，也寫了兩篇小分析後，五月底便啟程到部落進行五天四夜的田野調查。&lt;/p>
@@ -1385,7 +1376,6 @@ corpus data。&lt;/p>
 &lt;/figcaption>
 &lt;/figure>
 &lt;h2 id="code">Code&lt;/h2>
-&lt;hr>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -1561,11 +1551,9 @@ corpus data。&lt;/p>
 &lt;/div>
 &lt;/div>&lt;p> &lt;/p>
 &lt;h2 id="murmuring">Murmuring&lt;/h2>
-&lt;hr>
 &lt;p>真心覺得對初學者來說，盡量不要同時學兩個程式。資質駑鈍如我無法同時參透兩個語言，因此這學期就是不斷把 R 寫在 python 裡或把 python 寫在 R 裡。寫完一整天的 python 要再回去寫 R，簡直像濃霧中漫步伸手不見五指。順攝抑制和倒攝抑制在我身上嶄露無遺。所以學程式不要貪快貪多，會消化不良（倘若列位看官是程式小天才則另當別論）。像這個簡單的小專案就讓我做了超級久（從適應 python 語法到寫出好像可以 run 的東西），而且還不大完善。最好的方式就是早一點開始學，不要像我一樣 code 到用時方恨少！&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="參考資料">參考資料&lt;/h2>
-&lt;hr>
 &lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/42682648/search-all-docx-files-with-python-docx-in-a-directory-batch" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Search all docx files with python-docx in a directory (batch)&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>&lt;/p>
 &lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/22819948/searching-docx-files-in-python" target="_blank" rel="noopener"
@@ -1836,21 +1824,21 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;figure>&lt;img src="ged.jpg" width="60%" height="auto"/>
 &lt;/figure>
 &lt;p>以下是我在大英劇訓練下習得的一些特殊技能，雖然跟劇沒有直接關係，但下戲後仍牢牢地嵌在我的生活經驗裡。&lt;/p>
-&lt;h3 id="1-快速換裝技能">1. 快速換裝技能&lt;/h3>
+&lt;h3 id="快速換裝技能">快速換裝技能&lt;/h3>
 &lt;p>在各個 scene 之間常常需要換裝，但時間往往不到兩分鐘。因此演員都學會了如何快速剝去上一場的戲服再踩進下一場的衣服。「踩」這個動詞最能描述當時的情境。換裝 partner 會幫你將戲服攤開在地上，因此只要踩進去，拉上來，就可以到台上 stand by 了。最高紀錄從洋裝換禮服再戴上配件甚至不到三十秒就完成。從此之後，我換衣服的速度變得極快，也因此有更多時間可以賴床。&lt;/p>
-&lt;h3 id="2-零碎時間運用">2. 零碎時間運用&lt;/h3>
+&lt;h3 id="零碎時間運用">零碎時間運用&lt;/h3>
 &lt;p>英劇練習幾乎佔滿了平日所有晚上及週末兩整天，這對當時仍是 GPA 小偷的我來說是一大挑戰。因此我學會了如何逐水草而讀書，例如：吃完飯在化妝間讀書，休息時間在走廊站著讀書，練習開始前坐在地上用鞋盒當桌子讀書。當時也練就了快速專心的技能，但凡事都有過與不及，下戲後我反而不知道該如何在一大塊完整的時間內讀書。此事困擾我許久，至今雖然大致解決，但仍留有一點後遺症。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="我心目中的音樂劇-top-3">我心目中的音樂劇 Top 3&lt;/h2>
 &lt;p>因為熱愛音樂，在接受大英劇訓練後開始以不同角度欣賞音樂劇中的樂曲。以下將介紹我心目中的音樂劇 Top 3 以及其中我最喜歡的曲目。&lt;/p>
-&lt;h3 id="1-芝加哥chicago">1. 《芝加哥》&lt;em>Chicago&lt;/em>&lt;/h3>
+&lt;h3 id="芝加哥chicago">《芝加哥》&lt;em>Chicago&lt;/em>&lt;/h3>
 &lt;figure>&lt;img src="chicago.PNG" width="60%" height="auto"/>
 &lt;/figure>
 &lt;p>犯罪與貪婪，是《芝加哥》的兩大關鍵字。爵士曲風讓整齣戲多了一股詭譎卻詼諧的黑色幽默。&lt;a class="link" href="https://www.youtube.com/watch?v=Le8a7u1pANU" target="_blank" rel="noopener"
 >&lt;em>And All That Jazz&lt;/em>&lt;/a> 中長號的拖拉與鋼琴的清脆呈現出對比，拉開一樁驚世駭俗謀殺案的序幕。&lt;a class="link" href="https://www.youtube.com/watch?v=6tP38xLLreg" target="_blank" rel="noopener"
 >&lt;em>All I Care About&lt;/em>&lt;/a> 中男主角的口哨 solo 和女主角 Roxie 獨唱的 &lt;a class="link" href="https://www.youtube.com/watch?v=HGetrf2KVrs" target="_blank" rel="noopener"
 >&lt;em>Nowadays&lt;/em>&lt;/a> 也充分呈現出「拖拉」的特色：轉音、滑音及後半拍的運用。Renée Zellweger 慵懶甜美的唱腔精準詮釋天真又危險的 Roxie，帶有不疾不徐，蔑笑人生百態的韻味。&lt;/p>
-&lt;h3 id="2-吉屋出租rent">2. 《吉屋出租》&lt;em>RENT&lt;/em>&lt;/h3>
+&lt;h3 id="吉屋出租rent">《吉屋出租》&lt;em>RENT&lt;/em>&lt;/h3>
 &lt;figure>&lt;img src="rent.PNG" width="60%" height="auto"/>
 &lt;/figure>
 &lt;p>&lt;em>RENT&lt;/em> 劇中角色秉持著自由、藝術與愛，面臨了人生的不同轉折。除了搖滾，作曲家 Jonathan Larson 也在序曲 &lt;a class="link" href="https://www.youtube.com/watch?v=wsj15wPpjLY" target="_blank" rel="noopener"
@@ -1858,7 +1846,7 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 >&lt;em>Light My Candle&lt;/em>&lt;/a> 及 &lt;a class="link" href="https://www.youtube.com/watch?v=v3FbN7ynh4M" target="_blank" rel="noopener"
 >&lt;em>Tango: Maureen&lt;/em>&lt;/a> 皆是富有劇情的男女對唱。&lt;em>Light My Candle&lt;/em> 描述戀情初萌芽的情侶彼此試探，男女主角一人一句，節奏明快地串接整首曲子。&lt;em>Tango: Maureen&lt;/em> 呈現一位風流女子的前男女友，彼此狹路相逢卻同仇敵愾，同時又相互較勁的複雜情感，其中的合音讓人精神大振，頗有一吐為快的舒暢感。&lt;a class="link" href="https://www.youtube.com/watch?v=JaPUzbY_uVA" target="_blank" rel="noopener"
 >&lt;em>What You Own&lt;/em>&lt;/a> 則是經典搖滾曲風，可說是總結整齣劇的曲目。&lt;/p>
-&lt;h3 id="3-一個美國人在巴黎an-american-in-paris">3. 《一個美國人在巴黎》&lt;em>An American in Paris&lt;/em>&lt;/h3>
+&lt;h3 id="一個美國人在巴黎an-american-in-paris">《一個美國人在巴黎》&lt;em>An American in Paris&lt;/em>&lt;/h3>
 &lt;figure>&lt;img src="american.PNG" width="60%" height="auto"/>
 &lt;/figure>
 &lt;p>年輕的心靈漫步在浪漫的花都，是《一個美國人在巴黎》呈現的美好畫面。精緻的芭蕾舞蹈，細膩的光影及優雅的換場將觀眾帶進作曲家 &lt;a class="link" href="https://www.youtube.com/watch?v=BskzP8D-R6U" target="_blank" rel="noopener"
