@@ -1844,7 +1844,7 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;h2 id="我心目中的音樂劇-top-3">我心目中的音樂劇 Top 3&lt;/h2>
 &lt;p>因為熱愛音樂，在接受大英劇訓練後開始以不同角度欣賞音樂劇中的樂曲。以下將介紹我心目中的音樂劇 Top 3 以及其中我最喜歡的曲目。&lt;/p>
 &lt;h3 id="1-芝加哥chicago">1. 《芝加哥》&lt;em>Chicago&lt;/em>&lt;/h3>
-&lt;figure>&lt;img src="chicago.jpg" width="60%" height="auto"/>
+&lt;figure>&lt;img src="chicago.PNG" width="60%" height="auto"/>
 &lt;/figure>
 &lt;p>犯罪與貪婪，是《芝加哥》的兩大關鍵字。爵士曲風讓整齣戲多了一股詭譎卻詼諧的黑色幽默。&lt;a class="link" href="https://www.youtube.com/watch?v=Le8a7u1pANU" target="_blank" rel="noopener"
 >&lt;em>And All That Jazz&lt;/em>&lt;/a> 中長號的拖拉與鋼琴的清脆呈現出對比，拉開一樁驚世駭俗謀殺案的序幕。&lt;a class="link" href="https://www.youtube.com/watch?v=6tP38xLLreg" target="_blank" rel="noopener"
@@ -2120,7 +2120,6 @@ Pro 和 i11 Pro Max，以及預計今年四月中才會發表的 i9
 the Baroque period.&lt;/p>
 &lt;p> &lt;/p>
 &lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Calin Draganescu&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>A Blog is Born: 一個部落格的誕生</title><link>https://andreashih.github.io/blog/p/a-blog-is-born-%E4%B8%80%E5%80%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E8%AA%95%E7%94%9F/</link><pubDate>Thu, 20 Feb 2020 00:00:00 +0000</pubDate><guid>https://andreashih.github.io/blog/p/a-blog-is-born-%E4%B8%80%E5%80%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E8%AA%95%E7%94%9F/</guid><description>&lt;img src="https://andreashih.github.io/blog/p/a-blog-is-born-%E4%B8%80%E5%80%8B%E9%83%A8%E8%90%BD%E6%A0%BC%E7%9A%84%E8%AA%95%E7%94%9F/blog.jpg" alt="Featured image of post A Blog is Born: 一個部落格的誕生" />&lt;h2 id="緣起">緣起&lt;/h2>
-&lt;hr>
 &lt;p>這個部落格誕生於 2020 年 2 月，在我碩士一年級的寒假。原本不覺得自己有辦法做出一個部落格，一方面缺乏實作經驗，另一方面我並不擅長寫文章。然而在寒假的某天，當我一如往常打開電腦點進 YouTube 時，看到了這部&lt;a class="link" href="https://www.youtube.com/watch?v=U0idtvxVo9I" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->影片&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。它清楚的步驟介紹讓我有了「我也可以做到！」的錯覺。為什麼說是錯覺呢？因為接下來實作的過程中可說是困難重重，我費了一番心力才完成網頁架設及整理。當我對製作部落格還存有顧慮時，意外地讀到了 GitHub 創辦人之一 Tom Preston-Werner 所寫的&lt;a class="link" href="https://tom.preston-werner.com/2008/11/17/blogging-like-a-hacker.html" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->文章&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。內容實在太感人又有說服力了！因此加強了實作部落格的動機。&lt;/p>
@@ -2129,22 +2128,21 @@ the Baroque period.&lt;/p>
 &lt;p>以下的步驟說明我如何網路上開闢一片疆土。筆者使用之電腦為 Windows 系統，故將以在 Windows 上的做法為例。若內容有任何需要修改的地方，歡迎在文章下方留言，或&lt;a class="link" href="mailto:r08142004@ntu.edu.tw" >&lt;strong>&lt;!-- raw HTML omitted -->寫信&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>告訴我。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="preparation">Preparation&lt;/h2>
-&lt;hr>
-&lt;h3 id="1-github-帳號">1. GitHub 帳號&lt;/h3>
+&lt;h3 id="github-帳號">GitHub 帳號&lt;/h3>
 &lt;p>在開始之前，必須先&lt;a class="link" href="https://github.com/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->創一個 GitHub 帳號&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
-&lt;h3 id="2-檢查電腦中是否已載有-ruby">2. 檢查電腦中是否已載有 Ruby&lt;/h3>
+&lt;h3 id="檢查電腦中是否已載有-ruby">檢查電腦中是否已載有 Ruby&lt;/h3>
 &lt;p>可以先在 command line 上輸入 &lt;code>ruby -v&lt;/code> 檢查電腦中是否已經載有 Ruby。如果沒有，請跳到步驟 3。若電腦中已有 Ruby，將會回傳它的版本號碼。&lt;/p>
 &lt;p>接著，輸入 &lt;code>gem -v&lt;/code> 檢查 RubyGems。如果很幸運地兩個 command 都成功了，請輸入 &lt;code>sudo gem install jekyll&lt;/code> 開始安裝 Jekyll。&lt;/p>
 &lt;p>最後，輸入 &lt;code>jekyll -v&lt;/code> 檢查 Jekyll 是否安裝成功。&lt;/p>
 &lt;p>&lt;a class="link" href="https://onextrapixel.com/start-jekyll-blog-github-pages-free/" target="_blank" rel="noopener"
 >&lt;em>&lt;!-- raw HTML omitted -->資料來源&lt;!-- raw HTML omitted -->&lt;/em>&lt;/a>&lt;/p>
-&lt;h3 id="3-下載-ruby">3. 下載 Ruby&lt;/h3>
+&lt;h3 id="下載-ruby">下載 Ruby&lt;/h3>
 &lt;p>請前往 &lt;a class="link" href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->RubyInstaller&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，並點選 &lt;strong>Ruby+Devkit 2.6.5-1 (x64)&lt;/strong> 開始下載。（我第一次下載了 &lt;strong>Ruby+Devkit 2.7.0-1 (x64)&lt;/strong> ，但後來版本不相容無法運作）。&lt;/p>
 &lt;p>執行下載時 RubyInstaller 會打開一個 command prompt，安裝時請遵照 default options，如此一來就會成功了。&lt;/p>
 &lt;p>最後，請輸入 &lt;code>ridk install&lt;/code> 以完成最後一個步驟。&lt;/p>
-&lt;h3 id="4-安裝-jekyll">4. 安裝 Jekyll&lt;/h3>
+&lt;h3 id="安裝-jekyll">安裝 Jekyll&lt;/h3>
 &lt;p>請打開一個新的 command prompt，並輸入&lt;code>gem install jekyll bundler&lt;/code>。接著，輸入 &lt;code>jekyll -v&lt;/code> 檢查是否安裝成功。&lt;/p>
 &lt;p>如果電腦上有 &lt;a class="link" href="https://docs.microsoft.com/en-us/windows/wsl/about?redirectedfrom=MSDN" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Windows Subsystem for Linux&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>，請參考 &lt;a class="link" href="https://jekyllrb.com/docs/installation/windows/#installation-via-bash-on-windows-10" target="_blank" rel="noopener"
@@ -2153,17 +2151,16 @@ the Baroque period.&lt;/p>
 >&lt;strong>&lt;!-- raw HTML omitted -->Jekyll on Windows&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 也提供了解決辦法。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="get-your-hands-dirty">Get Your Hands Dirty&lt;/h2>
-&lt;hr>
 &lt;p>接下來的步驟是參考這部&lt;a class="link" href="https://www.youtube.com/watch?v=U0idtvxVo9I" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->影片&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>撰寫而成。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="1-jekyll-themes">1. Jekyll Themes&lt;/h3>
+&lt;h3 id="jekyll-themes">Jekyll Themes&lt;/h3>
 &lt;p>到 &lt;a class="link" href="http://jekyllthemes.org/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Jekyll Themes&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 上挑選一個喜歡的模板。點進縮圖後可以點選 &lt;strong>Demo&lt;/strong> 進行預覽。&lt;/p>
 &lt;p>決定模版之後，點選 &lt;strong>Homepage&lt;/strong>，進入模板的 repo (repository)。以下將以本部落格的模板 &lt;a class="link" href="https://github.com/LeNPaul/Lagrange" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Lagrange&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 為例進行說明。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="2-repository-settings">2. Repository Settings&lt;/h3>
+&lt;h3 id="repository-settings">Repository Settings&lt;/h3>
 &lt;p>進入模板的 repo 後，請點選右側的 &lt;strong>Fork&lt;/strong>，將模板複製到自己的 repo。此時畫面中，repo 的名字會變成 &lt;strong>你的帳號/Lagrange&lt;/strong>。&lt;/p>
 &lt;p>接著要更改 4 個設定。&lt;/p>
 &lt;p>(1) 將左方的 &lt;strong>Branch&lt;/strong> 設為 &lt;strong>Master&lt;/strong>。如果下拉式選單中沒有這個選項，在搜尋欄位中打 &amp;ldquo;Master&amp;rdquo; 就可以搜尋到了。&lt;/p>
@@ -2171,24 +2168,22 @@ the Baroque period.&lt;/p>
 &lt;p>(3) 在 &lt;strong>Settings&lt;/strong> 中點選左方的 &lt;strong>Options&lt;/strong>，將 &lt;strong>Repository name&lt;/strong> 設定為&lt;strong>你的帳號.github.io&lt;/strong>。也可以設定別的名字，但最後 GitHub Page 的網址會長得不一樣，可以改改看。&lt;/p>
 &lt;p>(4) 滑到頁面下方，看到 &lt;strong>GitHub Pages&lt;/strong> 的欄位後停下來，把 &lt;strong>Source&lt;/strong> 改成 &lt;strong>master branch&lt;/strong>。上方的網址就是新建立的部落格的網址，如果點進去顯示 404，可能要稍後片刻（我曾經等過 20 分鐘）。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="3-github-desktop">3. GitHub Desktop&lt;/h3>
+&lt;h3 id="github-desktop">GitHub Desktop&lt;/h3>
 &lt;p>安裝 &lt;a class="link" href="https://desktop.github.com/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->GitHub Desktop&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 並完成設定。&lt;/p>
 &lt;p>回到自己的 repo，點選右側綠色的 &lt;strong>Clone or download&lt;/strong>，再點選 &lt;strong>Open in Desktop&lt;/strong>，repo 中的內容就會下載到自己的電腦上新增一個資料夾。同時 &lt;strong>GitHub Desktop&lt;/strong> 中左上角的 &lt;strong>Current Repository&lt;/strong> 會顯示自己的 repo 名稱。在電腦上對資料夾中檔案進行的修改會顯示在 &lt;strong>GitHub Desktop&lt;/strong> 上。&lt;/p>
 &lt;p> &lt;/p>
-&lt;h3 id="4-local-installation">4. Local Installation&lt;/h3>
+&lt;h3 id="local-installation">Local Installation&lt;/h3>
 &lt;p>在 command prompt 中 cd 到資料夾，再輸入 &lt;code>bundle install&lt;/code>。接著，輸入 &lt;code>bundle exec jekyll serve&lt;/code>，就可以在瀏覽器上輸入 &lt;code>localhost:4000&lt;/code> 進行預覽。（有時須依照 command prompt 出現的提示加新指令到資料夾裡的 &lt;code>Gemfile&lt;/code> 中。）&lt;/p>
 &lt;p>我的 Windows 電腦曾遇過數次 &lt;code>TZInfo::DataSourceNotFound&lt;/code> 錯誤訊息。此時只要在 &lt;code>Gemfile&lt;/code> 中新增 &lt;code>gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]&lt;/code>，就可以成功運作。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="personalize-your-blog">Personalize Your Blog&lt;/h2>
-&lt;hr>
 &lt;p>接著依照 repo 中 &lt;code>README.md&lt;/code> 的說明修改各檔案成自己的內容。我使用的編輯器是 &lt;a class="link" href="https://code.visualstudio.com/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Visual Studio Code&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。介面右方可以開啟 markdown preview，覺得很方便！在編輯過程中，與其直接刪除不需要執行的 lines ，在它們前面加上 &lt;code>#&lt;/code> 對我來說是比較保險的做法。&lt;/p>
 &lt;p>修改完並儲存後，重新整理 &lt;code>localhost:4000&lt;/code>，就可以看到更新的內容。根據我的經驗，&lt;code>_config.yml&lt;/code> 需花費較長時間更新。&lt;/p>
 &lt;p>回到 &lt;strong>GitHub Desktop&lt;/strong>，輸入 &lt;strong>Summary&lt;/strong> 後，點選左下角 &lt;strong>Commit to master&lt;/strong>，再點選右上角的 &lt;strong>Fetch origin&lt;/strong>，就可以將更新的檔案上傳到 GitHub 中的 repo，以更新正式的網頁。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="and-thats-it">And That&amp;rsquo;s It!&lt;/h2>
-&lt;hr>
 &lt;p>接下來就可以開開心心地用 &lt;a class="link" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Markdown&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 撰寫內文了！如果要預覽 blog，可以依照 &lt;code>4. Local Installation&lt;/code> 的方法執行，但不需要再 run 一次 &lt;code>bundle install&lt;/code>。&lt;/p>
 &lt;p>上述過程讓我感受最深的是，你必須試了才知道結果會如何。不知道怎麼做就試一下，再依結果去調整。不斷地找到問題，再不斷地解決問題，我認為這就是學習新事物困難但有趣的地方。&lt;/p>
