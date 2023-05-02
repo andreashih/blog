@@ -215,7 +215,8 @@ plot(ptt.tfl, main="PTT", log="xy",
 plot(dcard.tfl, main="Dcard", log="xy",
         xlab="rank", ylab="frequency")
 ```
-![](https://andreashih.github.io/img/rmd_posts/zipfr/all_tfl.png)
+
+{{< figure src="all_tfl.png" title="" width="60%" height="auto">}}
 
 ### Frequency Spectrum
 
@@ -255,7 +256,8 @@ plot(ptt.spc, log="x", main="PTT",
 plot(dcard.spc, log="x", main="Dcard",
         xlab="m", ylab="Vm")
 ```
-![](https://andreashih.github.io/img/rmd_posts/zipfr/all_spc.png)
+
+{{< figure src="all_spc.png" title="" width="60%" height="auto">}}
 
 從上圖可以得知，*hapax legomena* (只出現過一次的單詞)
 占所有語料庫的比例都相當的高。接下來，我們可以透過 Vocabulary growth
@@ -298,7 +300,8 @@ plot(ptt.vgc, add.m=1, main="PTT",
 plot(dcard.vgc, add.m=1, main="Dcard",
         xlab="N", ylab="V(N)/V1(N)")
 ```
-![](https://andreashih.github.io/img/rmd_posts/zipfr/all_vgc.png)
+
+{{< figure src="all_vgc.png" title="" width="60%" height="auto">}}
 
 上圖中顏色較深的曲線是 V，較淺的曲線是 V1。從圖中可以發現 ASBC 與 Brown
 corpus 的 V1 曲線上升後逐漸平緩，然而 PTT 與 Dcard 的 V1
@@ -351,8 +354,7 @@ plot(dcard.spc, dcard.fzm.spc,
 legend("topright", legend = c("observed", "fZM model"), 
         fill = 1:2, cex = 0.5)
 ```
-![](https://andreashih.github.io/img/rmd_posts/zipfr/all_spc_exp.png)
-
+{{< figure src="all_spc_exp.png" title="" width="60%" height="auto">}}
 
 Observed and expected VGC:
 ```r
@@ -374,7 +376,8 @@ plot(dcard.vgc, dcard.fzm.vgc, add.m=1,
 legend("topleft", legend = c("observed", "fZM model"),
         fill = 1:2, cex = 0.5)
 ```
-![](https://andreashih.github.io/img/rmd_posts/zipfr/all_vgc_exp.png)
+
+{{< figure src="all_vgc_exp.png" title="" width="60%" height="auto">}}
 
 上方的紅色曲線代表透過 fZM model 所產生的 expected value。
 

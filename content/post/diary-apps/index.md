@@ -13,7 +13,7 @@ tags:
 最近找到了三個實用而且版面漂亮的日記應用程式。雖然紙筆的地位無法取代，但寫東西在紙上時容易瞻前顧後，怕自己字寫醜了，或是隨手亂放被旁人看到。這時使用 app 在手機上隨手記錄就非常方便。以下介紹的三個應用程式都可以免費使用，且在 ios 和 android 上都可以取得，就讓我們看下去吧！
 
 ## [**<u>Daylio</u>**](https://daylio.net/)
----
+
 ✅ 支援中文版  
 ✅ 可備份  
 ❎ 不可加密碼 (需升級到 premium)  
@@ -22,21 +22,15 @@ tags:
 
 Daylio 主打心情紀錄，不用書寫文字。除了預設之外還有很多可愛的表情可以新增，顏色也可以自由更換（當然免費版的選擇會比較少）。隨手點一點就可以記錄當下的心情，一天當中可以記錄很多次，還可以選擇現在正在做的事情，幫助我們了解做什麼事情會帶來怎麼樣的心情（例如：去跑步->覺得開心、煮飯->覺得平靜）。
 
-<p align = "center">
-<img src = "https://andreashih.github.io/img/rmd_posts/diary_apps/daylio-1.gif" width="220" height="390">
-</p>
+{{< figure src="daylio-1.gif" title="" width="30%" height="auto">}}
 
 Daylio 還有很棒的功能：週報和月報，可以了解一段期間內的心情變化，還會計算情緒分數和繪製心情折線圖。資料可以匯出成 csv 格式。
 
-<p align = "center">
-<img src = "https://andreashih.github.io/img/rmd_posts/diary_apps/daylio-2.gif" width="220" height="390">
-</p>
+{{< figure src="daylio-2.gif" title="" width="30%" height="auto">}}
 
 除此之外，Daylio 也可以用來設定目標，根據不同的目的（例如：幫助睡眠、釋放壓力...）推薦不同的活動，並設定一週要從事幾次。  
 
-<p align = "center">
-<img src = "https://andreashih.github.io/img/rmd_posts/diary_apps/daylio-3.gif" width="220" height="390">
-</p>
+{{< figure src="daylio-3.gif" title="" width="30%" height="auto">}}
 
 > 總結：
 
@@ -47,7 +41,7 @@ Daylio 還有很棒的功能：週報和月報，可以了解一段期間內的�
 &nbsp;
 
 ## [**<u>Five Minute Journal</u>**](https://www.intelligentchange.com/products/five-minute-journal-app)
----
+
 ❎ 無中文版  
 ✅ 可備份  
 ✅ 可加密碼 (或 touch/face ID)  
@@ -66,9 +60,7 @@ Five Minute Journal 介面超文青超有質感，是適合一早起床就使用
 
 早上的問題可以提升動力，晚上的 wrap up 則提供了反思的機會。問答的設計很像在跟一個虛擬好友聊天，溫暖的奶茶色背景也讓人感到很放鬆。
 
-<p align = "center">
-<img src = "https://andreashih.github.io/img/rmd_posts/diary_apps/journal.gif" width="220" height="390">
-</p>
+{{< figure src="journal.gif" title="" width="30%" height="auto">}}
 
 Five Minute Journal 也有類似 Daylio 的心情記錄功能，還可以在日記中加入照片，但要升級為 premium 版才能使用。不過免費版也有 frequent words 功能，可以看到自己常常用哪些字。
 
@@ -81,7 +73,7 @@ Five Minute Journal 也有類似 Daylio 的心情記錄功能，還可以在日�
 &nbsp;
 
 ## [**<u>Day One</u>**](https://dayoneapp.com/)
----
+
 ✅ 支援中文版  
 ✅ 可備份  
 ✅ 可加密碼 (或 touch/face ID)  
@@ -89,9 +81,7 @@ Five Minute Journal 也有類似 Daylio 的心情記錄功能，還可以在日�
 
 Day One 是一個老牌日記 app，介面很簡潔，版面顏色可以自己選擇。乍看有點像 ios 內建的備忘錄，也有加 tag 分類的功能。可以將日記匯出成 pdf、plain text 或 markdown 等不同格式，還可以分享連結。除了文字外也可以加上地點、天氣和照片，但免費版只能放一張。Premium 版可以放影片和錄音，支援手寫，還可以與 instagram 連動。還有一個很酷的功能：在 app 上編輯日記封面，幫你印成一本書，不過這是需要額外付費的。
 
-<p align = "center">
-<img src = "https://andreashih.github.io/img/rmd_posts/diary_apps/day-one.jpg" border="1" width="300" height="400">
-</p>
+{{< figure src="day-one.jpg" title="" width="30%" height="auto">}}
 
 如果面對空白頁面不知如何下筆，Day One 也提供了許多模板，例如 daily gratitude、daily self...等。模板中會有一些預設的問題引導你書寫，像是 daily self 模板中的五個問題是：
 

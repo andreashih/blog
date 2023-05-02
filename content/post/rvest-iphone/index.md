@@ -115,7 +115,7 @@ ggplot(df, aes(x = reorder(Model, -n), y = n)) +
            theme(axis.text.x=element_text(angle=45, hjust=1))
 ```
 
-![](https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-6-1.png)
+{{< figure src="unnamed-chunk-6-1.png" title="" width="60%" height="auto">}}
 
 ```r
 require(ggrepel)
@@ -126,7 +126,8 @@ ggplot(df, aes(x = n, y = Order, label = Model)) +
   geom_text_repel() +
   theme(legend.position = "none")
 ```
-![](https://andreashih.github.io/img/rmd_posts/rvest_iphone_files/figure-markdown_strict/unnamed-chunk-7-1.png)
+
+{{< figure src="unnamed-chunk-7-1.png" title="" width="60%" height="auto">}}
 
 ## Explanation
 

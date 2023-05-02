@@ -56,7 +56,7 @@ nerd %>%
     geom_bar(position = "dodge", stat = "identity", width = 0.3)
 ```
 
-![](https://andreashih.github.io/img/rmd_posts/nerdgeek/1.png)
+{{< figure src="1.png" title="" width="60%" height="auto">}}
 
 接下來看看不同世紀使用 `nerd` 與 `geek` 時的 polarities。可以發現不論在
 20 或 21 世紀，使用 `nerd` 和 `geek` 時大部分都是 neutrual
@@ -73,7 +73,7 @@ nerd %>%
     geom_bar(position = "dodge", stat = "identity", width = 0.5)
 ```
 
-![](https://andreashih.github.io/img/rmd_posts/nerdgeek/2.png)
+{{< figure src="2.png" title="" width="60%" height="auto">}}
 
 因為好奇，到 [**<u>Cambridge Dictionary</u>**](https://dictionary.cambridge.org/)
 上查了兩字的釋義：
@@ -104,7 +104,7 @@ nerd %>%
     geom_bar(stat = "identity", width = 0.4)
 ```
 
-![](https://andreashih.github.io/img/rmd_posts/nerdgeek/3.png)
+{{< figure src="3.png" title="" width="60%" height="auto">}}
 
 ## Logistic Regression Model
 

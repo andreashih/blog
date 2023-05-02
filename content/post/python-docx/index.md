@@ -15,7 +15,7 @@ tags:
 
 最初的想法如下圖：
 
-![](https://andreashih.github.io/img/rmd_posts/python_docx/python_docx.png)
+{{< figure src="python_docx.png" title="專案發想" width="60%" height="auto">}}
 
 
 ## Code

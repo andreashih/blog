@@ -15,7 +15,7 @@ tags:
 &nbsp;
 
 ## 音樂劇的組成
----
+
 > *The overture is about to start,  
 > You cross your fingers and hold your heart,  
 > It's curtain time and away we go,  
@@ -39,10 +39,10 @@ tags:
 
 
 ## 2018 中山外文大英劇
----
+
 我的劇場經驗較同屆的同學晚了一整年。大部分有志參與大英劇的同學會在一年級當舞台助理，二年級上台演出，並在三年級擔任製作群。而我則是在大三直接參加演員甄選。2018 演出的是 *Grease*，一齣活潑熱情的美式校園劇。音樂是我很喜歡的 1950s 風格，因此每次最期待的就是練唱。圖中大家身上的禮服出現在劇中最經典的 prom 一景，女演員手上都戴著 corsage，復刻 50 年代美國高中舞會。 
 
-![](https://andreashih.github.io/img/rmd_posts/musical/ged.jpg)
+{{< figure src="ged.jpg" title="" width="60%" height="auto">}}
 
 以下是我在大英劇訓練下習得的一些特殊技能，雖然跟劇沒有直接關係，但下戲後仍牢牢地嵌在我的生活經驗裡。
 
@@ -55,20 +55,24 @@ tags:
 &nbsp;
 
 ## 我心目中的音樂劇 Top 3
----
+
 因為熱愛音樂，在接受大英劇訓練後開始以不同角度欣賞音樂劇中的樂曲。以下將介紹我心目中的音樂劇 Top 3 以及其中我最喜歡的曲目。
 
 ### 1. 《芝加哥》*Chicago*
-![](https://andreashih.github.io/img/rmd_posts/musical/chicago.PNG)
+
+{{< figure src="chicago.PNG" title="" width="60%" height="auto">}}
+
 犯罪與貪婪，是《芝加哥》的兩大關鍵字。爵士曲風讓整齣戲多了一股詭譎卻詼諧的黑色幽默。[*And All That Jazz*](https://www.youtube.com/watch?v=Le8a7u1pANU) 中長號的拖拉與鋼琴的清脆呈現出對比，拉開一樁驚世駭俗謀殺案的序幕。[*All I Care About*](https://www.youtube.com/watch?v=6tP38xLLreg) 中男主角的口哨 solo 和女主角 Roxie 獨唱的 [*Nowadays*](https://www.youtube.com/watch?v=HGetrf2KVrs) 也充分呈現出「拖拉」的特色：轉音、滑音及後半拍的運用。Renée Zellweger 慵懶甜美的唱腔精準詮釋天真又危險的 Roxie，帶有不疾不徐，蔑笑人生百態的韻味。
 
 ### 2. 《吉屋出租》*RENT*
-![](https://andreashih.github.io/img/rmd_posts/musical/rent.PNG)
+
+{{< figure src="rent.PNG" title="" width="60%" height="auto">}}
 
 *RENT* 劇中角色秉持著自由、藝術與愛，面臨了人生的不同轉折。除了搖滾，作曲家 Jonathan Larson 也在序曲 [*Seasons of Love*](https://www.youtube.com/watch?v=wsj15wPpjLY) 中加入了福音元素。[*Light My Candle*](https://www.youtube.com/watch?v=c7H1zqvKObM) 及 [*Tango: Maureen*](https://www.youtube.com/watch?v=v3FbN7ynh4M) 皆是富有劇情的男女對唱。*Light My Candle* 描述戀情初萌芽的情侶彼此試探，男女主角一人一句，節奏明快地串接整首曲子。*Tango: Maureen* 呈現一位風流女子的前男女友，彼此狹路相逢卻同仇敵愾，同時又相互較勁的複雜情感，其中的合音讓人精神大振，頗有一吐為快的舒暢感。[*What You Own*](https://www.youtube.com/watch?v=JaPUzbY_uVA) 則是經典搖滾曲風，可說是總結整齣劇的曲目。
 
 ### 3. 《一個美國人在巴黎》*An American in Paris*
-![](https://andreashih.github.io/img/rmd_posts/musical/american.PNG)
+
+{{< figure src="american.PNG" title="" width="60%" height="auto">}}
 
 年輕的心靈漫步在浪漫的花都，是《一個美國人在巴黎》呈現的美好畫面。精緻的芭蕾舞蹈，細膩的光影及優雅的換場將觀眾帶進作曲家 [George Gershwin](https://www.youtube.com/watch?v=BskzP8D-R6U) 的巴黎假期。結合了古典、爵士與藍調，[*An American in Paris*](https://www.youtube.com/watch?v=S4CXZJFxvSw&list=PLM_1csaEG9kewZn1ILEa7g6OpD_4sDbpz&index=15) 的編曲讓管弦樂團揮灑出一幅水彩畫。[*Lisa*](https://www.youtube.com/watch?v=8p7O45VV51M&list=PLM_1csaEG9kewZn1ILEa7g6OpD_4sDbpz&index=6) 是男主角為女主角獻唱的邀約定情曲，而 [*'S Wonderful*](https://www.youtube.com/watch?v=Rx-lEkC-p4k&list=PLM_1csaEG9kewZn1ILEa7g6OpD_4sDbpz&index=7) 則表現了三位男士墜入愛河的情懷。三部合音讓三位個性迥異的男主角聚在一塊，三人的各懷心思也在音樂中呈現，其中的口白 "What the hell you guys doing in my song?" "It's MY song!" 更令人會心一笑。
 
