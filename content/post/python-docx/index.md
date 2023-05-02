@@ -19,7 +19,7 @@ tags:
 
 
 ## Code
----
+
 
 ```python
 import os
@@ -115,14 +115,13 @@ while mode not in ['move','copy', 'delete']:
 &nbsp;
 
 ## Murmuring
----
 
 真心覺得對初學者來說，盡量不要同時學兩個程式。資質駑鈍如我無法同時參透兩個語言，因此這學期就是不斷把 R 寫在 python 裡或把 python 寫在 R 裡。寫完一整天的 python 要再回去寫 R，簡直像濃霧中漫步伸手不見五指。順攝抑制和倒攝抑制在我身上嶄露無遺。所以學程式不要貪快貪多，會消化不良（倘若列位看官是程式小天才則另當別論）。像這個簡單的小專案就讓我做了超級久（從適應 python 語法到寫出好像可以 run 的東西），而且還不大完善。最好的方式就是早一點開始學，不要像我一樣 code 到用時方恨少！
 
 &nbsp;
 
 ## 參考資料
----
+
 [**<u>Search all docx files with python-docx in a directory (batch)</u>**](https://stackoverflow.com/questions/42682648/search-all-docx-files-with-python-docx-in-a-directory-batch)
 
 [**<u>Searching docx Files in python</u>**](https://stackoverflow.com/questions/22819948/searching-docx-files-in-python)

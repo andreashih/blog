@@ -46,10 +46,10 @@ tags:
 
 以下是我在大英劇訓練下習得的一些特殊技能，雖然跟劇沒有直接關係，但下戲後仍牢牢地嵌在我的生活經驗裡。
 
-### 1. 快速換裝技能
+### 快速換裝技能
 在各個 scene 之間常常需要換裝，但時間往往不到兩分鐘。因此演員都學會了如何快速剝去上一場的戲服再踩進下一場的衣服。「踩」這個動詞最能描述當時的情境。換裝 partner 會幫你將戲服攤開在地上，因此只要踩進去，拉上來，就可以到台上 stand by 了。最高紀錄從洋裝換禮服再戴上配件甚至不到三十秒就完成。從此之後，我換衣服的速度變得極快，也因此有更多時間可以賴床。
 
-### 2. 零碎時間運用
+### 零碎時間運用
 英劇練習幾乎佔滿了平日所有晚上及週末兩整天，這對當時仍是 GPA 小偷的我來說是一大挑戰。因此我學會了如何逐水草而讀書，例如：吃完飯在化妝間讀書，休息時間在走廊站著讀書，練習開始前坐在地上用鞋盒當桌子讀書。當時也練就了快速專心的技能，但凡事都有過與不及，下戲後我反而不知道該如何在一大塊完整的時間內讀書。此事困擾我許久，至今雖然大致解決，但仍留有一點後遺症。
 
 &nbsp;
@@ -58,19 +58,19 @@ tags:
 
 因為熱愛音樂，在接受大英劇訓練後開始以不同角度欣賞音樂劇中的樂曲。以下將介紹我心目中的音樂劇 Top 3 以及其中我最喜歡的曲目。
 
-### 1. 《芝加哥》*Chicago*
+### 《芝加哥》*Chicago*
 
 {{< figure src="chicago.PNG" title="" width="60%" height="auto">}}
 
 犯罪與貪婪，是《芝加哥》的兩大關鍵字。爵士曲風讓整齣戲多了一股詭譎卻詼諧的黑色幽默。[*And All That Jazz*](https://www.youtube.com/watch?v=Le8a7u1pANU) 中長號的拖拉與鋼琴的清脆呈現出對比，拉開一樁驚世駭俗謀殺案的序幕。[*All I Care About*](https://www.youtube.com/watch?v=6tP38xLLreg) 中男主角的口哨 solo 和女主角 Roxie 獨唱的 [*Nowadays*](https://www.youtube.com/watch?v=HGetrf2KVrs) 也充分呈現出「拖拉」的特色：轉音、滑音及後半拍的運用。Renée Zellweger 慵懶甜美的唱腔精準詮釋天真又危險的 Roxie，帶有不疾不徐，蔑笑人生百態的韻味。
 
-### 2. 《吉屋出租》*RENT*
+### 《吉屋出租》*RENT*
 
 {{< figure src="rent.PNG" title="" width="60%" height="auto">}}
 
 *RENT* 劇中角色秉持著自由、藝術與愛，面臨了人生的不同轉折。除了搖滾，作曲家 Jonathan Larson 也在序曲 [*Seasons of Love*](https://www.youtube.com/watch?v=wsj15wPpjLY) 中加入了福音元素。[*Light My Candle*](https://www.youtube.com/watch?v=c7H1zqvKObM) 及 [*Tango: Maureen*](https://www.youtube.com/watch?v=v3FbN7ynh4M) 皆是富有劇情的男女對唱。*Light My Candle* 描述戀情初萌芽的情侶彼此試探，男女主角一人一句，節奏明快地串接整首曲子。*Tango: Maureen* 呈現一位風流女子的前男女友，彼此狹路相逢卻同仇敵愾，同時又相互較勁的複雜情感，其中的合音讓人精神大振，頗有一吐為快的舒暢感。[*What You Own*](https://www.youtube.com/watch?v=JaPUzbY_uVA) 則是經典搖滾曲風，可說是總結整齣劇的曲目。
 
-### 3. 《一個美國人在巴黎》*An American in Paris*
+### 《一個美國人在巴黎》*An American in Paris*
 
 {{< figure src="american.PNG" title="" width="60%" height="auto">}}
 
