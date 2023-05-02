@@ -13,7 +13,7 @@ tags:
 
 對台大語言所碩一的同學們來說，下學期的重頭戲無疑是田野調查。這門讓大家期待了大半年的課程果真充實無比，田調的過程更是充滿驚奇與挑戰。這學期我們學習了魯凱語，課程一開始老師請了族語老師到所上讓我們採集語料。較熟悉魯凱語，也寫了兩篇小分析後，五月底便啟程到部落進行五天四夜的田野調查。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/mist.JPG)
+{{< figure src="/images/mist.JPG" title="" width="50%" height="auto">}}
 
 &nbsp;
 
@@ -21,7 +21,7 @@ tags:
 ---
 我們這組被安排進行田調的耆老是一位牧師。牧師和妻子一同接受我們採訪，在開始之前，牧師妻子問我們介不介意在開始前禱告。禱告時牧師妻子的話語平復了上午舟車勞頓的煩擾。後來詢問老師才知道，部落的牧師們是經常被請來做田調的耆老。因為傳教需求，牧師通常精通族語和中文。在田調的過程中，牧師一字一句仔細發音給我們聽，也會寫羅馬拼音給我們看，還會幫我們聽發音。聚精會神之下 3 小時飛快地過去，來到微涼的傍晚。山嵐滾滾而來，如臨幻境。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/mist2.JPG)
+{{< figure src="/images/mist2.JPG" title="" width="50%" height="auto">}}
 
 &nbsp;
 
@@ -29,17 +29,17 @@ tags:
 ---
 因為前一晚轉寫到深夜，早上被音樂叫醒時，朦朧中忘了自己身在何處，此時部落裡的族語廣播提醒了我正在霧台山中。從住處走到田調場地的路上，看到了一片紅藜田。紅藜營養價值豐富，與小米及芋頭並列魯凱人的三大主食。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/plant.JPG)
+{{< figure src="/images/plant.JPG" title="" width="50%" height="auto">}}
 
 走在石板路上，放眼望去盡是一片片碧綠層疊，天空藍得不可思議。路旁有著立體的陶壺裝飾，陶壺在魯凱文化中具有重要象徵意義，也是貴族的婚禮聘禮之一。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/view.JPG)
+{{< figure src="/images/view.JPG" title="" width="50%" height="auto">}}
 
 上午被安排到與熟悉的族語老師田調，在舒適圈裡的四人拼命問問題，累積了如霧台山一般高的語料。下午我們遇到了一位村長，村長看起來略有些嚴肅，但似乎被組員們的歡笑感染，很開心地度過了三小時的田調。我們也得知了大部分耆老對於我們學習魯凱語十分贊同，也很好奇我們為什麼要學習魯凱語，更對我們能說出幾個魯凱語詞彙感到驚奇。部落裡的年輕人多半不會說族語，我們雖然只是魯凱語門外漢，但[**<u>田調留下來的資料</u>**](https://glosss.yongfu.name/#/)也許能為語言保存盡一份心力。
 
 傍晚降下突如其來的大雨，像是巨大水盆傾瀉而下，雨水讓整座山蓋上一片白茫。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/rain.JPG)
+{{< figure src="/images/rain.JPG" title="" width="50%" height="auto">}}
 
 &nbsp;
 
@@ -53,7 +53,7 @@ tags:
 
 晚餐我們吃到了魯凱族傳統美食 *cinabu* (吉拿富)。*cinabu* 的內餡通常是豬肉、小米粉及芋頭粉等食材，外層以假酸漿葉包覆，可以食用。最外層則使用月桃葉包裹，再用月桃繩束起，如下圖右下所示。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/dish.JPG)
+{{< figure src="/images/dish.JPG" title="" width="50%" height="auto">}}
 
 &nbsp;
 
@@ -68,7 +68,7 @@ tags:
 
 參訪魯凱文物館時，耆老的女兒，同時也是文物館導覽員，向我們介紹了 *mauapapalange* 的細節與過程。*mauapapalange* 並非一對一的相親，而是由男女主角各自邀請男生及女生朋友一同參加。*mauapapalange* 的地點會選在女生家中，座位配置如下圖：
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/seat.png)
+{{< figure src="/images/seat.png" title="" width="50%" height="auto">}}
 
 年輕的男女會坐在石椅上，且男女壁壘分明。長輩則會坐在前方，有監督的作用。
 
@@ -87,11 +87,11 @@ tags:
 ### 建築
 魯凱族的傳統建築為石板屋，是族人取得石板後經處理堆疊而成。若屋外有石椅，則是頭目家屋，因為頭目會在戶外石椅負責調解。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/daane.JPG)
+{{< figure src="/images/daane.JPG" title="" width="50%" height="auto">}}
 
 石板屋有天窗，讓光線得以透進室內。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/ceiling.JPG)
+{{< figure src="/images/ceiling.JPG" title="" width="50%" height="auto">}}
 
 魯凱族精於雕刻，家屋內外都有雕刻藝術。平民家屋的雕刻與貴族家屋的不同，而貴族家屋的雕刻又不可和頭目相同。
 
@@ -115,7 +115,7 @@ tags:
 ---
 車子緩緩開下山，司機在這幅景象前特別停下來讓我們拍照。自然的壯闊之美盡收眼底，旅程也到了尾聲。從美麗的部落回到喧嚷的都市，不免常常想起那座山，那道陽光，與那些人。
 
-![](https://andreashih.github.io/img/rmd_posts/fieldtrip/mountains.JPG)
+{{< figure src="/images/mountains.JPG" title="" width="50%" height="auto">}}
 
 &nbsp;
 
