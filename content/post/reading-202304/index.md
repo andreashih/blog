@@ -90,7 +90,7 @@ Nothing's gonna change my world
 6. 承諾行動 (Committed action)
 根據自己的價值採取行動，並且就算失敗多次，還是會堅守價值做正確的事。
 
-接納與承諾療法可以讓我們釐清現況，並與負面情緒和平共處。但作者也提醒，練習 ACT 的確可能讓我們心情變好，但這並不是主要的目標。如果將 ACT 變成 control strategy 將會適得其反。
+接納與承諾療法可以讓我們釐清現況，並與負面情緒和平共處。但作者也提醒，練習 ACT 的確可能讓心情變好，但這並不是主要的目標。如果將 ACT 變成 control strategy 將會適得其反。
 
 延伸閱讀：[認知脫鉤 (defusion)：與失控的負面想法共存](https://psychtranslation.com/2017/09/24/%E8%AA%8D%E7%9F%A5%E8%84%AB%E9%89%A4defusion%EF%BC%9A%E8%88%87%E8%B2%A0%E9%9D%A2%E6%83%B3%E6%B3%95%E5%85%B1%E5%AD%98/)
 
