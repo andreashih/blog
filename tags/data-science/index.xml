@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>data science on The Andrea Journal</title><link>https://www.andreashih.com/blog/tags/data-science/</link><description>Recent content in data science on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 31 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.andreashih.com/blog/tags/data-science/index.xml" rel="self" type="application/rss+xml"/><item><title>2022 11~12 月份閱讀</title><link>https://www.andreashih.com/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/</link><pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate><guid>https://www.andreashih.com/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/</guid><description>&lt;img src="https://www.andreashih.com/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/read_2.jpg" alt="Featured image of post 2022 11~12 月份閱讀" />&lt;h2 id="storytelling-with-data">Storytelling with Data&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>data science on The Andrea Journal</title><link>https://andreashih.com/blog/tags/data-science/</link><description>Recent content in data science on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 31 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/tags/data-science/index.xml" rel="self" type="application/rss+xml"/><item><title>2022 11~12 月份閱讀</title><link>https://andreashih.com/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/</link><pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/</guid><description>&lt;img src="https://andreashih.com/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/read_2.jpg" alt="Featured image of post 2022 11~12 月份閱讀" />&lt;h2 id="storytelling-with-data">Storytelling with Data&lt;/h2>
 &lt;p>作者部落格：&lt;a class="link" href="https://www.storytellingwithdata.com/" target="_blank" rel="noopener"
 >storytellingwithdata.com&lt;/a>&lt;/p>
 &lt;p>這本幾乎是 data scientist 人手一本的案頭書，內容十分精鍊且容易應用。在研究所時期，我的指導老師就耳提面命要我們避開圓餅圖，本書作者也指出圓餅圖和立體圖是最要避免的資料呈現方式。原以為我的視覺化能力大約有中上程度，總是恪守文字對齊、色彩統一，還有在折線圖尾端加上資料標籤。但閱讀本書後，發現自己還是在不經意間製作了許多爛圖表，舉例如下：&lt;/p>
@@ -16,10 +16,10 @@
 之前在做不同類別變項的比較時，畫了一張堆疊長條圖，但是因為種類繁多，整張圖大概有五六種顏色，直接被老闆說太花了。作者在書中提出解方，以下圖左方為例，顏色花花綠綠包含太多雜訊，沒辦法一眼看到重點。此時應思考我們要引導觀眾注意哪裡，並且只在該處使用色彩，其餘部分則以灰階呈現，如下圖右方所示。&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://www.andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/stacked_bar_chart.png"
+&lt;p>&lt;img src="https://andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/stacked_bar_chart.png"
 width="1942"
 height="888"
-srcset="https://www.andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/stacked_bar_chart_hu6ac095439c4ecf9124e8a8b072a3b256_1623781_480x0_resize_box_3.png 480w, https://www.andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/stacked_bar_chart_hu6ac095439c4ecf9124e8a8b072a3b256_1623781_1024x0_resize_box_3.png 1024w"
+srcset="https://andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/stacked_bar_chart_hu6ac095439c4ecf9124e8a8b072a3b256_1623781_480x0_resize_box_3.png 480w, https://andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/stacked_bar_chart_hu6ac095439c4ecf9124e8a8b072a3b256_1623781_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="堆疊長條圖修正方式 (Knaflic, 2015)"
 class="gallery-image"
@@ -30,10 +30,10 @@ data-flex-basis="524px"
 &lt;li>折線圖 (Line chart) 不要變成麵條圖&lt;br>
 所謂麵條圖，就是像麵條一樣堆疊在一起的折線圖。之前在呈現不同時段的物料量趨勢時，畫出了一張麵條圖，導致報告時需要更多時間解釋。圖片中許多雜亂的線條，讓重點難以呈現。作者提出了幾種解決方式，包括以顏色強調重點線條，或將各折線以空間分開呈現等。下圖呈現書中強調線條的範例，與堆疊長條圖的修正方式類似，都是減少雜訊讓重點突出，以達到資料溝通的效率。&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://www.andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/line_chart.png"
+&lt;p>&lt;img src="https://andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/line_chart.png"
 width="2110"
 height="774"
-srcset="https://www.andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/line_chart_hudb808125103ac16cf28b7697ee5e67de_823434_480x0_resize_box_3.png 480w, https://www.andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/line_chart_hudb808125103ac16cf28b7697ee5e67de_823434_1024x0_resize_box_3.png 1024w"
+srcset="https://andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/line_chart_hudb808125103ac16cf28b7697ee5e67de_823434_480x0_resize_box_3.png 480w, https://andreashih.com/blog/blog/p/2022-11~12-%E6%9C%88%E4%BB%BD%E9%96%B1%E8%AE%80/line_chart_hudb808125103ac16cf28b7697ee5e67de_823434_1024x0_resize_box_3.png 1024w"
 loading="lazy"
 alt="麵條圖修正方式 (Knaflic, 2015)"
 class="gallery-image"
