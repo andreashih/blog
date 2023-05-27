@@ -15,7 +15,7 @@ menu:
             icon: user
 ---
 
-Hi! My name is Andrea and I am a data scientist at Wistron Corporation in Taiwan. In this blog, I'll be sharing things I've learned at work and in life.
+Hey there! I'm Andrea, navigating life in Taiwan as a data scientist. Here on this blog, I'll be tossing in some thoughts from my day-to-day life at work and beyond.
 
 If you are having any questions, feel free to comment below or [send me an email](mailto:cfshih97@gmail.com).
 
