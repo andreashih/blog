@@ -147,7 +147,7 @@ params:
             id:
     widgets:
         homepage:
-            #- type: search
+            - type: search
             - type: archives
               params:
                   limit: 5
