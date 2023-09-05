@@ -12,12 +12,13 @@ tags:
 
 [Microsoft Sharepoint](https://support.microsoft.com/zh-tw/office/%E4%BB%80%E9%BA%BC%E6%98%AF-sharepoint-97b915e6-651b-43b2-827d-fb25777f446f) 是許多公司內部分享資料的平台。我們有時會需要從 Sharepoint 上取得大量資料，但是一個一個點擊下載會花很多時間。本文將介紹如何用 Python 將 Microsoft Sharepoint 的資料更快速自動地下載到本機。
 
-## 下載並載入套件
+## 載入套件
 ```python
 !pip install python-dotenv
 !pip install Office365-REST-Python-Client
 !pip install git+https://github.com/vgrem/Office365-REST-Python-Client.git
 ```
+
 ```python
 # For office365 library
 from office365.runtime.auth.authentication_context import AuthenticationContext
@@ -51,10 +52,8 @@ web = ctx.web
 ctx.load(web)
 ctx.execute_query()
 print('Connected to SharePoint: ',web.properties['Title'])
+# Output: Connected to SharePoint:  My Sharepoint
 ```
-<pre>
-Connected to SharePoint:  My Sharepoint
-</pre>
 
 ## 下載檔案
 設定資料夾路徑。
@@ -83,12 +82,11 @@ for filename in filenames:
         with open(os.path.join(output_dir, filename), 'wb') as output_file:  
             output_file.write(file_response.content)
         print(f"{filename} saved")
+# Output: 
+# 001.txt saved
+# 002.txt saved
+# fig.png saved
 ```
-<pre>
-001.txt saved
-002.txt saved
-fig.png saved
-</pre>
 
 這樣就完成了！
 
