@@ -1,4 +1,161 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on The Andrea Journal</title><link>https://andreashih.com/blog/tags/python/</link><description>Recent content in python on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 11 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>查詢萌典中的同義詞和反義詞</title><link>https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</link><pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/book-shadow.jpg" alt="Featured image of post 查詢萌典中的同義詞和反義詞" />&lt;h2 id="關於萌典">關於萌典&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on The Andrea Journal</title><link>https://andreashih.com/blog/tags/python/</link><description>Recent content in python on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 05 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Python 取得 Microsoft Sharepoint 的資料</title><link>https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/</link><pubDate>Tue, 05 Sep 2023 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/laptop.jpg" alt="Featured image of post 使用 Python 取得 Microsoft Sharepoint 的資料" />&lt;p>&lt;a class="link" href="https://support.microsoft.com/zh-tw/office/%E4%BB%80%E9%BA%BC%E6%98%AF-sharepoint-97b915e6-651b-43b2-827d-fb25777f446f" target="_blank" rel="noopener"
+>Microsoft Sharepoint&lt;/a> 是許多公司內部分享資料的平台。我們有時會需要從 Sharepoint 上取得大量資料，但是一個一個點擊下載會花很多時間。本文將介紹如何用 Python 將 Microsoft Sharepoint 的資料更快速自動地下載到本機。&lt;/p>
+&lt;h2 id="下載並載入套件">下載並載入套件&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="err">!&lt;/span>&lt;span class="n">pip&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">python&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">dotenv&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">!&lt;/span>&lt;span class="n">pip&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">Office365&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">REST&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Python&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Client&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">!&lt;/span>&lt;span class="n">pip&lt;/span> &lt;span class="n">install&lt;/span> &lt;span class="n">git&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="n">https&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">github&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">vgrem&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">Office365&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">REST&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Python&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">git&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># For office365 library&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">office365.runtime.auth.authentication_context&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">AuthenticationContext&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">office365.sharepoint.client_context&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">ClientContext&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">office365.sharepoint.files.file&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">File&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># For .env file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">os&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">dotenv&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">load_dotenv&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">load_dotenv&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="連上-sharepoint">連上 Sharepoint&lt;/h2>
+&lt;p>為了安全可以將資訊另存在 &lt;code>.env&lt;/code> 中，但要注意不要不小心上傳到 Git。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">SHAREPOINT_BASE_URL&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="c1"># Sharepoint 連結&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SHAREPOINT_USER&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="c1"># 帳號&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">SHAREPOINT_PASSWORD&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="c1"># 密碼&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>接著就可以使用 &lt;code>os.getenv()&lt;/code> 取得 &lt;code>.env&lt;/code> 中的參數。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">sharepoint_base_url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getenv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;SHAREPOINT_BASE_URL&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sharepoint_user&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getenv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;SHAREPOINT_USER&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sharepoint_password&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getenv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;SHAREPOINT_PASSWORD&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>連接到 Sharepoint。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">auth&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">AuthenticationContext&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sharepoint_base_url&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">auth&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">acquire_token_for_user&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sharepoint_user&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">sharepoint_password&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ctx&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ClientContext&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sharepoint_base_url&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">auth&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">web&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ctx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">web&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ctx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">web&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ctx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">execute_query&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Connected to SharePoint: &amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">web&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">properties&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Title&amp;#39;&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;!-- raw HTML omitted -->
+&lt;h2 id="下載檔案">下載檔案&lt;/h2>
+&lt;p>設定資料夾路徑。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">sharepoint_folder&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="c1"># Sharepoint 資料夾路徑&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">output_dir&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="c1"># 檔案儲存於本機的路徑&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="ow">not&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">exists&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">output_dir&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">mkdir&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">output_dir&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>列出資料夾下的檔案名稱。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">folder&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ctx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">web&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_folder_by_server_relative_url&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sharepoint_folder&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">filenames&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">sub_folders&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">folder&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">files&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ctx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sub_folders&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ctx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">execute_query&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">s_folder&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">sub_folders&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">filenames&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">s_folder&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">properties&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;Name&amp;#34;&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>下載檔案到本機。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">filename&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">filenames&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">path&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sharepoint_folder&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">file_response&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">File&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">open_binary&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ctx&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">path&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="n">file_response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">content&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">with&lt;/span> &lt;span class="nb">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">output_dir&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="s1">&amp;#39;wb&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">output_file&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">output_file&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file_response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">content&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> saved&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;!-- raw HTML omitted -->
+&lt;!-- raw HTML omitted -->
+&lt;p>這樣就完成了！&lt;/p>
+&lt;p> &lt;/p>
+&lt;h2 id="參考資料">參考資料&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a class="link" href="https://stackoverflow.com/questions/59979467/accessing-microsoft-sharepoint-files-and-data-using-python" target="_blank" rel="noopener"
+>https://stackoverflow.com/questions/59979467/accessing-microsoft-sharepoint-files-and-data-using-python&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/bashamsc/sharepoint_python/blob/main/sharepoint_read_file_python.py" target="_blank" rel="noopener"
+>https://github.com/bashamsc/sharepoint_python/blob/main/sharepoint_read_file_python.py&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;p> &lt;/p>
+&lt;p>Photo by &lt;!-- raw HTML omitted -->Windows&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>查詢萌典中的同義詞和反義詞</title><link>https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</link><pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/book-shadow.jpg" alt="Featured image of post 查詢萌典中的同義詞和反義詞" />&lt;h2 id="關於萌典">關於萌典&lt;/h2>
 &lt;p>萌典是一部由臺灣開源社群 &lt;a class="link" href="https://github.com/g0v" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->g0v 零時政府&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>開發的數位化漢語詞典。國語資料來源為《教育部重編國語辭典修訂本》，閩南語資料來自《臺灣閩南語常用詞辭典》，客家語資料則源自《臺灣客家語常用詞辭典》。除此之外，該計畫近日也新增了&lt;a class="link" href="https://amis.moedict.tw/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->阿美語萌典&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
