@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>python on The Andrea Journal</title><link>https://andreashih.com/blog/tags/python/</link><description>Recent content in python on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 05 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Python 取得 Microsoft Sharepoint 的資料</title><link>https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/</link><pubDate>Tue, 05 Sep 2023 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/laptop.jpg" alt="Featured image of post 使用 Python 取得 Microsoft Sharepoint 的資料" />&lt;p>&lt;a class="link" href="https://support.microsoft.com/zh-tw/office/%E4%BB%80%E9%BA%BC%E6%98%AF-sharepoint-97b915e6-651b-43b2-827d-fb25777f446f" target="_blank" rel="noopener"
 >Microsoft Sharepoint&lt;/a> 是許多公司內部分享資料的平台。我們有時會需要從 Sharepoint 上取得大量資料，但是一個一個點擊下載會花很多時間。本文將介紹如何用 Python 將 Microsoft Sharepoint 的資料更快速自動地下載到本機。&lt;/p>
-&lt;h2 id="下載並載入套件">下載並載入套件&lt;/h2>
+&lt;h2 id="載入套件">載入套件&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -72,6 +72,7 @@
 &lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;span class="lnt">6
 &lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">auth&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">AuthenticationContext&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sharepoint_base_url&lt;/span>&lt;span class="p">)&lt;/span>
@@ -81,11 +82,10 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ctx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">load&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">web&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ctx&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">execute_query&lt;/span>&lt;span class="p">()&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;Connected to SharePoint: &amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">web&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">properties&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;Title&amp;#39;&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Output: Connected to SharePoint: My Sharepoint&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;!-- raw HTML omitted -->
-&lt;!-- raw HTML omitted -->
-&lt;h2 id="下載檔案">下載檔案&lt;/h2>
+&lt;/div>&lt;h2 id="下載檔案">下載檔案&lt;/h2>
 &lt;p>設定資料夾路徑。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -125,13 +125,17 @@
 &lt;/div>&lt;p>下載檔案到本機。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">for&lt;/span> &lt;span class="n">filename&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">filenames&lt;/span>&lt;span class="p">:&lt;/span>
@@ -141,11 +145,13 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">with&lt;/span> &lt;span class="nb">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">output_dir&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="s1">&amp;#39;wb&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">output_file&lt;/span>&lt;span class="p">:&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">output_file&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">file_response&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">content&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2"> saved&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Output: &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 001.txt saved&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 002.txt saved&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># fig.png saved&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;!-- raw HTML omitted -->
-&lt;!-- raw HTML omitted -->
-&lt;p>這樣就完成了！&lt;/p>
+&lt;/div>&lt;p>這樣就完成了！&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="參考資料">參考資料&lt;/h2>
 &lt;ol>
