@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>The Andrea Journal</title><link>https://andreashih.com/blog/</link><description>Recent content on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 05 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Python 取得 Microsoft Sharepoint 的資料</title><link>https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/</link><pubDate>Tue, 05 Sep 2023 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/laptop.jpg" alt="Featured image of post 使用 Python 取得 Microsoft Sharepoint 的資料" />&lt;p>&lt;a class="link" href="https://support.microsoft.com/zh-tw/office/%E4%BB%80%E9%BA%BC%E6%98%AF-sharepoint-97b915e6-651b-43b2-827d-fb25777f446f" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>The Andrea Journal</title><link>https://andreashih.com/blog/</link><description>Recent content on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 10 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://andreashih.com/blog/about/</link><pubDate>Fri, 10 Nov 2023 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/about/</guid><description>&lt;p>Hello! I&amp;rsquo;m Andrea, a software engineer based in Taiwan, where I&amp;rsquo;m part of a speech team. Here on this blog, I&amp;rsquo;ll be tossing in some thoughts from my day-to-day life at work and beyond.&lt;/p>
+&lt;p>If you are having any questions, feel free to comment below or &lt;a class="link" href="mailto:cfshih97@gmail.com" >send me an email&lt;/a>.&lt;/p>
+&lt;p>📮 Email Address:
+&lt;a class="link" href="mailto:cfshih97@gmail.com" >cfshih97@gmail.com&lt;/a>&lt;/p>
+&lt;h2 id="-credits">💜 Credits&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>Website Icon: &lt;a class="link" href="https://www.flaticon.com/free-icon/heart_465271?term=pixel&amp;amp;page=1&amp;amp;position=1&amp;amp;page=1&amp;amp;position=1&amp;amp;related_id=465271&amp;amp;origin=tag" target="_blank" rel="noopener"
+>flaticon&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Profile Theme: &lt;a class="link" href="https://github.com/gurusabarish/hugo-profile" target="_blank" rel="noopener"
+>hugo-profile&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Blog Theme: &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
+>hugo-theme-stack&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Photos: &lt;a class="link" href="https://unsplash.com/" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>使用 Python 取得 Microsoft Sharepoint 的資料</title><link>https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/</link><pubDate>Tue, 05 Sep 2023 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E4%BD%BF%E7%94%A8-python-%E5%8F%96%E5%BE%97-microsoft-sharepoint-%E7%9A%84%E8%B3%87%E6%96%99/laptop.jpg" alt="Featured image of post 使用 Python 取得 Microsoft Sharepoint 的資料" />&lt;p>&lt;a class="link" href="https://support.microsoft.com/zh-tw/office/%E4%BB%80%E9%BA%BC%E6%98%AF-sharepoint-97b915e6-651b-43b2-827d-fb25777f446f" target="_blank" rel="noopener"
 >Microsoft Sharepoint&lt;/a> 是許多公司內部分享資料的平台。我們有時會需要從 Sharepoint 上取得大量資料，但是一個一個點擊下載會花很多時間。本文將介紹如何用 Python 將 Microsoft Sharepoint 的資料更快速自動地下載到本機。&lt;/p>
 &lt;h2 id="載入套件">載入套件&lt;/h2>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -414,29 +436,7 @@ data-flex-basis="654px"
 &lt;p>體驗下來覺得 Hugo build 的速度真的很快，文件好理解，錯誤訊息的解法也算好找。目前舊的個人網頁已經移到&lt;a class="link" href="https://andreashih.com/original-profile/" target="_blank" rel="noopener"
 >這裡&lt;/a>保存，只是應該不會再更新了。&lt;/p>
 &lt;p> &lt;/p>
-&lt;p>Photo by &lt;!-- raw HTML omitted -->Joanna Kosinska&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>About</title><link>https://andreashih.com/blog/about/</link><pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/about/</guid><description>&lt;p>Hey there! I&amp;rsquo;m Andrea, navigating life in Taiwan as a data scientist. Here on this blog, I&amp;rsquo;ll be tossing in some thoughts from my day-to-day life at work and beyond.&lt;/p>
-&lt;p>If you are having any questions, feel free to comment below or &lt;a class="link" href="mailto:cfshih97@gmail.com" >send me an email&lt;/a>.&lt;/p>
-&lt;p>📮 Email Address:
-&lt;a class="link" href="mailto:cfshih97@gmail.com" >cfshih97@gmail.com&lt;/a>&lt;/p>
-&lt;h2 id="-credits">💜 Credits&lt;/h2>
-&lt;ul>
-&lt;li>
-&lt;p>Website Icon: &lt;a class="link" href="https://www.flaticon.com/free-icon/heart_465271?term=pixel&amp;amp;page=1&amp;amp;position=1&amp;amp;page=1&amp;amp;position=1&amp;amp;related_id=465271&amp;amp;origin=tag" target="_blank" rel="noopener"
->flaticon&lt;/a>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Profile Theme: &lt;a class="link" href="https://github.com/gurusabarish/hugo-profile" target="_blank" rel="noopener"
->hugo-profile&lt;/a>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Blog Theme: &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener"
->hugo-theme-stack&lt;/a>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>Photos: &lt;a class="link" href="https://unsplash.com/" target="_blank" rel="noopener"
->Unsplash&lt;/a>&lt;/p>
-&lt;/li>
-&lt;/ul></description></item><item><title>查詢萌典中的同義詞和反義詞</title><link>https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</link><pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/book-shadow.jpg" alt="Featured image of post 查詢萌典中的同義詞和反義詞" />&lt;h2 id="關於萌典">關於萌典&lt;/h2>
+&lt;p>Photo by &lt;!-- raw HTML omitted -->Joanna Kosinska&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>查詢萌典中的同義詞和反義詞</title><link>https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</link><pubDate>Mon, 11 Apr 2022 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E6%9F%A5%E8%A9%A2%E8%90%8C%E5%85%B8%E4%B8%AD%E7%9A%84%E5%90%8C%E7%BE%A9%E8%A9%9E%E5%92%8C%E5%8F%8D%E7%BE%A9%E8%A9%9E/book-shadow.jpg" alt="Featured image of post 查詢萌典中的同義詞和反義詞" />&lt;h2 id="關於萌典">關於萌典&lt;/h2>
 &lt;p>萌典是一部由臺灣開源社群 &lt;a class="link" href="https://github.com/g0v" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->g0v 零時政府&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>開發的數位化漢語詞典。國語資料來源為《教育部重編國語辭典修訂本》，閩南語資料來自《臺灣閩南語常用詞辭典》，客家語資料則源自《臺灣客家語常用詞辭典》。除此之外，該計畫近日也新增了&lt;a class="link" href="https://amis.moedict.tw/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->阿美語萌典&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
@@ -2160,7 +2160,7 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">links&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">paste0&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;https://www.mobile01.com/topiclist.php?f=383&amp;amp;p=&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">1000&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">data&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">for&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">in&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">links&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">for&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="kr">in&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="nf">length&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">links&lt;/span>&lt;span class="p">)){&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">url&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">links[i]&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">content&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">read_html&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">url&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span> &lt;span class="nf">html_nodes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;.u-ellipsis&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">%&amp;gt;%&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">html_text&lt;/span>&lt;span class="p">()&lt;/span>
@@ -2234,7 +2234,7 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-r" data-lang="r">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stringr&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">iphones_in_posts&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">c&lt;/span>&lt;span class="p">()&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">for &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="n">in&lt;/span> &lt;span class="nf">seq_along&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">iphones&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="kr">in&lt;/span> &lt;span class="nf">seq_along&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">iphones&lt;/span>&lt;span class="p">)){&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iphone_in_posts&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="nf">sum&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">str_detect&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">titles&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">iphones[i]&lt;/span>&lt;span class="p">))&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">iphones_in_posts[i]&lt;/span> &lt;span class="o">&amp;lt;-&lt;/span> &lt;span class="n">iphone_in_posts&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
