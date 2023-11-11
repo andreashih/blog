@@ -1,13 +1,13 @@
 ---
 title: About
 #description: About this blog
-date: '2022-09-09'
+date: '2023-11-10'
 aliases:
   - about-us
   - about-hugo
   - contact
 #license: CC BY-NC-ND
-lastmod: '2022-09-09'
+lastmod: '2023-11-10'
 menu:
     main: 
         weight: -90
@@ -15,7 +15,7 @@ menu:
             icon: user
 ---
 
-Hey there! I'm Andrea, navigating life in Taiwan as a data scientist. Here on this blog, I'll be tossing in some thoughts from my day-to-day life at work and beyond.
+Hello! I'm Andrea, a software engineer based in Taiwan, where I'm part of a speech team. Here on this blog, I'll be tossing in some thoughts from my day-to-day life at work and beyond.
 
 If you are having any questions, feel free to comment below or [send me an email](mailto:cfshih97@gmail.com).
 
