@@ -1,4 +1,336 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>working on The Andrea Journal</title><link>https://andreashih.com/blog/categories/working/</link><description>Recent content in working on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 04 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/categories/working/index.xml" rel="self" type="application/rss+xml"/><item><title>台達電子實習心得 - 後端工程師 (Backend Engineer)</title><link>https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/</link><pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/computer.jpg" alt="Featured image of post 台達電子實習心得 - 後端工程師 (Backend Engineer)" />&lt;p>結束了越級打怪的暑期實習，一瞥日曆居然已經到了九月。整個熾熱的暑假都泡在資料海裡，鍵盤和秒針滴滴答答把時間送走。實習這兩個月，雖然因為資質駑鈍過程有點辛苦，但現在回想起來還是一段很充實的學習過程。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>working on The Andrea Journal</title><link>https://andreashih.com/blog/categories/working/</link><description>Recent content in working on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 06 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/categories/working/index.xml" rel="self" type="application/rss+xml"/><item><title>2024 NVIDIA AI SUMMIT 紀錄 - LLM 與 RAG 應用</title><link>https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/</link><pubDate>Thu, 06 Jun 2024 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/</guid><description>&lt;img src="https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/ai-summit-2.jpg" alt="Featured image of post 2024 NVIDIA AI SUMMIT 紀錄 - LLM 與 RAG 應用" />&lt;h2 id="dli-示範課程建立-gpu-加速的檢索增強生成-rag-流程">DLI 示範課程：建立 GPU 加速的檢索增強生成 (RAG) 流程&lt;/h2>
+&lt;p>&lt;em>&lt;strong>杜承翰&lt;/strong>, 資深解決方案架構師, NVIDIA&lt;/em>&lt;/p>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/rag/rag.jpg" width="70%" height="auto">&lt;figcaption>
+&lt;h4>RAG Sequence Diagram (source: https://blogs.nvidia.com.tw/blog/what-is-retrieval-augmented-generation/)&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>講師介紹了檢索增強生成 (RAG) 的框架，並透過 &lt;a class="link" href="https://python.langchain.com/v0.2/docs/integrations/providers/nvidia/" target="_blank" rel="noopener"
+>LangChain&lt;/a> 程式碼進行實作，介紹如何建立一個完整的 RAG 流程。&lt;code>langchain-nvidia-ai-endpoints&lt;/code> 整合了 LangChain 功能，可使用 NVIDIA NIM 微服務上的模型建構 applications。&lt;/p>
+&lt;p>RAG 的流程包括：&lt;/p>
+&lt;ol>
+&lt;li>資料預處理&lt;/li>
+&lt;li>索引與檢索&lt;/li>
+&lt;li>透過 LLM 生成結果&lt;/li>
+&lt;/ol>
+&lt;h3 id="llm-的限制">LLM 的限制&lt;/h3>
+&lt;p>LLM 雖然強大，但可能存在以下限制：&lt;/p>
+&lt;ul>
+&lt;li>過時的訓練資料&lt;/li>
+&lt;li>特定領域知識不足&lt;/li>
+&lt;li>幻覺&lt;/li>
+&lt;li>偏差資訊&lt;/li>
+&lt;/ul>
+&lt;h3 id="rag-提高-llm-可靠性">RAG 提高 LLM 可靠性&lt;/h3>
+&lt;p>&lt;a class="link" href="https://blogs.nvidia.com.tw/blog/what-is-retrieval-augmented-generation/" target="_blank" rel="noopener"
+>檢索增強生成 (RAG)&lt;/a> 是一種技術/過程，透過使用外部資料來提高生成式 AI 模型的準確性和可靠性。在企業應用範疇中，將 LLM 連接到企業資料，可以生成最新的特定領域答案。其優勢包括：&lt;/p>
+&lt;ul>
+&lt;li>與企業資料的交流&lt;/li>
+&lt;li>保護資料隱私&lt;/li>
+&lt;li>減輕 LLM 的幻覺&lt;/li>
+&lt;li>讓 LLM 優先使用相關資訊，無需重新訓練或微調模型&lt;/li>
+&lt;/ul>
+&lt;h3 id="nvidia-nemo">NVIDIA NEMO&lt;/h3>
+&lt;p>RAG 生態系統非常複雜，企業必須整合、更新和維護開源解決方案。使用 &lt;a class="link" href="https://developer.nvidia.com/nemo-microservices" target="_blank" rel="noopener"
+>NVIDIA NeMo&lt;/a>
+可以最佳化 RAG 應用程式。&lt;/p>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/rag/nemo.webp" width="70%" height="auto">&lt;figcaption>
+&lt;h4>NeMo Framework (source: https://docs.nvidia.com/nemo-framework/index.html)&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="評估-rag-系統">評估 RAG 系統&lt;/h3>
+&lt;p>建造出服務後，往往會碰到一個問題：如何評估模型好壞。講者介紹了以下兩種 RAG 評估方式，判斷生成結果的相關性和正確性。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.trulens.org/" target="_blank" rel="noopener"
+>TruLens&lt;/a>: TruLens 提供 TruRails 工具，與 &lt;a class="link" href="https://github.com/NVIDIA/NeMo-Guardrails" target="_blank" rel="noopener"
+>NeMo Guardrails&lt;/a> 應用程式整合，可用於評估生成結果。&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/explodinggradients/ragas" target="_blank" rel="noopener"
+>RAGAS&lt;/a>: RAGAS 可以使用 LangChain 來連接 NVIDIA AI foundation model 和 endpoint 進行評估。&lt;/li>
+&lt;/ul>
+&lt;p>📖 &lt;strong>延伸閱讀&lt;/strong>：&lt;a class="link" href="https://medium.com/@ajaimlianzy/rag-toolbox-methodologies-for-evaluating-rag-systems-f95ed4b90bdc" target="_blank" rel="noopener"
+>TruLens, RAGAS 與其他評估方法&lt;/a>&lt;/p>
+&lt;h2 id="理解專利請求項附屬關係的自動生成模型">理解專利請求項附屬關係的自動生成模型&lt;/h2>
+&lt;p>&lt;em>&lt;strong>陳豐奇&lt;/strong>, 副所長, 國家衛生研究院&lt;/em>&lt;/p>
+&lt;p>在 IPR (Inter Partes Review) 的過程中，專利會經過多方複審，涉及到案件、法官、當事人等。這些實體關係近似於 social network，可以用 Entity Relation 表徵。&lt;/p>
+&lt;p>專利請求項包括獨立項和附屬項，每一項都必須是單一完整的句子。附屬項越多，專利保護範圍越小。以下列例子說明：&lt;/p>
+&lt;blockquote>
+&lt;ol>
+&lt;li>&lt;strong>A&lt;/strong> device comprising an operating face of a front face of the device&amp;hellip; (獨立項)&lt;/li>
+&lt;li>&lt;strong>The&lt;/strong> device according to claim 1&amp;hellip; (附屬項)&lt;/li>
+&lt;li>&lt;strong>The&lt;/strong> device according to claim 2&amp;hellip; (附屬項)&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;p>第一點是獨立項，第二和第三點是附屬項。&lt;/p>
+&lt;p>專利包含結構附屬 (structural dependency) 和技術附屬 (technical dependency) ，兩者都正確編寫才能形成有效的附屬項。LLM能否做到這一點呢？&lt;/p>
+&lt;p>由於專利數據無法上傳至雲端，使用地端 LLM 進行微調變得尤其重要。研究中使用了不同的開源 LLM 進行微調，並評估生成的專利請求項內文。其中一項評估方法是讓三位專利工程師進行盲測，人工驗證結果。結果顯示，地端微調的 LLM 得分幾乎與 GPT-4 相當。即使是較小的模型，經過微調後也能達到與大型 LLM 相同的效果，生成出具有正確寫作風格的專利請求項。&lt;/p>
+&lt;h2 id="如何透過整合文化背景來改進大型語言模型建模">如何透過整合文化背景來改進大型語言模型建模&lt;/h2>
+&lt;p>&lt;em>&lt;strong>陳縕儂&lt;/strong>, 副教授, 國立台灣大學&lt;/em>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/MiuLab/Taiwan-LLM" target="_blank" rel="noopener"
+>Taiwan-LLM&lt;/a> 的訓練方法旨在使模型本地化，結合台灣的文化背景，並加強繁體中文的支援，提升其在地應用效果。&lt;/p>
+&lt;h3 id="台灣本土資料上進行持續預訓練">台灣本土資料上進行持續預訓練&lt;/h3>
+&lt;p>TAME (TAiwan Mixture of Experts) 計劃網羅各領域專家，蒐集來自媒體、法律、醫療、化工、製造業和遊戲等多個領域的本土資料。&lt;/p>
+&lt;ul>
+&lt;li>Model: Llama-3 8B &amp;amp; 70B&lt;/li>
+&lt;li>Context Length: 8192&lt;/li>
+&lt;li>Long Context Extension: 64k&lt;/li>
+&lt;li>Training Framework: Nvidia NeMo, Nvidia NeMo Megatron&lt;/li>
+&lt;li>Inference Framework: Nvidia TensorRT-LLM&lt;/li>
+&lt;li>Hardware: Nvidia DGX H100 on Taipei-1&lt;/li>
+&lt;li>Training Stack: 3D parallelism, DeepSpeed Zero, Flash Attention 降低記憶體用量並加速訓練&lt;/li>
+&lt;/ul>
+&lt;h3 id="生成多輪-ai-對話資料進行微調">生成多輪 AI 對話資料進行微調&lt;/h3>
+&lt;p>在&lt;a class="link" href="http://arena.twllm.com/" target="_blank" rel="noopener"
+>繁體中文 LLM 競技場&lt;/a>蒐集真實使用者的回饋，以進行模型微調。&lt;/p>
+&lt;h3 id="真實使用者互動並微調">真實使用者互動並微調&lt;/h3>
+&lt;p>透過 &lt;a class="link" href="https://arxiv.org/abs/2305.18290" target="_blank" rel="noopener"
+>Direct Preference Optimization&lt;/a> (DPO) 方法，根據使用者的偏好計算 maximum likelihood，最終微調 LLM。&lt;/p>
+&lt;h3 id="llm-評估">LLM 評估&lt;/h3>
+&lt;p>&lt;a class="link" href="https://huggingface.co/spaces/yentinglin/open-tw-llm-leaderboard" target="_blank" rel="noopener"
+>Open Taiwan LLM Leaderboard&lt;/a> 展示了各模型在不同任務上的表現。評估測試集包含：&lt;/p>
+&lt;ul>
+&lt;li>TMLU: 衡量模型理解各個領域 (國中、高中、大學、國考) 的能力。&lt;/li>
+&lt;li>TW Truthful QA: 評估模型以臺灣特定背景回答問題的能力。&lt;/li>
+&lt;li>TW Legal Eval: 評估模型對臺灣法律術語和概念的理解。&lt;/li>
+&lt;li>MMLU: 測試模型在英語各種任務上的表現。&lt;/li>
+&lt;/ul>
+&lt;h2 id="探討繁中大型語言模型建構之挑戰與克服">探討繁中大型語言模型建構之挑戰與克服&lt;/h2>
+&lt;p>&lt;em>&lt;strong>陳宜昌&lt;/strong>, 聯發創新基地&lt;/em>&lt;br>
+&lt;em>&lt;strong>許大山&lt;/strong>, 創新基地負責人, 聯發科技&lt;/em>&lt;/p>
+&lt;p>聯發科與 NVIDIA 持續合作，&lt;a class="link" href="https://huggingface.co/MediaTek-Research/Breeze-7B-Instruct-v0_1" target="_blank" rel="noopener"
+>Breeze-7B&lt;/a> 和 &lt;a class="link" href="https://huggingface.co/MediaTek-Research/Breexe-8x7B-Instruct-v0_1" target="_blank" rel="noopener"
+>BreeXe-8x7B&lt;/a> 已上架 NVIDIA Inference Microservice (NIM) 。Breeze 模型在訓練中僅使用 2 台 H100，其性能已接近於使用 10 倍算力的 Llama3。&lt;/p>
+&lt;h3 id="挑戰與克服">挑戰與克服&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>缺乏 benchmark&lt;br>
+MediaTek Research 發布了 &lt;a class="link" href="https://huggingface.co/datasets/MediaTek-Research/TCEval-v2" target="_blank" rel="noopener"
+>TC-Eval&lt;/a> 繁體中文 LLM benchmark，提供一個全面的評估標準。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>缺乏大規模的預訓練數據&lt;br>
+&lt;a class="link" href="https://commoncrawl.org/" target="_blank" rel="noopener"
+>Common Crawl&lt;/a> 是一個龐大的公開網絡爬蟲數據集，截至 2023 年 12 月，數據量達到 454 TB。但繁體中文的資料還是非常少。&lt;/p>
+&lt;ul>
+&lt;li>英文：44%&lt;/li>
+&lt;li>簡體中文：5%&lt;/li>
+&lt;li>繁體中文：0.1%&lt;br>
+MediaTek Research 通過多種方法收集了 1 TB 的臺灣繁體中文數據。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>開源模型中支援的繁中 vocabularies 也非常少：&lt;/p>
+&lt;ul>
+&lt;li>LLaMA2: 563 out of 32k&lt;/li>
+&lt;li>Mistral: 1034 out of 32k&lt;br>
+MediaTek Research 開發了技術，將繁體中文的 vocabularies 擴展到超過 32k。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="breeze-7b">Breeze-7B&lt;/h3>
+&lt;ul>
+&lt;li>免費開源&lt;/li>
+&lt;li>Source Model: Mistral 7B&lt;/li>
+&lt;li>繁體中文 vocabulary size 提升到 62k
+&lt;ul>
+&lt;li>Inference 速度提高 2%&lt;/li>
+&lt;li>繁中 context length 達到 11.1k，相當於 10 頁文本&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>使用總計 7,000 小時 H100 預訓練 650 GB 的資料&lt;/li>
+&lt;/ul>
+&lt;h3 id="breexe-8x7b">BreeXe-8x7B&lt;/h3>
+&lt;ul>
+&lt;li>Source Model: Mistral 8x7B (混合專家模型，&lt;a class="link" href="https://huggingface.co/blog/moe" target="_blank" rel="noopener"
+>Mixture of Experts&lt;/a>, MoE)&lt;/li>
+&lt;li>繁體中文 vocabulary size 提升到 62k&lt;/li>
+&lt;li>BreeXe 的對話能力與 GPT3.5 相當&lt;/li>
+&lt;li>BreeXe 在台灣知識方面優於 GPT3.5&lt;/li>
+&lt;/ul>
+&lt;h3 id="breezper">Breezper&lt;/h3>
+&lt;p>使用 &lt;a class="link" href="https://arxiv.org/abs/2405.14259" target="_blank" rel="noopener"
+>Generative Fusion Decoding&lt;/a> (GFD) 技術，以 Breeze-7B + Whisper 打造語音模型。&lt;/p>
+&lt;ul>
+&lt;li>提升同音字辨識率&lt;/li>
+&lt;li>提升 code switching 辨識率&lt;/li>
+&lt;li>實現 contextual-aware ASR&lt;/li>
+&lt;/ul>
+&lt;h2 id="鴻海-genai-戰略">鴻海 GenAI 戰略&lt;/h2>
+&lt;p>&lt;em>&lt;strong>栗永徽&lt;/strong>, 所長, 鴻海研究院&lt;/em>&lt;/p>
+&lt;p>鴻海 AI 戰略全力投入基礎模型技術，目標打造全方位解決方案平台。憑藉鴻海集團即將建置的龐大算力，人工智慧研究所將為集團研發 FoxBrain，作為三大平台底層最重要的智慧核心。三大平台為：&lt;/p>
+&lt;ol>
+&lt;li>Smart Manufacturing 智慧製造&lt;/li>
+&lt;li>Smart EVs 智慧電動車&lt;/li>
+&lt;li>Smart City 智慧城市&lt;/li>
+&lt;/ol>
+&lt;h3 id="基礎模型細節">基礎模型細節&lt;/h3>
+&lt;ul>
+&lt;li>輕量高效的 LLM：實現更快的運算速度和更低的能耗。&lt;/li>
+&lt;li>人類偏好對齊：確保模型能夠對齊人類偏好，並設置 model guardrail 以防止不當生成。&lt;/li>
+&lt;li>多模態能力：增強模型在多種模態下的表現能力，包括視覺和語音的綜合應用。&lt;/li>
+&lt;/ul>
+&lt;h3 id="foxbrain-目標">FoxBrain 目標&lt;/h3>
+&lt;ul>
+&lt;li>多模態 AI 代理人
+&lt;ul>
+&lt;li>視覺-語言 (VLM)&lt;/li>
+&lt;li>自駕助手 (CabinGPT)&lt;/li>
+&lt;li>音頻-視覺-語言 (FoxBot 機器人)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>特定領域 AI 專家模型
+&lt;ul>
+&lt;li>智慧醫療&lt;/li>
+&lt;li>智慧辦公室&lt;/li>
+&lt;li>智慧工廠&lt;/li>
+&lt;li>智慧城市&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="訓練過程透過-nvidia-工具優化">訓練過程透過 NVIDIA 工具優化&lt;/h3>
+&lt;ol>
+&lt;li>數據構建階段：&lt;a class="link" href="https://github.com/NVIDIA/NeMo-Curator" target="_blank" rel="noopener"
+>NVIDIA NeMo Curator&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>自動化清理、轉換和分析數據&lt;/li>
+&lt;li>透過優化算法提升處理速度&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>模型訓練階段：&lt;a class="link" href="https://github.com/NVIDIA/NeMo-Framework-Launcher" target="_blank" rel="noopener"
+>NVIDIA NeMo Megatron&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>在高品質數據上繼續預訓練&lt;/li>
+&lt;li>在各種下游 NLP 任務上進行微調&lt;/li>
+&lt;/ul>
+&lt;ol start="3">
+&lt;li>模型部署階段：&lt;a class="link" href="https://www.nvidia.com/zh-tw/ai-data-science/products/triton-inference-server/" target="_blank" rel="noopener"
+>NVIDIA Triton 推論服務器&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>優化 neural network 以加快執行速度&lt;/li>
+&lt;li>低延遲，提升性能&lt;/li>
+&lt;/ul></description></item><item><title>2024 NVIDIA AI SUMMIT 紀錄 - 智慧製造與其他</title><link>https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/</link><pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/</guid><description>&lt;img src="https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/ai-summit.jpg" alt="Featured image of post 2024 NVIDIA AI SUMMIT 紀錄 - 智慧製造與其他" />&lt;h2 id="demo-booth">Demo Booth&lt;/h2>
+&lt;p>會議開始前，在現場的 Demo Booth 與 NVIDIA 的各位專家交流。很佩服他們能夠清晰地講解 AI 產品的特點，並以簡明易懂的方式回答聽眾的各種問題。&lt;/p>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/demo_booth/demo-booth.jpg" width="60%" height="auto">&lt;figcaption>
+&lt;h4>Demo Booth&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/demo_booth/demo-booth-2.png" width="80%" height="auto">&lt;figcaption>
+&lt;h4>現場展示的酷東西&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="nvidia-avatar-cloud-engine-ace-for-games">NVIDIA Avatar Cloud Engine (ACE) for Games&lt;/h3>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/uryeFhnNzEs"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;p>玩家可以透過語音和 AI NPC 進行互動。自動語音辨識 (ASR) 模型將語音轉換成文字，再由大型語言模型 (LLM) 生成 NPC 的回覆，最後再通過文字轉語音 (TTS) 技術將回覆播放出來。角色說話時的嘴型和表情都能與語音搭配，提供了更加沉浸式和細緻的遊戲體驗。&lt;/p>
+&lt;p>使用到的生成式 AI 技術有：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.nvidia.com/zh-tw/ai-data-science/products/nemo/" target="_blank" rel="noopener"
+>NVIDIA NeMo&lt;/a>：是一款 end-to-end cloude-native LLM 框架，可運用遊戲中的人物特色客製化調整 LLM，並且使用 NeMo Guardrails 來保護生成內容安全性。&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.nvidia.com/zh-tw/ai-data-science/products/riva/" target="_blank" rel="noopener"
+>NVIDIA Riva&lt;/a>：用於自動語音辨識及文字轉語音，實現即時對話。&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.nvidia.com/en-us/ai-data-science/audio2face/" target="_blank" rel="noopener"
+>NVIDIA Omniverse Audio2Face&lt;/a>：為遊戲角色建立臉部表情動畫。&lt;/li>
+&lt;/ul>
+&lt;h3 id="nvidia-inference-microservices-nim">Nvidia Inference Microservices (NIM)&lt;/h3>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/demo_booth/nim.jpg" width="60%" height="auto">&lt;figcaption>
+&lt;h4>Gen AI Inference with NIM&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>💻 &lt;a class="link" href="https://build.nvidia.com/explore/discover" target="_blank" rel="noopener"
+>&lt;strong>Demo 連結&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>NIM 是專為管理和部署大型語言模型 (LLM) 而設計的微服務，提供快速穩定的框架，支援許多主流的 LLM，也包括最新加入的 &lt;a class="link" href="https://llama.meta.com/llama3/" target="_blank" rel="noopener"
+>Llama 3&lt;/a>。&lt;/p>
+&lt;p>除了雲端模型，NIM 也可以管理地端 fine-tuned 的模型。使用者可以一次生成多達 30 次的結果，並且能夠替換不同的參數，讓調參和監測生成結果更加便利。此外，NIM 也具備監控 latency 和 token usage 的功能，方便管理資源。&lt;/p>
+&lt;h2 id="人工智慧引領下一波工業數位化">人工智慧引領下一波工業數位化&lt;/h2>
+&lt;p>&lt;em>&lt;strong>Deepu Talla&lt;/strong>, 機器人和邊緣運算副總裁, NVIDIA&lt;/em>&lt;/p>
+&lt;p>在 AI 蓬勃發展的趨勢下，重工業也開始引入軟體，加快了工業數位化的進程。台灣正處於工業數位化的核心地帶，多家製造商 (如鴻海、台達電、和碩、緯創) 正在建設工廠的數位孿生 (Digital Twins)。&lt;/p>
+&lt;p>NVIDIA 目前主要有兩大機器人平台：&lt;a class="link" href="https://developer.nvidia.com/isaac" target="_blank" rel="noopener"
+>Isaac&lt;/a> 和 &lt;a class="link" href="https://developer.nvidia.com/metropolis" target="_blank" rel="noopener"
+>Metropolis&lt;/a>，本演講著重介紹 Isaac 的框架和實際應用場景。&lt;/p>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/digital_twin/isaac.gif" width="70%" height="auto">&lt;figcaption>
+&lt;h4>NVIDIA Isaac (source: https://developer.nvidia.com/isaac)&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>NVIDIA Isaac 是用於構建 AI 機器人的開發平台，&lt;a class="link" href="https://developer.nvidia.com/isaac/sim" target="_blank" rel="noopener"
+>NVIDIA Isaac Sim&lt;/a> 則是用來設計、測試和驗證機器人的平台。Isaac 機器人平台的最新功能有以下三項：&lt;/p>
+&lt;ol>
+&lt;li>&lt;a class="link" href="https://developer.nvidia.com/isaac/perceptor" target="_blank" rel="noopener"
+>Isaac Perceptor&lt;/a>: 利用多重鏡頭及 3D 環繞視野，使機器人能勝任製造業生產線及物流配貨中心的工作。&lt;/li>
+&lt;li>&lt;a class="link" href="https://developer.nvidia.com/isaac/manipulator" target="_blank" rel="noopener"
+>Isaac Manipulator&lt;/a>: 提供多款基礎模型，讓機器人手臂完成更多任務。&lt;/li>
+&lt;li>&lt;a class="link" href="https://developer.nvidia.com/project-gr00t" target="_blank" rel="noopener"
+>Project GR00T&lt;/a>: 用來生成文字和圖像的模型，讓人形機器人能夠與人類互動。&lt;/li>
+&lt;/ol>
+&lt;h2 id="利用數位孿生建造未來工廠">利用數位孿生建造未來工廠&lt;/h2>
+&lt;p>&lt;em>&lt;strong>呂佳翰&lt;/strong>, 廠長, 緯創資通&lt;/em>&lt;/p>
+&lt;p>🎬 &lt;a class="link" href="https://www.youtube.com/watch?v=OAdqXZGUb70" target="_blank" rel="noopener"
+>&lt;strong>影片連結&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>在建造未來工廠的過程中，ESG (環境、社會、治理) 是關鍵點。導入 NVIDIA 的解決方案，可以提升能源利用率，減少資源及溝通成本浪費，甚至可以克服時差問題進行遠端協作。&lt;/p>
+&lt;p>緯創基於 &lt;a class="link" href="https://www.nvidia.com/en-us/omniverse/" target="_blank" rel="noopener"
+>NVIDIA Omniverse&lt;/a> 建立了 WiDT，將 IoT 數據整合到環境中，並透過視覺化 dashboard 進行監控。&lt;a class="link" href="https://www.nvidia.com/zh-tw/design-visualization/solutions/cloud-xr/" target="_blank" rel="noopener"
+>NVIDIA CloudXR&lt;/a> 則提供了強大的 XR 體驗，可以觀測未來的工廠建造。建造數位孿生，可以透過數據的 simulation 考量所有狀況，例如工廠內的熱流、功耗、空間運用等，將工廠 layout 產出最大化。&lt;/p>
+&lt;h2 id="創建數位孿生優化生產線">創建數位孿生優化生產線&lt;/h2>
+&lt;p>&lt;em>&lt;strong>彭志誠&lt;/strong>, DSM 先進運營技術處長, Delta&lt;/em>&lt;/p>
+&lt;p>🎬 &lt;a class="link" href="https://www.youtube.com/watch?v=K5gbmr3I5O4" target="_blank" rel="noopener"
+>&lt;strong>影片連結&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>台達以環保節能為特色，專注於 power chip/device、手機被動元件等產品，涵蓋從印刷電路板 (PCB) 到半導體，再到數據中心和基礎設施的完整產業鏈。在接下來的 50 年中，台達致力於創建自動化和無碳環境，並提供智慧製造解決方案。&lt;/p>
+&lt;p>面臨全球分散製造的挑戰，如何確保生產線的可持續性 (sustainability) 成為重要課題。過去需要在設計完成後才能進行現場模擬，但現在可以透過數位孿生 (digital twins) 解決方案，在虛擬環境中進行預先模擬。&lt;/p>
+&lt;p>台達使用 NVIDIA Omniverse 建立了數位孿生解決方案平台，並獲得了顯著的好處：&lt;/p>
+&lt;ol>
+&lt;li>加速 NPI (New Product Introduction) 團隊的開發速度：透過訓練每個設備的 AI recipe，將 NPI (新產品導入) 的前置時間縮短了 10%。&lt;/li>
+&lt;li>目標零缺陷 (zero defects) 的品質管控：通過歷史數據分析，提高 25% 的 repair/debug efficiency，並能透過資料找到問題的 root cause，從而提升產品品質。&lt;/li>
+&lt;li>創新協作：通過 e-learning 系統，將作業員的培訓時間減少 30%。&lt;/li>
+&lt;/ol>
+&lt;h2 id="賦能高效萬億參數的-ai-enabling-efficient-trillion-parameter-ai">賦能高效萬億參數的 AI Enabling Efficient Trillion Parameter AI&lt;/h2>
+&lt;p>&lt;em>&lt;strong>Marc Hamilton&lt;/strong>, 解決方案架構與工程副總裁, NVIDIA&lt;/em>&lt;/p>
+&lt;blockquote>
+&lt;p>Efficiency is in our DNA.&lt;/p>
+&lt;/blockquote>
+&lt;p>現今 AI 計算需求呈爆炸式增長，最新模型的能耗也不斷增加中。NVIDIA 致力於應對此一挑戰，透過加速計算技術節省了時間和能源。&lt;/p>
+&lt;p>AI 的發展循環有以下步驟：&lt;/p>
+&lt;ol>
+&lt;li>訓練模型（極限壓縮數據）&lt;/li>
+&lt;li>部署到雲端、機器人等&lt;/li>
+&lt;li>生成更多數據&lt;/li>
+&lt;li>微調模型&lt;/li>
+&lt;li>返回第一步，重新訓練&lt;/li>
+&lt;/ol>
+&lt;p>AI 的安全性與效率同樣重要。30 年前，人們認為軟體不安全，但隨著技術的進步，軟體的安全性也隨之提升。現在開發者與研究者也致力於使 AI 變得更加安全。&lt;/p>
+&lt;h2 id="建造未來可持續的人工智慧工廠-building-sustainable-ai-factories-of-the-future">建造未來可持續的人工智慧工廠 Building Sustainable AI Factories of the Future&lt;/h2>
+&lt;p>&lt;em>&lt;strong>彭志誠&lt;/strong>, DSM 先進運營技術處長, Delta&lt;/em>&lt;br>
+&lt;em>&lt;strong>Simon Chang&lt;/strong>, Senior Group Director, Regional System Solution, Asia Pacific &amp;amp; Japan, Cadence&lt;/em>&lt;br>
+&lt;em>&lt;strong>Aditya Ramkrihna&lt;/strong>, General Manager, Digital Industries, Siemens Taiwan&lt;/em>&lt;br>
+&lt;em>&lt;strong>Dion Harris&lt;/strong>, Director, Data Center &amp;amp; HPC, NVIDIA&lt;/em>&lt;/p>
+&lt;h3 id="delta">Delta&lt;/h3>
+&lt;p>自 2010 年以來，台達一直致力於智慧製造和自動化，提前規劃並為未來做好準備。NVIDIA Omniverse 加速了智慧製造的進程，在 AI 工廠中，機器可以自動捕捉關鍵特徵（如參數和 signals），並運用智能技術進行自我調整。&lt;/p>
+&lt;h3 id="cadence">Cadence&lt;/h3>
+&lt;p>Cadence 專注於降低功耗，致力於打造高效率且環保節能的 AI 工廠。透過 simulation 優化設計，不僅為客戶節省了成本，還改善了環境和 community 的整體品質。&lt;/p>
+&lt;h3 id="siemens">Siemens&lt;/h3>
+&lt;p>Siemens 構建數位孿生模型，資源使用更少，且能實現逼真且實時的 simulation。此外，生成式 AI 也可以應用於 PLC編程，通過自然語言替代傳統的 PLC 程式。&lt;/p>
+&lt;h2 id="ai-開發藥物新境界如何加快-protac-的設計">AI 開發藥物新境界：如何加快 PROTAC 的設計&lt;/h2>
+&lt;p>&lt;em>&lt;strong>Chien-Ting Kao&lt;/strong>, 人工智慧副研究員, 安宏生醫&lt;/em>&lt;/p>
+&lt;p>PROTAC（Proteolysis Targeting Chimeras）是一種設計用於降解目標蛋白質的技術。PROTAC 會透過辨識目標蛋白，將其標記並引導至降解機制。&lt;/p>
+&lt;p>NVIDIA 為新藥開發提供了便捷的 AI 工具：&lt;/p>
+&lt;ul>
+&lt;li>NVIDIA Inference Microservice (NIM)&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.nvidia.com/zh-tw/clara/bionemo/" target="_blank" rel="noopener"
+>BioNeMo Microservice&lt;/a>&lt;/li>
+&lt;li>BioNeMo Framework&lt;/li>
+&lt;/ul>
+&lt;p>這些框架和微服務提供了許多模型，用於表徵蛋白質和生成蛋白質結構。&lt;/p>
+&lt;p>在設計 PROTAC 時，需要考慮以下要素：&lt;/p>
+&lt;ul>
+&lt;li>合理性（validity）：確保設計出的結構是合理的。&lt;/li>
+&lt;li>唯一性（uniqueness）：確保生成的結構不重複。&lt;/li>
+&lt;/ul>
+&lt;p>成功的藥物分子需要能夠與兩端的蛋白質結合，以確保藥效的達成。藉由 AI 的幫助，有望在早期藥物開發階段減少研發時間和成本。&lt;/p></description></item><item><title>台達電子實習心得 - 後端工程師 (Backend Engineer)</title><link>https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/</link><pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/computer.jpg" alt="Featured image of post 台達電子實習心得 - 後端工程師 (Backend Engineer)" />&lt;p>結束了越級打怪的暑期實習，一瞥日曆居然已經到了九月。整個熾熱的暑假都泡在資料海裡，鍵盤和秒針滴滴答答把時間送走。實習這兩個月，雖然因為資質駑鈍過程有點辛苦，但現在回想起來還是一段很充實的學習過程。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="如何找實習">如何找實習&lt;/h2>
 &lt;p>懷著對未來的不安，我一心想著要找實習確定畢業後的方向。但是關於要找哪一種實習工作，卻沒有篤定的想法。正好去年參加了 ROCLING 研討會，就把手冊上所有贊助公司名字 key 到 104 搜尋實習職缺，才發現台達的暑期實習計畫。因為非本科系，程式能力也非頂尖，原本只是抱著試試看的心情投履歷，後來會進到後端面試甚至拿到 offer 完全是我始料未及的 (還記得面試時主管問會不會寫 Java，知不知道 python 底層架構，我都說不會&amp;hellip;)&lt;/p>
@@ -45,7 +377,7 @@
 &lt;p> &lt;/p>
 &lt;h2 id="work-from-home">Work from home&lt;/h2>
 &lt;p>Work from home 的小確幸就是 8:30 上班可以 8:00 再起床，悠悠哉哉地開電腦。壞處就是沒有看到 mentor 本人，會有不知道工作做得如何的不安感。想一直回報進度又怕對方正在忙其他事情。後來終於回到辦公室，雖然大家都是各忙各的，但有人在旁邊真的會比較有動力。&lt;/p>
-&lt;figure>&lt;img src="desk.jpg" width="60%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/desk.jpg" width="60%" height="auto">&lt;figcaption>
 &lt;h4>我的辦公桌 (雖然只進公司兩天)、識別證和證書&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>
@@ -55,7 +387,7 @@
 &lt;p> &lt;/p>
 &lt;h2 id="結語">結語&lt;/h2>
 &lt;p>回想起來，我的打工或實習似乎總是離不開資料：升大學的暑假在補習班管理學生資料，大二在教育局整理學校資料，碩班在 lab 的研究還有 NTU cool 的工讀也都在碰資料。兩個月的實習很像跑步，剛起步的時候春風得意，好像什麼事都難不倒。跑一段時間後氣喘吁吁，開始有撞牆的感覺。習慣了之後又找回步調，穩定前進。快到終點時好像有道無法突破的檻，覺得看不到希望。不過堅持到最後就輕鬆了，應該說比較不擔心了。小時候學鋼琴，老師說我彈琴看起來很怕，好像琴鍵會咬我一樣。長大後學程式也總是怕怕的，戒慎恐懼敲著鍵盤，好像 error message 會讓電腦爆炸一樣。希望自己可以好好善待心裡莫名的恐懼，反正只要穩紮穩打大步慢走就好了 (Lopers 內梗，get it?)&lt;/p>
-&lt;figure>&lt;img src="card.jpg" width="60%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/card.jpg" width="60%" height="auto">&lt;figcaption>
 &lt;h4>HR 辦實習超用心，每個實習生都收到一張主管寫的小卡&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>

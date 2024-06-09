@@ -195,7 +195,7 @@ sample size，&lt;code>V&lt;/code> 是 type count：&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;rank&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;frequency&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_tfl.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_tfl.png" width="60%" height="auto">
 &lt;/figure>
 &lt;h3 id="frequency-spectrum">Frequency Spectrum&lt;/h3>
 &lt;p>透過剛剛的 type-frequency list，我們可以得到 frequency spectrum。Brown
@@ -271,7 +271,7 @@ corpus 的 frequency spectrum 可直接從套件中匯入：&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_spc.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_spc.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>從上圖可以得知，&lt;em>hapax legomena&lt;/em> (只出現過一次的單詞)
 占所有語料庫的比例都相當的高。接下來，我們可以透過 Vocabulary growth
@@ -345,7 +345,7 @@ type，而在其中有 &lt;code>221&lt;/code> 個單詞只出現過一次。&lt;
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_vgc.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_vgc.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>上圖中顏色較深的曲線是 V，較淺的曲線是 V1。從圖中可以發現 ASBC 與 Brown
 corpus 的 V1 曲線上升後逐漸平緩，然而 PTT 與 Dcard 的 V1
@@ -437,7 +437,7 @@ Evert, 2004)，和 finite Zipf-Mandelbrot (&lt;code>lnre.fzm&lt;/code>; Evert,
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_spc_exp.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_spc_exp.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>Observed and expected VGC:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -480,7 +480,7 @@ Evert, 2004)，和 finite Zipf-Mandelbrot (&lt;code>lnre.fzm&lt;/code>; Evert,
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_vgc_exp.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_vgc_exp.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>上方的紅色曲線代表透過 fZM model 所產生的 expected value。&lt;/p>
 &lt;p> &lt;/p>
@@ -715,7 +715,7 @@ regression&lt;/em>。本章介紹了如何以 logistic regression
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;dodge&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.3&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="1.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/nerd-vs.-geek/1.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>接下來看看不同世紀使用 &lt;code>nerd&lt;/code> 與 &lt;code>geek&lt;/code> 時的 polarities。可以發現不論在
 20 或 21 世紀，使用 &lt;code>nerd&lt;/code> 和 &lt;code>geek&lt;/code> 時大部分都是 neutrual
@@ -741,7 +741,7 @@ polarity。特別的是，&lt;code>geek&lt;/code> 在 21 世紀時被使用於 p
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;dodge&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="2.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/nerd-vs.-geek/2.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>因為好奇，到 &lt;a class="link" href="https://dictionary.cambridge.org/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Cambridge Dictionary&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>
@@ -782,7 +782,7 @@ computers, and knows a lot of facts about it&lt;/em>&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.4&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="3.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/nerd-vs.-geek/3.png" width="60%" height="auto">
 &lt;/figure>
 &lt;h2 id="logistic-regression-model">Logistic Regression Model&lt;/h2>
 &lt;p>試著用書上的方式 (p.258) 跑 lrm。&lt;/p>
@@ -1069,7 +1069,7 @@ Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis.text.x&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">element_text&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">angle&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">45&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">hjust&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">))&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="unnamed-chunk-6-1.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/unnamed-chunk-6-1.png" width="60%" height="auto">
 &lt;/figure>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1091,7 +1091,7 @@ Model，但卻不大懂數值所代表的意義，重複讀了很多遍才稍微
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">legend.position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;none&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="unnamed-chunk-7-1.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/unnamed-chunk-7-1.png" width="60%" height="auto">
 &lt;/figure>
 &lt;h2 id="explanation">Explanation&lt;/h2>
 &lt;p>從 Mobile01 爬下的前 1000 頁標題資料中可以發現，文章數最多的

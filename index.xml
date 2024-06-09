@@ -1,4 +1,336 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>The Andrea Journal</title><link>https://andreashih.com/blog/</link><description>Recent content on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 10 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://andreashih.com/blog/about/</link><pubDate>Fri, 10 Nov 2023 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/about/</guid><description>&lt;p>Hello! I&amp;rsquo;m Andrea, a software engineer based in Taiwan, where I&amp;rsquo;m part of a speech team. Here on this blog, I&amp;rsquo;ll be tossing in some thoughts from my day-to-day life at work and beyond.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>The Andrea Journal</title><link>https://andreashih.com/blog/</link><description>Recent content on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 06 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>2024 NVIDIA AI SUMMIT 紀錄 - LLM 與 RAG 應用</title><link>https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/</link><pubDate>Thu, 06 Jun 2024 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/</guid><description>&lt;img src="https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/ai-summit-2.jpg" alt="Featured image of post 2024 NVIDIA AI SUMMIT 紀錄 - LLM 與 RAG 應用" />&lt;h2 id="dli-示範課程建立-gpu-加速的檢索增強生成-rag-流程">DLI 示範課程：建立 GPU 加速的檢索增強生成 (RAG) 流程&lt;/h2>
+&lt;p>&lt;em>&lt;strong>杜承翰&lt;/strong>, 資深解決方案架構師, NVIDIA&lt;/em>&lt;/p>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/rag/rag.jpg" width="70%" height="auto">&lt;figcaption>
+&lt;h4>RAG Sequence Diagram (source: https://blogs.nvidia.com.tw/blog/what-is-retrieval-augmented-generation/)&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>講師介紹了檢索增強生成 (RAG) 的框架，並透過 &lt;a class="link" href="https://python.langchain.com/v0.2/docs/integrations/providers/nvidia/" target="_blank" rel="noopener"
+>LangChain&lt;/a> 程式碼進行實作，介紹如何建立一個完整的 RAG 流程。&lt;code>langchain-nvidia-ai-endpoints&lt;/code> 整合了 LangChain 功能，可使用 NVIDIA NIM 微服務上的模型建構 applications。&lt;/p>
+&lt;p>RAG 的流程包括：&lt;/p>
+&lt;ol>
+&lt;li>資料預處理&lt;/li>
+&lt;li>索引與檢索&lt;/li>
+&lt;li>透過 LLM 生成結果&lt;/li>
+&lt;/ol>
+&lt;h3 id="llm-的限制">LLM 的限制&lt;/h3>
+&lt;p>LLM 雖然強大，但可能存在以下限制：&lt;/p>
+&lt;ul>
+&lt;li>過時的訓練資料&lt;/li>
+&lt;li>特定領域知識不足&lt;/li>
+&lt;li>幻覺&lt;/li>
+&lt;li>偏差資訊&lt;/li>
+&lt;/ul>
+&lt;h3 id="rag-提高-llm-可靠性">RAG 提高 LLM 可靠性&lt;/h3>
+&lt;p>&lt;a class="link" href="https://blogs.nvidia.com.tw/blog/what-is-retrieval-augmented-generation/" target="_blank" rel="noopener"
+>檢索增強生成 (RAG)&lt;/a> 是一種技術/過程，透過使用外部資料來提高生成式 AI 模型的準確性和可靠性。在企業應用範疇中，將 LLM 連接到企業資料，可以生成最新的特定領域答案。其優勢包括：&lt;/p>
+&lt;ul>
+&lt;li>與企業資料的交流&lt;/li>
+&lt;li>保護資料隱私&lt;/li>
+&lt;li>減輕 LLM 的幻覺&lt;/li>
+&lt;li>讓 LLM 優先使用相關資訊，無需重新訓練或微調模型&lt;/li>
+&lt;/ul>
+&lt;h3 id="nvidia-nemo">NVIDIA NEMO&lt;/h3>
+&lt;p>RAG 生態系統非常複雜，企業必須整合、更新和維護開源解決方案。使用 &lt;a class="link" href="https://developer.nvidia.com/nemo-microservices" target="_blank" rel="noopener"
+>NVIDIA NeMo&lt;/a>
+可以最佳化 RAG 應用程式。&lt;/p>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-llm-%E8%88%87-rag-%E6%87%89%E7%94%A8/rag/nemo.webp" width="70%" height="auto">&lt;figcaption>
+&lt;h4>NeMo Framework (source: https://docs.nvidia.com/nemo-framework/index.html)&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="評估-rag-系統">評估 RAG 系統&lt;/h3>
+&lt;p>建造出服務後，往往會碰到一個問題：如何評估模型好壞。講者介紹了以下兩種 RAG 評估方式，判斷生成結果的相關性和正確性。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.trulens.org/" target="_blank" rel="noopener"
+>TruLens&lt;/a>: TruLens 提供 TruRails 工具，與 &lt;a class="link" href="https://github.com/NVIDIA/NeMo-Guardrails" target="_blank" rel="noopener"
+>NeMo Guardrails&lt;/a> 應用程式整合，可用於評估生成結果。&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/explodinggradients/ragas" target="_blank" rel="noopener"
+>RAGAS&lt;/a>: RAGAS 可以使用 LangChain 來連接 NVIDIA AI foundation model 和 endpoint 進行評估。&lt;/li>
+&lt;/ul>
+&lt;p>📖 &lt;strong>延伸閱讀&lt;/strong>：&lt;a class="link" href="https://medium.com/@ajaimlianzy/rag-toolbox-methodologies-for-evaluating-rag-systems-f95ed4b90bdc" target="_blank" rel="noopener"
+>TruLens, RAGAS 與其他評估方法&lt;/a>&lt;/p>
+&lt;h2 id="理解專利請求項附屬關係的自動生成模型">理解專利請求項附屬關係的自動生成模型&lt;/h2>
+&lt;p>&lt;em>&lt;strong>陳豐奇&lt;/strong>, 副所長, 國家衛生研究院&lt;/em>&lt;/p>
+&lt;p>在 IPR (Inter Partes Review) 的過程中，專利會經過多方複審，涉及到案件、法官、當事人等。這些實體關係近似於 social network，可以用 Entity Relation 表徵。&lt;/p>
+&lt;p>專利請求項包括獨立項和附屬項，每一項都必須是單一完整的句子。附屬項越多，專利保護範圍越小。以下列例子說明：&lt;/p>
+&lt;blockquote>
+&lt;ol>
+&lt;li>&lt;strong>A&lt;/strong> device comprising an operating face of a front face of the device&amp;hellip; (獨立項)&lt;/li>
+&lt;li>&lt;strong>The&lt;/strong> device according to claim 1&amp;hellip; (附屬項)&lt;/li>
+&lt;li>&lt;strong>The&lt;/strong> device according to claim 2&amp;hellip; (附屬項)&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;p>第一點是獨立項，第二和第三點是附屬項。&lt;/p>
+&lt;p>專利包含結構附屬 (structural dependency) 和技術附屬 (technical dependency) ，兩者都正確編寫才能形成有效的附屬項。LLM能否做到這一點呢？&lt;/p>
+&lt;p>由於專利數據無法上傳至雲端，使用地端 LLM 進行微調變得尤其重要。研究中使用了不同的開源 LLM 進行微調，並評估生成的專利請求項內文。其中一項評估方法是讓三位專利工程師進行盲測，人工驗證結果。結果顯示，地端微調的 LLM 得分幾乎與 GPT-4 相當。即使是較小的模型，經過微調後也能達到與大型 LLM 相同的效果，生成出具有正確寫作風格的專利請求項。&lt;/p>
+&lt;h2 id="如何透過整合文化背景來改進大型語言模型建模">如何透過整合文化背景來改進大型語言模型建模&lt;/h2>
+&lt;p>&lt;em>&lt;strong>陳縕儂&lt;/strong>, 副教授, 國立台灣大學&lt;/em>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/MiuLab/Taiwan-LLM" target="_blank" rel="noopener"
+>Taiwan-LLM&lt;/a> 的訓練方法旨在使模型本地化，結合台灣的文化背景，並加強繁體中文的支援，提升其在地應用效果。&lt;/p>
+&lt;h3 id="台灣本土資料上進行持續預訓練">台灣本土資料上進行持續預訓練&lt;/h3>
+&lt;p>TAME (TAiwan Mixture of Experts) 計劃網羅各領域專家，蒐集來自媒體、法律、醫療、化工、製造業和遊戲等多個領域的本土資料。&lt;/p>
+&lt;ul>
+&lt;li>Model: Llama-3 8B &amp;amp; 70B&lt;/li>
+&lt;li>Context Length: 8192&lt;/li>
+&lt;li>Long Context Extension: 64k&lt;/li>
+&lt;li>Training Framework: Nvidia NeMo, Nvidia NeMo Megatron&lt;/li>
+&lt;li>Inference Framework: Nvidia TensorRT-LLM&lt;/li>
+&lt;li>Hardware: Nvidia DGX H100 on Taipei-1&lt;/li>
+&lt;li>Training Stack: 3D parallelism, DeepSpeed Zero, Flash Attention 降低記憶體用量並加速訓練&lt;/li>
+&lt;/ul>
+&lt;h3 id="生成多輪-ai-對話資料進行微調">生成多輪 AI 對話資料進行微調&lt;/h3>
+&lt;p>在&lt;a class="link" href="http://arena.twllm.com/" target="_blank" rel="noopener"
+>繁體中文 LLM 競技場&lt;/a>蒐集真實使用者的回饋，以進行模型微調。&lt;/p>
+&lt;h3 id="真實使用者互動並微調">真實使用者互動並微調&lt;/h3>
+&lt;p>透過 &lt;a class="link" href="https://arxiv.org/abs/2305.18290" target="_blank" rel="noopener"
+>Direct Preference Optimization&lt;/a> (DPO) 方法，根據使用者的偏好計算 maximum likelihood，最終微調 LLM。&lt;/p>
+&lt;h3 id="llm-評估">LLM 評估&lt;/h3>
+&lt;p>&lt;a class="link" href="https://huggingface.co/spaces/yentinglin/open-tw-llm-leaderboard" target="_blank" rel="noopener"
+>Open Taiwan LLM Leaderboard&lt;/a> 展示了各模型在不同任務上的表現。評估測試集包含：&lt;/p>
+&lt;ul>
+&lt;li>TMLU: 衡量模型理解各個領域 (國中、高中、大學、國考) 的能力。&lt;/li>
+&lt;li>TW Truthful QA: 評估模型以臺灣特定背景回答問題的能力。&lt;/li>
+&lt;li>TW Legal Eval: 評估模型對臺灣法律術語和概念的理解。&lt;/li>
+&lt;li>MMLU: 測試模型在英語各種任務上的表現。&lt;/li>
+&lt;/ul>
+&lt;h2 id="探討繁中大型語言模型建構之挑戰與克服">探討繁中大型語言模型建構之挑戰與克服&lt;/h2>
+&lt;p>&lt;em>&lt;strong>陳宜昌&lt;/strong>, 聯發創新基地&lt;/em>&lt;br>
+&lt;em>&lt;strong>許大山&lt;/strong>, 創新基地負責人, 聯發科技&lt;/em>&lt;/p>
+&lt;p>聯發科與 NVIDIA 持續合作，&lt;a class="link" href="https://huggingface.co/MediaTek-Research/Breeze-7B-Instruct-v0_1" target="_blank" rel="noopener"
+>Breeze-7B&lt;/a> 和 &lt;a class="link" href="https://huggingface.co/MediaTek-Research/Breexe-8x7B-Instruct-v0_1" target="_blank" rel="noopener"
+>BreeXe-8x7B&lt;/a> 已上架 NVIDIA Inference Microservice (NIM) 。Breeze 模型在訓練中僅使用 2 台 H100，其性能已接近於使用 10 倍算力的 Llama3。&lt;/p>
+&lt;h3 id="挑戰與克服">挑戰與克服&lt;/h3>
+&lt;ol>
+&lt;li>
+&lt;p>缺乏 benchmark&lt;br>
+MediaTek Research 發布了 &lt;a class="link" href="https://huggingface.co/datasets/MediaTek-Research/TCEval-v2" target="_blank" rel="noopener"
+>TC-Eval&lt;/a> 繁體中文 LLM benchmark，提供一個全面的評估標準。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>缺乏大規模的預訓練數據&lt;br>
+&lt;a class="link" href="https://commoncrawl.org/" target="_blank" rel="noopener"
+>Common Crawl&lt;/a> 是一個龐大的公開網絡爬蟲數據集，截至 2023 年 12 月，數據量達到 454 TB。但繁體中文的資料還是非常少。&lt;/p>
+&lt;ul>
+&lt;li>英文：44%&lt;/li>
+&lt;li>簡體中文：5%&lt;/li>
+&lt;li>繁體中文：0.1%&lt;br>
+MediaTek Research 通過多種方法收集了 1 TB 的臺灣繁體中文數據。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>開源模型中支援的繁中 vocabularies 也非常少：&lt;/p>
+&lt;ul>
+&lt;li>LLaMA2: 563 out of 32k&lt;/li>
+&lt;li>Mistral: 1034 out of 32k&lt;br>
+MediaTek Research 開發了技術，將繁體中文的 vocabularies 擴展到超過 32k。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h3 id="breeze-7b">Breeze-7B&lt;/h3>
+&lt;ul>
+&lt;li>免費開源&lt;/li>
+&lt;li>Source Model: Mistral 7B&lt;/li>
+&lt;li>繁體中文 vocabulary size 提升到 62k
+&lt;ul>
+&lt;li>Inference 速度提高 2%&lt;/li>
+&lt;li>繁中 context length 達到 11.1k，相當於 10 頁文本&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>使用總計 7,000 小時 H100 預訓練 650 GB 的資料&lt;/li>
+&lt;/ul>
+&lt;h3 id="breexe-8x7b">BreeXe-8x7B&lt;/h3>
+&lt;ul>
+&lt;li>Source Model: Mistral 8x7B (混合專家模型，&lt;a class="link" href="https://huggingface.co/blog/moe" target="_blank" rel="noopener"
+>Mixture of Experts&lt;/a>, MoE)&lt;/li>
+&lt;li>繁體中文 vocabulary size 提升到 62k&lt;/li>
+&lt;li>BreeXe 的對話能力與 GPT3.5 相當&lt;/li>
+&lt;li>BreeXe 在台灣知識方面優於 GPT3.5&lt;/li>
+&lt;/ul>
+&lt;h3 id="breezper">Breezper&lt;/h3>
+&lt;p>使用 &lt;a class="link" href="https://arxiv.org/abs/2405.14259" target="_blank" rel="noopener"
+>Generative Fusion Decoding&lt;/a> (GFD) 技術，以 Breeze-7B + Whisper 打造語音模型。&lt;/p>
+&lt;ul>
+&lt;li>提升同音字辨識率&lt;/li>
+&lt;li>提升 code switching 辨識率&lt;/li>
+&lt;li>實現 contextual-aware ASR&lt;/li>
+&lt;/ul>
+&lt;h2 id="鴻海-genai-戰略">鴻海 GenAI 戰略&lt;/h2>
+&lt;p>&lt;em>&lt;strong>栗永徽&lt;/strong>, 所長, 鴻海研究院&lt;/em>&lt;/p>
+&lt;p>鴻海 AI 戰略全力投入基礎模型技術，目標打造全方位解決方案平台。憑藉鴻海集團即將建置的龐大算力，人工智慧研究所將為集團研發 FoxBrain，作為三大平台底層最重要的智慧核心。三大平台為：&lt;/p>
+&lt;ol>
+&lt;li>Smart Manufacturing 智慧製造&lt;/li>
+&lt;li>Smart EVs 智慧電動車&lt;/li>
+&lt;li>Smart City 智慧城市&lt;/li>
+&lt;/ol>
+&lt;h3 id="基礎模型細節">基礎模型細節&lt;/h3>
+&lt;ul>
+&lt;li>輕量高效的 LLM：實現更快的運算速度和更低的能耗。&lt;/li>
+&lt;li>人類偏好對齊：確保模型能夠對齊人類偏好，並設置 model guardrail 以防止不當生成。&lt;/li>
+&lt;li>多模態能力：增強模型在多種模態下的表現能力，包括視覺和語音的綜合應用。&lt;/li>
+&lt;/ul>
+&lt;h3 id="foxbrain-目標">FoxBrain 目標&lt;/h3>
+&lt;ul>
+&lt;li>多模態 AI 代理人
+&lt;ul>
+&lt;li>視覺-語言 (VLM)&lt;/li>
+&lt;li>自駕助手 (CabinGPT)&lt;/li>
+&lt;li>音頻-視覺-語言 (FoxBot 機器人)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>特定領域 AI 專家模型
+&lt;ul>
+&lt;li>智慧醫療&lt;/li>
+&lt;li>智慧辦公室&lt;/li>
+&lt;li>智慧工廠&lt;/li>
+&lt;li>智慧城市&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="訓練過程透過-nvidia-工具優化">訓練過程透過 NVIDIA 工具優化&lt;/h3>
+&lt;ol>
+&lt;li>數據構建階段：&lt;a class="link" href="https://github.com/NVIDIA/NeMo-Curator" target="_blank" rel="noopener"
+>NVIDIA NeMo Curator&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>自動化清理、轉換和分析數據&lt;/li>
+&lt;li>透過優化算法提升處理速度&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>模型訓練階段：&lt;a class="link" href="https://github.com/NVIDIA/NeMo-Framework-Launcher" target="_blank" rel="noopener"
+>NVIDIA NeMo Megatron&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>在高品質數據上繼續預訓練&lt;/li>
+&lt;li>在各種下游 NLP 任務上進行微調&lt;/li>
+&lt;/ul>
+&lt;ol start="3">
+&lt;li>模型部署階段：&lt;a class="link" href="https://www.nvidia.com/zh-tw/ai-data-science/products/triton-inference-server/" target="_blank" rel="noopener"
+>NVIDIA Triton 推論服務器&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>優化 neural network 以加快執行速度&lt;/li>
+&lt;li>低延遲，提升性能&lt;/li>
+&lt;/ul></description></item><item><title>2024 NVIDIA AI SUMMIT 紀錄 - 智慧製造與其他</title><link>https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/</link><pubDate>Wed, 05 Jun 2024 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/</guid><description>&lt;img src="https://andreashih.com/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/ai-summit.jpg" alt="Featured image of post 2024 NVIDIA AI SUMMIT 紀錄 - 智慧製造與其他" />&lt;h2 id="demo-booth">Demo Booth&lt;/h2>
+&lt;p>會議開始前，在現場的 Demo Booth 與 NVIDIA 的各位專家交流。很佩服他們能夠清晰地講解 AI 產品的特點，並以簡明易懂的方式回答聽眾的各種問題。&lt;/p>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/demo_booth/demo-booth.jpg" width="60%" height="auto">&lt;figcaption>
+&lt;h4>Demo Booth&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/demo_booth/demo-booth-2.png" width="80%" height="auto">&lt;figcaption>
+&lt;h4>現場展示的酷東西&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;h3 id="nvidia-avatar-cloud-engine-ace-for-games">NVIDIA Avatar Cloud Engine (ACE) for Games&lt;/h3>
+&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/uryeFhnNzEs"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;p>玩家可以透過語音和 AI NPC 進行互動。自動語音辨識 (ASR) 模型將語音轉換成文字，再由大型語言模型 (LLM) 生成 NPC 的回覆，最後再通過文字轉語音 (TTS) 技術將回覆播放出來。角色說話時的嘴型和表情都能與語音搭配，提供了更加沉浸式和細緻的遊戲體驗。&lt;/p>
+&lt;p>使用到的生成式 AI 技術有：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.nvidia.com/zh-tw/ai-data-science/products/nemo/" target="_blank" rel="noopener"
+>NVIDIA NeMo&lt;/a>：是一款 end-to-end cloude-native LLM 框架，可運用遊戲中的人物特色客製化調整 LLM，並且使用 NeMo Guardrails 來保護生成內容安全性。&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.nvidia.com/zh-tw/ai-data-science/products/riva/" target="_blank" rel="noopener"
+>NVIDIA Riva&lt;/a>：用於自動語音辨識及文字轉語音，實現即時對話。&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.nvidia.com/en-us/ai-data-science/audio2face/" target="_blank" rel="noopener"
+>NVIDIA Omniverse Audio2Face&lt;/a>：為遊戲角色建立臉部表情動畫。&lt;/li>
+&lt;/ul>
+&lt;h3 id="nvidia-inference-microservices-nim">Nvidia Inference Microservices (NIM)&lt;/h3>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/demo_booth/nim.jpg" width="60%" height="auto">&lt;figcaption>
+&lt;h4>Gen AI Inference with NIM&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>💻 &lt;a class="link" href="https://build.nvidia.com/explore/discover" target="_blank" rel="noopener"
+>&lt;strong>Demo 連結&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>NIM 是專為管理和部署大型語言模型 (LLM) 而設計的微服務，提供快速穩定的框架，支援許多主流的 LLM，也包括最新加入的 &lt;a class="link" href="https://llama.meta.com/llama3/" target="_blank" rel="noopener"
+>Llama 3&lt;/a>。&lt;/p>
+&lt;p>除了雲端模型，NIM 也可以管理地端 fine-tuned 的模型。使用者可以一次生成多達 30 次的結果，並且能夠替換不同的參數，讓調參和監測生成結果更加便利。此外，NIM 也具備監控 latency 和 token usage 的功能，方便管理資源。&lt;/p>
+&lt;h2 id="人工智慧引領下一波工業數位化">人工智慧引領下一波工業數位化&lt;/h2>
+&lt;p>&lt;em>&lt;strong>Deepu Talla&lt;/strong>, 機器人和邊緣運算副總裁, NVIDIA&lt;/em>&lt;/p>
+&lt;p>在 AI 蓬勃發展的趨勢下，重工業也開始引入軟體，加快了工業數位化的進程。台灣正處於工業數位化的核心地帶，多家製造商 (如鴻海、台達電、和碩、緯創) 正在建設工廠的數位孿生 (Digital Twins)。&lt;/p>
+&lt;p>NVIDIA 目前主要有兩大機器人平台：&lt;a class="link" href="https://developer.nvidia.com/isaac" target="_blank" rel="noopener"
+>Isaac&lt;/a> 和 &lt;a class="link" href="https://developer.nvidia.com/metropolis" target="_blank" rel="noopener"
+>Metropolis&lt;/a>，本演講著重介紹 Isaac 的框架和實際應用場景。&lt;/p>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/2024-nvidia-ai-summit-%E7%B4%80%E9%8C%84-%E6%99%BA%E6%85%A7%E8%A3%BD%E9%80%A0%E8%88%87%E5%85%B6%E4%BB%96/digital_twin/isaac.gif" width="70%" height="auto">&lt;figcaption>
+&lt;h4>NVIDIA Isaac (source: https://developer.nvidia.com/isaac)&lt;/h4>
+&lt;/figcaption>
+&lt;/figure>
+&lt;p>NVIDIA Isaac 是用於構建 AI 機器人的開發平台，&lt;a class="link" href="https://developer.nvidia.com/isaac/sim" target="_blank" rel="noopener"
+>NVIDIA Isaac Sim&lt;/a> 則是用來設計、測試和驗證機器人的平台。Isaac 機器人平台的最新功能有以下三項：&lt;/p>
+&lt;ol>
+&lt;li>&lt;a class="link" href="https://developer.nvidia.com/isaac/perceptor" target="_blank" rel="noopener"
+>Isaac Perceptor&lt;/a>: 利用多重鏡頭及 3D 環繞視野，使機器人能勝任製造業生產線及物流配貨中心的工作。&lt;/li>
+&lt;li>&lt;a class="link" href="https://developer.nvidia.com/isaac/manipulator" target="_blank" rel="noopener"
+>Isaac Manipulator&lt;/a>: 提供多款基礎模型，讓機器人手臂完成更多任務。&lt;/li>
+&lt;li>&lt;a class="link" href="https://developer.nvidia.com/project-gr00t" target="_blank" rel="noopener"
+>Project GR00T&lt;/a>: 用來生成文字和圖像的模型，讓人形機器人能夠與人類互動。&lt;/li>
+&lt;/ol>
+&lt;h2 id="利用數位孿生建造未來工廠">利用數位孿生建造未來工廠&lt;/h2>
+&lt;p>&lt;em>&lt;strong>呂佳翰&lt;/strong>, 廠長, 緯創資通&lt;/em>&lt;/p>
+&lt;p>🎬 &lt;a class="link" href="https://www.youtube.com/watch?v=OAdqXZGUb70" target="_blank" rel="noopener"
+>&lt;strong>影片連結&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>在建造未來工廠的過程中，ESG (環境、社會、治理) 是關鍵點。導入 NVIDIA 的解決方案，可以提升能源利用率，減少資源及溝通成本浪費，甚至可以克服時差問題進行遠端協作。&lt;/p>
+&lt;p>緯創基於 &lt;a class="link" href="https://www.nvidia.com/en-us/omniverse/" target="_blank" rel="noopener"
+>NVIDIA Omniverse&lt;/a> 建立了 WiDT，將 IoT 數據整合到環境中，並透過視覺化 dashboard 進行監控。&lt;a class="link" href="https://www.nvidia.com/zh-tw/design-visualization/solutions/cloud-xr/" target="_blank" rel="noopener"
+>NVIDIA CloudXR&lt;/a> 則提供了強大的 XR 體驗，可以觀測未來的工廠建造。建造數位孿生，可以透過數據的 simulation 考量所有狀況，例如工廠內的熱流、功耗、空間運用等，將工廠 layout 產出最大化。&lt;/p>
+&lt;h2 id="創建數位孿生優化生產線">創建數位孿生優化生產線&lt;/h2>
+&lt;p>&lt;em>&lt;strong>彭志誠&lt;/strong>, DSM 先進運營技術處長, Delta&lt;/em>&lt;/p>
+&lt;p>🎬 &lt;a class="link" href="https://www.youtube.com/watch?v=K5gbmr3I5O4" target="_blank" rel="noopener"
+>&lt;strong>影片連結&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>台達以環保節能為特色，專注於 power chip/device、手機被動元件等產品，涵蓋從印刷電路板 (PCB) 到半導體，再到數據中心和基礎設施的完整產業鏈。在接下來的 50 年中，台達致力於創建自動化和無碳環境，並提供智慧製造解決方案。&lt;/p>
+&lt;p>面臨全球分散製造的挑戰，如何確保生產線的可持續性 (sustainability) 成為重要課題。過去需要在設計完成後才能進行現場模擬，但現在可以透過數位孿生 (digital twins) 解決方案，在虛擬環境中進行預先模擬。&lt;/p>
+&lt;p>台達使用 NVIDIA Omniverse 建立了數位孿生解決方案平台，並獲得了顯著的好處：&lt;/p>
+&lt;ol>
+&lt;li>加速 NPI (New Product Introduction) 團隊的開發速度：透過訓練每個設備的 AI recipe，將 NPI (新產品導入) 的前置時間縮短了 10%。&lt;/li>
+&lt;li>目標零缺陷 (zero defects) 的品質管控：通過歷史數據分析，提高 25% 的 repair/debug efficiency，並能透過資料找到問題的 root cause，從而提升產品品質。&lt;/li>
+&lt;li>創新協作：通過 e-learning 系統，將作業員的培訓時間減少 30%。&lt;/li>
+&lt;/ol>
+&lt;h2 id="賦能高效萬億參數的-ai-enabling-efficient-trillion-parameter-ai">賦能高效萬億參數的 AI Enabling Efficient Trillion Parameter AI&lt;/h2>
+&lt;p>&lt;em>&lt;strong>Marc Hamilton&lt;/strong>, 解決方案架構與工程副總裁, NVIDIA&lt;/em>&lt;/p>
+&lt;blockquote>
+&lt;p>Efficiency is in our DNA.&lt;/p>
+&lt;/blockquote>
+&lt;p>現今 AI 計算需求呈爆炸式增長，最新模型的能耗也不斷增加中。NVIDIA 致力於應對此一挑戰，透過加速計算技術節省了時間和能源。&lt;/p>
+&lt;p>AI 的發展循環有以下步驟：&lt;/p>
+&lt;ol>
+&lt;li>訓練模型（極限壓縮數據）&lt;/li>
+&lt;li>部署到雲端、機器人等&lt;/li>
+&lt;li>生成更多數據&lt;/li>
+&lt;li>微調模型&lt;/li>
+&lt;li>返回第一步，重新訓練&lt;/li>
+&lt;/ol>
+&lt;p>AI 的安全性與效率同樣重要。30 年前，人們認為軟體不安全，但隨著技術的進步，軟體的安全性也隨之提升。現在開發者與研究者也致力於使 AI 變得更加安全。&lt;/p>
+&lt;h2 id="建造未來可持續的人工智慧工廠-building-sustainable-ai-factories-of-the-future">建造未來可持續的人工智慧工廠 Building Sustainable AI Factories of the Future&lt;/h2>
+&lt;p>&lt;em>&lt;strong>彭志誠&lt;/strong>, DSM 先進運營技術處長, Delta&lt;/em>&lt;br>
+&lt;em>&lt;strong>Simon Chang&lt;/strong>, Senior Group Director, Regional System Solution, Asia Pacific &amp;amp; Japan, Cadence&lt;/em>&lt;br>
+&lt;em>&lt;strong>Aditya Ramkrihna&lt;/strong>, General Manager, Digital Industries, Siemens Taiwan&lt;/em>&lt;br>
+&lt;em>&lt;strong>Dion Harris&lt;/strong>, Director, Data Center &amp;amp; HPC, NVIDIA&lt;/em>&lt;/p>
+&lt;h3 id="delta">Delta&lt;/h3>
+&lt;p>自 2010 年以來，台達一直致力於智慧製造和自動化，提前規劃並為未來做好準備。NVIDIA Omniverse 加速了智慧製造的進程，在 AI 工廠中，機器可以自動捕捉關鍵特徵（如參數和 signals），並運用智能技術進行自我調整。&lt;/p>
+&lt;h3 id="cadence">Cadence&lt;/h3>
+&lt;p>Cadence 專注於降低功耗，致力於打造高效率且環保節能的 AI 工廠。透過 simulation 優化設計，不僅為客戶節省了成本，還改善了環境和 community 的整體品質。&lt;/p>
+&lt;h3 id="siemens">Siemens&lt;/h3>
+&lt;p>Siemens 構建數位孿生模型，資源使用更少，且能實現逼真且實時的 simulation。此外，生成式 AI 也可以應用於 PLC編程，通過自然語言替代傳統的 PLC 程式。&lt;/p>
+&lt;h2 id="ai-開發藥物新境界如何加快-protac-的設計">AI 開發藥物新境界：如何加快 PROTAC 的設計&lt;/h2>
+&lt;p>&lt;em>&lt;strong>Chien-Ting Kao&lt;/strong>, 人工智慧副研究員, 安宏生醫&lt;/em>&lt;/p>
+&lt;p>PROTAC（Proteolysis Targeting Chimeras）是一種設計用於降解目標蛋白質的技術。PROTAC 會透過辨識目標蛋白，將其標記並引導至降解機制。&lt;/p>
+&lt;p>NVIDIA 為新藥開發提供了便捷的 AI 工具：&lt;/p>
+&lt;ul>
+&lt;li>NVIDIA Inference Microservice (NIM)&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.nvidia.com/zh-tw/clara/bionemo/" target="_blank" rel="noopener"
+>BioNeMo Microservice&lt;/a>&lt;/li>
+&lt;li>BioNeMo Framework&lt;/li>
+&lt;/ul>
+&lt;p>這些框架和微服務提供了許多模型，用於表徵蛋白質和生成蛋白質結構。&lt;/p>
+&lt;p>在設計 PROTAC 時，需要考慮以下要素：&lt;/p>
+&lt;ul>
+&lt;li>合理性（validity）：確保設計出的結構是合理的。&lt;/li>
+&lt;li>唯一性（uniqueness）：確保生成的結構不重複。&lt;/li>
+&lt;/ul>
+&lt;p>成功的藥物分子需要能夠與兩端的蛋白質結合，以確保藥效的達成。藉由 AI 的幫助，有望在早期藥物開發階段減少研發時間和成本。&lt;/p></description></item><item><title>About</title><link>https://andreashih.com/blog/about/</link><pubDate>Fri, 10 Nov 2023 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/about/</guid><description>&lt;p>Hello! I&amp;rsquo;m Andrea, a software engineer based in Taiwan, where I&amp;rsquo;m part of a speech team. Here on this blog, I&amp;rsquo;ll be tossing in some thoughts from my day-to-day life at work and beyond.&lt;/p>
 &lt;p>If you are having any questions, feel free to comment below or &lt;a class="link" href="mailto:cfshih97@gmail.com" >send me an email&lt;/a>.&lt;/p>
 &lt;p>📮 Email Address:
 &lt;a class="link" href="mailto:cfshih97@gmail.com" >cfshih97@gmail.com&lt;/a>&lt;/p>
@@ -269,11 +601,11 @@ title="YouTube Video"
 &lt;p>感謝來參與的同學們，在 QA 時間同學們的發問及討論讓我獲得很多啟發。像是大型語言模型的訓練方式、著作權問題，甚至是計算語言學的未來等，都讓我重新思考了 ChatGPT 帶來的影響。除此之外，同學們也發問了和語言所、資料科學、及未來求職相關的問題，也有同學和我分享他們的跨域經驗，不論是自學或參加專題都非常厲害。也很開心本次演講獲得深入淺出、生動有趣且實用的回饋！&lt;/p>
 &lt;p>📄 演講投影片：&lt;a class="link" href="https://bit.ly/20230427_nsysu_nlp" target="_blank" rel="noopener"
 >bit.ly/20230427_nsysu_nlp&lt;/a>&lt;/p>
-&lt;figure>&lt;img src="poster.JPG" width="40%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8%E6%BC%94%E8%AC%9B/poster.JPG" width="40%" height="auto">&lt;figcaption>
 &lt;h4>理工長廊上的海報&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>
-&lt;figure>&lt;img src="presentation.JPG" width="50%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%B8%E6%BC%94%E8%AC%9B/presentation.JPG" width="50%" height="auto">&lt;figcaption>
 &lt;h4>演講途中&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>
@@ -644,13 +976,13 @@ data-flex-basis="654px"
 ❎ 不可加密碼 (需升級到 premium)&lt;br>
 ✅ 有 premium 版&lt;/p>
 &lt;p>Daylio 主打心情紀錄，不用書寫文字。除了預設之外還有很多可愛的表情可以新增，顏色也可以自由更換（當然免費版的選擇會比較少）。隨手點一點就可以記錄當下的心情，一天當中可以記錄很多次，還可以選擇現在正在做的事情，幫助我們了解做什麼事情會帶來怎麼樣的心情（例如：去跑步-&amp;gt;覺得開心、煮飯-&amp;gt;覺得平靜）。&lt;/p>
-&lt;figure>&lt;img src="daylio-1.gif" width="30%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E4%B8%89%E6%AC%BE%E6%97%A5%E8%A8%98%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%88%86%E4%BA%AB-dayliofive-minute-journalday-one/daylio-1.gif" width="30%" height="auto">
 &lt;/figure>
 &lt;p>Daylio 還有很棒的功能：週報和月報，可以了解一段期間內的心情變化，還會計算情緒分數和繪製心情折線圖。資料可以匯出成 csv 格式。&lt;/p>
-&lt;figure>&lt;img src="daylio-2.gif" width="30%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E4%B8%89%E6%AC%BE%E6%97%A5%E8%A8%98%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%88%86%E4%BA%AB-dayliofive-minute-journalday-one/daylio-2.gif" width="30%" height="auto">
 &lt;/figure>
 &lt;p>除此之外，Daylio 也可以用來設定目標，根據不同的目的（例如：幫助睡眠、釋放壓力&amp;hellip;）推薦不同的活動，並設定一週要從事幾次。&lt;/p>
-&lt;figure>&lt;img src="daylio-3.gif" width="30%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E4%B8%89%E6%AC%BE%E6%97%A5%E8%A8%98%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%88%86%E4%BA%AB-dayliofive-minute-journalday-one/daylio-3.gif" width="30%" height="auto">
 &lt;/figure>
 &lt;blockquote>
 &lt;p>總結：&lt;/p>
@@ -679,7 +1011,7 @@ data-flex-basis="654px"
 &lt;li>How could I have made today even better&lt;/li>
 &lt;/ul>
 &lt;p>早上的問題可以提升動力，晚上的 wrap up 則提供了反思的機會。問答的設計很像在跟一個虛擬好友聊天，溫暖的奶茶色背景也讓人感到很放鬆。&lt;/p>
-&lt;figure>&lt;img src="journal.gif" width="30%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E4%B8%89%E6%AC%BE%E6%97%A5%E8%A8%98%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%88%86%E4%BA%AB-dayliofive-minute-journalday-one/journal.gif" width="30%" height="auto">
 &lt;/figure>
 &lt;p>Five Minute Journal 也有類似 Daylio 的心情記錄功能，還可以在日記中加入照片，但要升級為 premium 版才能使用。不過免費版也有 frequent words 功能，可以看到自己常常用哪些字。&lt;/p>
 &lt;blockquote>
@@ -698,7 +1030,7 @@ data-flex-basis="654px"
 ✅ 可加密碼 (或 touch/face ID)&lt;br>
 ✅ 有 premium 版&lt;/p>
 &lt;p>Day One 是一個老牌日記 app，介面很簡潔，版面顏色可以自己選擇。乍看有點像 ios 內建的備忘錄，也有加 tag 分類的功能。可以將日記匯出成 pdf、plain text 或 markdown 等不同格式，還可以分享連結。除了文字外也可以加上地點、天氣和照片，但免費版只能放一張。Premium 版可以放影片和錄音，支援手寫，還可以與 instagram 連動。還有一個很酷的功能：在 app 上編輯日記封面，幫你印成一本書，不過這是需要額外付費的。&lt;/p>
-&lt;figure>&lt;img src="day-one.jpg" width="30%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E4%B8%89%E6%AC%BE%E6%97%A5%E8%A8%98%E6%87%89%E7%94%A8%E7%A8%8B%E5%BC%8F%E5%88%86%E4%BA%AB-dayliofive-minute-journalday-one/day-one.jpg" width="30%" height="auto">
 &lt;/figure>
 &lt;p>如果面對空白頁面不知如何下筆，Day One 也提供了許多模板，例如 daily gratitude、daily self&amp;hellip;等。模板中會有一些預設的問題引導你書寫，像是 daily self 模板中的五個問題是：&lt;/p>
 &lt;ul>
@@ -792,7 +1124,7 @@ data-flex-basis="654px"
 &lt;p> &lt;/p>
 &lt;h2 id="work-from-home">Work from home&lt;/h2>
 &lt;p>Work from home 的小確幸就是 8:30 上班可以 8:00 再起床，悠悠哉哉地開電腦。壞處就是沒有看到 mentor 本人，會有不知道工作做得如何的不安感。想一直回報進度又怕對方正在忙其他事情。後來終於回到辦公室，雖然大家都是各忙各的，但有人在旁邊真的會比較有動力。&lt;/p>
-&lt;figure>&lt;img src="desk.jpg" width="60%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/desk.jpg" width="60%" height="auto">&lt;figcaption>
 &lt;h4>我的辦公桌 (雖然只進公司兩天)、識別證和證書&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>
@@ -802,7 +1134,7 @@ data-flex-basis="654px"
 &lt;p> &lt;/p>
 &lt;h2 id="結語">結語&lt;/h2>
 &lt;p>回想起來，我的打工或實習似乎總是離不開資料：升大學的暑假在補習班管理學生資料，大二在教育局整理學校資料，碩班在 lab 的研究還有 NTU cool 的工讀也都在碰資料。兩個月的實習很像跑步，剛起步的時候春風得意，好像什麼事都難不倒。跑一段時間後氣喘吁吁，開始有撞牆的感覺。習慣了之後又找回步調，穩定前進。快到終點時好像有道無法突破的檻，覺得看不到希望。不過堅持到最後就輕鬆了，應該說比較不擔心了。小時候學鋼琴，老師說我彈琴看起來很怕，好像琴鍵會咬我一樣。長大後學程式也總是怕怕的，戒慎恐懼敲著鍵盤，好像 error message 會讓電腦爆炸一樣。希望自己可以好好善待心裡莫名的恐懼，反正只要穩紮穩打大步慢走就好了 (Lopers 內梗，get it?)&lt;/p>
-&lt;figure>&lt;img src="card.jpg" width="60%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/card.jpg" width="60%" height="auto">&lt;figcaption>
 &lt;h4>HR 辦實習超用心，每個實習生都收到一張主管寫的小卡&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>
@@ -1052,7 +1384,7 @@ sample size，&lt;code>V&lt;/code> 是 type count：&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;rank&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;frequency&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_tfl.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_tfl.png" width="60%" height="auto">
 &lt;/figure>
 &lt;h3 id="frequency-spectrum">Frequency Spectrum&lt;/h3>
 &lt;p>透過剛剛的 type-frequency list，我們可以得到 frequency spectrum。Brown
@@ -1128,7 +1460,7 @@ corpus 的 frequency spectrum 可直接從套件中匯入：&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;m&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;Vm&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_spc.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_spc.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>從上圖可以得知，&lt;em>hapax legomena&lt;/em> (只出現過一次的單詞)
 占所有語料庫的比例都相當的高。接下來，我們可以透過 Vocabulary growth
@@ -1202,7 +1534,7 @@ type，而在其中有 &lt;code>221&lt;/code> 個單詞只出現過一次。&lt;
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">xlab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;N&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ylab&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;V(N)/V1(N)&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_vgc.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_vgc.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>上圖中顏色較深的曲線是 V，較淺的曲線是 V1。從圖中可以發現 ASBC 與 Brown
 corpus 的 V1 曲線上升後逐漸平緩，然而 PTT 與 Dcard 的 V1
@@ -1294,7 +1626,7 @@ Evert, 2004)，和 finite Zipf-Mandelbrot (&lt;code>lnre.fzm&lt;/code>; Evert,
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_spc_exp.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_spc_exp.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>Observed and expected VGC:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -1337,7 +1669,7 @@ Evert, 2004)，和 finite Zipf-Mandelbrot (&lt;code>lnre.fzm&lt;/code>; Evert,
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fill&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">1&lt;/span>&lt;span class="o">:&lt;/span>&lt;span class="m">2&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">cex&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="all_vgc_exp.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/ptt-%E8%88%87-dcard-%E8%AA%9E%E6%96%99%E6%96%B7%E8%A9%9E%E5%95%8F%E9%A1%8C%E6%8E%A2%E8%A8%8E/all_vgc_exp.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>上方的紅色曲線代表透過 fZM model 所產生的 expected value。&lt;/p>
 &lt;p> &lt;/p>
@@ -1559,25 +1891,25 @@ corpus data。&lt;/p>
 &lt;p>After talking to myself for one or two weeks, I finally face my weaknesses regarding social media addiction. At present, instagram seldom pops up in my head. We have reached a peaceful balance. It feels really powerful and satisfying when things are getting in control. I no longer feel itchy when seeing those bright pink circles on the homepage. I can enjoy me-time without pictures and memes sparkling like a haunted nightmare. I can do whatever I want without insta, and it does no harm to my life (actually it has been better without its harassment). I don&amp;rsquo;t agree that hiding from social media is the most ideal choice. After all, social media provides the most instant way to build connections with friends and families. However, I learned that it is important to give myself a break. All these struggles of dealing with insta addiction have put me back in the driving seat of my body, mind, and spirit.&lt;/p>
 &lt;p> &lt;/p>
 &lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Jakob Owens&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>霧台魯凱語田野調查</title><link>https://andreashih.com/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/budai.jpg" alt="Featured image of post 霧台魯凱語田野調查" />&lt;p>對台大語言所碩一的同學們來說，下學期的重頭戲無疑是田野調查。這門讓大家期待了大半年的課程果真充實無比，田調的過程更是充滿驚奇與挑戰。這學期我們學習了魯凱語，課程一開始老師請了族語老師到所上讓我們採集語料。較熟悉魯凱語，也寫了兩篇小分析後，五月底便啟程到部落進行五天四夜的田野調查。&lt;/p>
-&lt;figure>&lt;img src="mist.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/mist.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p> &lt;/p>
 &lt;h2 id="day-1">Day 1&lt;/h2>
 &lt;p>我們這組被安排進行田調的耆老是一位牧師。牧師和妻子一同接受我們採訪，在開始之前，牧師妻子問我們介不介意在開始前禱告。禱告時牧師妻子的話語平復了上午舟車勞頓的煩擾。後來詢問老師才知道，部落的牧師們是經常被請來做田調的耆老。因為傳教需求，牧師通常精通族語和中文。在田調的過程中，牧師一字一句仔細發音給我們聽，也會寫羅馬拼音給我們看，還會幫我們聽發音。聚精會神之下 3 小時飛快地過去，來到微涼的傍晚。山嵐滾滾而來，如臨幻境。&lt;/p>
-&lt;figure>&lt;img src="mist2.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/mist2.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p> &lt;/p>
 &lt;h2 id="day-2">Day 2&lt;/h2>
 &lt;p>因為前一晚轉寫到深夜，早上被音樂叫醒時，朦朧中忘了自己身在何處，此時部落裡的族語廣播提醒了我正在霧台山中。從住處走到田調場地的路上，看到了一片紅藜田。紅藜營養價值豐富，與小米及芋頭並列魯凱人的三大主食。&lt;/p>
-&lt;figure>&lt;img src="plant.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/plant.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p>走在石板路上，放眼望去盡是一片片碧綠層疊，天空藍得不可思議。路旁有著立體的陶壺裝飾，陶壺在魯凱文化中具有重要象徵意義，也是貴族的婚禮聘禮之一。&lt;/p>
-&lt;figure>&lt;img src="view.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/view.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p>上午被安排到與熟悉的族語老師田調，在舒適圈裡的四人拼命問問題，累積了如霧台山一般高的語料。下午我們遇到了一位村長，村長看起來略有些嚴肅，但似乎被組員們的歡笑感染，很開心地度過了三小時的田調。我們也得知了大部分耆老對於我們學習魯凱語十分贊同，也很好奇我們為什麼要學習魯凱語，更對我們能說出幾個魯凱語詞彙感到驚奇。部落裡的年輕人多半不會說族語，我們雖然只是魯凱語門外漢，但&lt;a class="link" href="https://glosss.yongfu.name/#/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->田調留下來的資料&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>也許能為語言保存盡一份心力。&lt;/p>
 &lt;p>傍晚降下突如其來的大雨，像是巨大水盆傾瀉而下，雨水讓整座山蓋上一片白茫。&lt;/p>
-&lt;figure>&lt;img src="rain.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/rain.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p> &lt;/p>
 &lt;h2 id="day-3">Day 3&lt;/h2>
@@ -1589,7 +1921,7 @@ corpus data。&lt;/p>
 &lt;p>這個罰對我來說是沒有的，罰對我來說是進步。&lt;/p>
 &lt;/blockquote>
 &lt;p>晚餐我們吃到了魯凱族傳統美食 &lt;em>cinabu&lt;/em> (吉拿富)。&lt;em>cinabu&lt;/em> 的內餡通常是豬肉、小米粉及芋頭粉等食材，外層以假酸漿葉包覆，可以食用。最外層則使用月桃葉包裹，再用月桃繩束起，如下圖右下所示。&lt;/p>
-&lt;figure>&lt;img src="dish.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/dish.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p> &lt;/p>
 &lt;h2 id="day-4">Day 4&lt;/h2>
@@ -1598,7 +1930,7 @@ corpus data。&lt;/p>
 &lt;p>據族語老師所述，魯凱族在台灣原住民族中屬於較保守的族群，尤其以霧台魯凱人最為傳統，男女分際最為分明。村長告訴我們傳統魯凱族的年輕男女是不能互相自由談話的，若兩人有意結姻緣，必由一「橋樑」(&lt;em>watalutaludru&lt;/em>) 幫助兩人走向婚姻。並且，一個女子可以有許多男子追求。&lt;/p>
 &lt;p>傳統的魯凱年輕男女在結婚前有一個類似相親的社交活動 &lt;em>mauapapalange&lt;/em>。村長表示這是 20 年前才有的習俗，現今年輕族群大多已採自由戀愛。村長告訴我們，女主角在 &lt;em>mauapapalange&lt;/em> 時心中雖有屬意之人，但仍須對在場所有男性表示友好。此時「橋樑」(&lt;em>watalutaludru)&lt;/em> 會發揮其功力，促成兩人結為連理。我們問道，那麼橋樑要怎麼知道女主角心中所愛是在座的哪一位呢？村長說：「所以橋樑很厲害啊！」。由此可見「橋樑」在 &lt;em>mauapapalange&lt;/em> 中扮演極為重要的角色。&lt;/p>
 &lt;p>參訪魯凱文物館時，耆老的女兒，同時也是文物館導覽員，向我們介紹了 &lt;em>mauapapalange&lt;/em> 的細節與過程。&lt;em>mauapapalange&lt;/em> 並非一對一的相親，而是由男女主角各自邀請男生及女生朋友一同參加。&lt;em>mauapapalange&lt;/em> 的地點會選在女生家中，座位配置如下圖：&lt;/p>
-&lt;figure>&lt;img src="seat.png" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/seat.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>年輕的男女會坐在石椅上，且男女壁壘分明。長輩則會坐在前方，有監督的作用。&lt;/p>
 &lt;p>&lt;em>mauapapalange&lt;/em> 在魯凱文化中是由男方主動，男主角的男生朋友們 (&lt;em>lamalala&lt;/em>) 會唱歌，或表演鼻笛。此時唱的歌謠為重唱形式，旋律在第一個人唱之後，其他人都能隨後接下去，因為大家從小到大都聽這些歌謠。歌曲結束時全部的人會一起收尾，據文物館導覽員所述，那種全體整齊一氣呵成的收尾是相當美妙的。歌謠類似中國戲曲的曲牌，歌詞可以修改，以表達對於女主角的愛慕，且歌詞的押韻相當重要。男主角有時候會找特別會唱歌或演奏鼻笛的樁腳，但是這麼做的風險是「女生的心有可能會往另一條道路走」。&lt;/p>
@@ -1610,10 +1942,10 @@ corpus data。&lt;/p>
 &lt;p>魯凱族的菸斗男女都可抽，有時小孩也可以抽。因其為貴重物品，只有少數人持有，可以表達對珍愛之人的心。&lt;/p>
 &lt;h3 id="建築">建築&lt;/h3>
 &lt;p>魯凱族的傳統建築為石板屋，是族人取得石板後經處理堆疊而成。若屋外有石椅，則是頭目家屋，因為頭目會在戶外石椅負責調解。&lt;/p>
-&lt;figure>&lt;img src="daane.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/daane.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p>石板屋有天窗，讓光線得以透進室內。&lt;/p>
-&lt;figure>&lt;img src="ceiling.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/ceiling.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p>魯凱族精於雕刻，家屋內外都有雕刻藝術。平民家屋的雕刻與貴族家屋的不同，而貴族家屋的雕刻又不可和頭目相同。&lt;/p>
 &lt;h3 id="習俗與宗教">習俗與宗教&lt;/h3>
@@ -1629,7 +1961,7 @@ corpus data。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="day-5">Day 5&lt;/h2>
 &lt;p>車子緩緩開下山，司機在這幅景象前特別停下來讓我們拍照。自然的壯闊之美盡收眼底，旅程也到了尾聲。從美麗的部落回到喧嚷的都市，不免常常想起那座山，那道陽光，與那些人。&lt;/p>
-&lt;figure>&lt;img src="mountains.JPG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9C%A7%E5%8F%B0%E9%AD%AF%E5%87%B1%E8%AA%9E%E7%94%B0%E9%87%8E%E8%AA%BF%E6%9F%A5/mountains.JPG" width="60%" height="auto">
 &lt;/figure>
 &lt;p> &lt;/p>
 &lt;h2 id="後記">後記&lt;/h2>
@@ -1637,7 +1969,7 @@ corpus data。&lt;/p>
 >&lt;strong>&lt;!-- raw HTML omitted -->python-docx&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 搭配 python 內建函式庫做了一個&lt;a class="link" href="https://github.com/andreashih/docx-search-manipulation" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->迷你專案&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>。&lt;/p>
 &lt;p>最初的想法如下圖：&lt;/p>
-&lt;figure>&lt;img src="python_docx.png" width="60%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/docx-files-search-and-manipulation/python_docx.png" width="60%" height="auto">&lt;figcaption>
 &lt;h4>專案發想&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>
@@ -1903,7 +2235,7 @@ regression&lt;/em>。本章介紹了如何以 logistic regression
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;dodge&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.3&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="1.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/nerd-vs.-geek/1.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>接下來看看不同世紀使用 &lt;code>nerd&lt;/code> 與 &lt;code>geek&lt;/code> 時的 polarities。可以發現不論在
 20 或 21 世紀，使用 &lt;code>nerd&lt;/code> 和 &lt;code>geek&lt;/code> 時大部分都是 neutrual
@@ -1929,7 +2261,7 @@ polarity。特別的是，&lt;code>geek&lt;/code> 在 21 世紀時被使用於 p
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;dodge&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.5&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="2.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/nerd-vs.-geek/2.png" width="60%" height="auto">
 &lt;/figure>
 &lt;p>因為好奇，到 &lt;a class="link" href="https://dictionary.cambridge.org/" target="_blank" rel="noopener"
 >&lt;strong>&lt;!-- raw HTML omitted -->Cambridge Dictionary&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a>
@@ -1970,7 +2302,7 @@ computers, and knows a lot of facts about it&lt;/em>&lt;/p>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">geom_bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stat&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;identity&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">width&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="m">0.4&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="3.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/nerd-vs.-geek/3.png" width="60%" height="auto">
 &lt;/figure>
 &lt;h2 id="logistic-regression-model">Logistic Regression Model&lt;/h2>
 &lt;p>試著用書上的方式 (p.258) 跑 lrm。&lt;/p>
@@ -2087,7 +2419,7 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;p> &lt;/p>
 &lt;h2 id="2018-中山外文大英劇">2018 中山外文大英劇&lt;/h2>
 &lt;p>我的劇場經驗較同屆的同學晚了一整年。大部分有志參與大英劇的同學會在一年級當舞台助理，二年級上台演出，並在三年級擔任製作群。而我則是在大三直接參加演員甄選。2018 演出的是 &lt;em>Grease&lt;/em>，一齣活潑熱情的美式校園劇。音樂是我很喜歡的 1950s 風格，因此每次最期待的就是練唱。圖中大家身上的禮服出現在劇中最經典的 prom 一景，女演員手上都戴著 corsage，復刻 50 年代美國高中舞會。&lt;/p>
-&lt;figure>&lt;img src="ged.jpg" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9F%B3%E6%A8%82%E5%8A%87/ged.jpg" width="60%" height="auto">
 &lt;/figure>
 &lt;p>以下是我在大英劇訓練下習得的一些特殊技能，雖然跟劇沒有直接關係，但下戲後仍牢牢地嵌在我的生活經驗裡。&lt;/p>
 &lt;h3 id="快速換裝技能">快速換裝技能&lt;/h3>
@@ -2098,14 +2430,14 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;h2 id="我心目中的音樂劇-top-3">我心目中的音樂劇 Top 3&lt;/h2>
 &lt;p>因為熱愛音樂，在接受大英劇訓練後開始以不同角度欣賞音樂劇中的樂曲。以下將介紹我心目中的音樂劇 Top 3 以及其中我最喜歡的曲目。&lt;/p>
 &lt;h3 id="芝加哥chicago">《芝加哥》&lt;em>Chicago&lt;/em>&lt;/h3>
-&lt;figure>&lt;img src="chicago.PNG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9F%B3%E6%A8%82%E5%8A%87/chicago.PNG" width="60%" height="auto">
 &lt;/figure>
 &lt;p>犯罪與貪婪，是《芝加哥》的兩大關鍵字。爵士曲風讓整齣戲多了一股詭譎卻詼諧的黑色幽默。&lt;a class="link" href="https://www.youtube.com/watch?v=Le8a7u1pANU" target="_blank" rel="noopener"
 >&lt;em>And All That Jazz&lt;/em>&lt;/a> 中長號的拖拉與鋼琴的清脆呈現出對比，拉開一樁驚世駭俗謀殺案的序幕。&lt;a class="link" href="https://www.youtube.com/watch?v=6tP38xLLreg" target="_blank" rel="noopener"
 >&lt;em>All I Care About&lt;/em>&lt;/a> 中男主角的口哨 solo 和女主角 Roxie 獨唱的 &lt;a class="link" href="https://www.youtube.com/watch?v=HGetrf2KVrs" target="_blank" rel="noopener"
 >&lt;em>Nowadays&lt;/em>&lt;/a> 也充分呈現出「拖拉」的特色：轉音、滑音及後半拍的運用。Renée Zellweger 慵懶甜美的唱腔精準詮釋天真又危險的 Roxie，帶有不疾不徐，蔑笑人生百態的韻味。&lt;/p>
 &lt;h3 id="吉屋出租rent">《吉屋出租》&lt;em>RENT&lt;/em>&lt;/h3>
-&lt;figure>&lt;img src="rent.PNG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9F%B3%E6%A8%82%E5%8A%87/rent.PNG" width="60%" height="auto">
 &lt;/figure>
 &lt;p>&lt;em>RENT&lt;/em> 劇中角色秉持著自由、藝術與愛，面臨了人生的不同轉折。除了搖滾，作曲家 Jonathan Larson 也在序曲 &lt;a class="link" href="https://www.youtube.com/watch?v=wsj15wPpjLY" target="_blank" rel="noopener"
 >&lt;em>Seasons of Love&lt;/em>&lt;/a> 中加入了福音元素。&lt;a class="link" href="https://www.youtube.com/watch?v=c7H1zqvKObM" target="_blank" rel="noopener"
@@ -2113,7 +2445,7 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 >&lt;em>Tango: Maureen&lt;/em>&lt;/a> 皆是富有劇情的男女對唱。&lt;em>Light My Candle&lt;/em> 描述戀情初萌芽的情侶彼此試探，男女主角一人一句，節奏明快地串接整首曲子。&lt;em>Tango: Maureen&lt;/em> 呈現一位風流女子的前男女友，彼此狹路相逢卻同仇敵愾，同時又相互較勁的複雜情感，其中的合音讓人精神大振，頗有一吐為快的舒暢感。&lt;a class="link" href="https://www.youtube.com/watch?v=JaPUzbY_uVA" target="_blank" rel="noopener"
 >&lt;em>What You Own&lt;/em>&lt;/a> 則是經典搖滾曲風，可說是總結整齣劇的曲目。&lt;/p>
 &lt;h3 id="一個美國人在巴黎an-american-in-paris">《一個美國人在巴黎》&lt;em>An American in Paris&lt;/em>&lt;/h3>
-&lt;figure>&lt;img src="american.PNG" width="60%" height="auto"/>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E9%9F%B3%E6%A8%82%E5%8A%87/american.PNG" width="60%" height="auto">
 &lt;/figure>
 &lt;p>年輕的心靈漫步在浪漫的花都，是《一個美國人在巴黎》呈現的美好畫面。精緻的芭蕾舞蹈，細膩的光影及優雅的換場將觀眾帶進作曲家 &lt;a class="link" href="https://www.youtube.com/watch?v=BskzP8D-R6U" target="_blank" rel="noopener"
 >George Gershwin&lt;/a> 的巴黎假期。結合了古典、爵士與藍調，&lt;a class="link" href="https://www.youtube.com/watch?v=S4CXZJFxvSw&amp;amp;list=PLM_1csaEG9kewZn1ILEa7g6OpD_4sDbpz&amp;amp;index=15" target="_blank" rel="noopener"
@@ -2324,7 +2656,7 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">axis.text.x&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nf">element_text&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">angle&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">45&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">hjust&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">))&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="unnamed-chunk-6-1.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/unnamed-chunk-6-1.png" width="60%" height="auto">
 &lt;/figure>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -2346,7 +2678,7 @@ Another op&amp;rsquo;nin&amp;rsquo;, another show. &amp;ndash; Kiss Me Kate&lt;/
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">theme&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">legend.position&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;none&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;figure>&lt;img src="unnamed-chunk-7-1.png" width="60%" height="auto"/>
+&lt;/div>&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E7%94%A8-rvest-%E7%88%AC-mobile01-%E7%9A%84-iphone-%E6%9D%BF/unnamed-chunk-7-1.png" width="60%" height="auto">
 &lt;/figure>
 &lt;h2 id="explanation">Explanation&lt;/h2>
 &lt;p>從 Mobile01 爬下的前 1000 頁標題資料中可以發現，文章數最多的
@@ -2442,4 +2774,4 @@ the Baroque period.&lt;/p>
 >&lt;strong>&lt;!-- raw HTML omitted -->Markdown&lt;!-- raw HTML omitted -->&lt;/strong>&lt;/a> 撰寫內文了！如果要預覽 blog，可以依照 &lt;code>4. Local Installation&lt;/code> 的方法執行，但不需要再 run 一次 &lt;code>bundle install&lt;/code>。&lt;/p>
 &lt;p>上述過程讓我感受最深的是，你必須試了才知道結果會如何。不知道怎麼做就試一下，再依結果去調整。不斷地找到問題，再不斷地解決問題，我認為這就是學習新事物困難但有趣的地方。&lt;/p>
 &lt;p> &lt;/p>
-&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Jess Bailey&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>Archives</title><link>https://andreashih.com/blog/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/archives/</guid><description/></item><item><title>Search</title><link>https://andreashih.com/blog/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/search/</guid><description/></item></channel></rss>
+&lt;p>&lt;!-- raw HTML omitted -->Photo by &lt;!-- raw HTML omitted -->Jess Bailey&lt;!-- raw HTML omitted --> on &lt;!-- raw HTML omitted -->Unsplash&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>Archives</title><link>https://andreashih.com/blog/archives/</link><pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/archives/</guid><description/></item><item><title/><link>https://andreashih.com/blog/_index.zh-cn/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/_index.zh-cn/</guid><description/></item><item><title>Search</title><link>https://andreashih.com/blog/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/search/</guid><description/></item></channel></rss>

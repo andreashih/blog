@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>intern on The Andrea Journal</title><link>https://andreashih.com/blog/tags/intern/</link><description>Recent content in intern on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 04 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/tags/intern/index.xml" rel="self" type="application/rss+xml"/><item><title>台達電子實習心得 - 後端工程師 (Backend Engineer)</title><link>https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/</link><pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/computer.jpg" alt="Featured image of post 台達電子實習心得 - 後端工程師 (Backend Engineer)" />&lt;p>結束了越級打怪的暑期實習，一瞥日曆居然已經到了九月。整個熾熱的暑假都泡在資料海裡，鍵盤和秒針滴滴答答把時間送走。實習這兩個月，雖然因為資質駑鈍過程有點辛苦，但現在回想起來還是一段很充實的學習過程。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Intern on The Andrea Journal</title><link>https://andreashih.com/blog/tags/intern/</link><description>Recent content in Intern on The Andrea Journal</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 04 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://andreashih.com/blog/tags/intern/index.xml" rel="self" type="application/rss+xml"/><item><title>台達電子實習心得 - 後端工程師 (Backend Engineer)</title><link>https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/</link><pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate><guid>https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/</guid><description>&lt;img src="https://andreashih.com/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/computer.jpg" alt="Featured image of post 台達電子實習心得 - 後端工程師 (Backend Engineer)" />&lt;p>結束了越級打怪的暑期實習，一瞥日曆居然已經到了九月。整個熾熱的暑假都泡在資料海裡，鍵盤和秒針滴滴答答把時間送走。實習這兩個月，雖然因為資質駑鈍過程有點辛苦，但現在回想起來還是一段很充實的學習過程。&lt;/p>
 &lt;p> &lt;/p>
 &lt;h2 id="如何找實習">如何找實習&lt;/h2>
 &lt;p>懷著對未來的不安，我一心想著要找實習確定畢業後的方向。但是關於要找哪一種實習工作，卻沒有篤定的想法。正好去年參加了 ROCLING 研討會，就把手冊上所有贊助公司名字 key 到 104 搜尋實習職缺，才發現台達的暑期實習計畫。因為非本科系，程式能力也非頂尖，原本只是抱著試試看的心情投履歷，後來會進到後端面試甚至拿到 offer 完全是我始料未及的 (還記得面試時主管問會不會寫 Java，知不知道 python 底層架構，我都說不會&amp;hellip;)&lt;/p>
@@ -45,7 +45,7 @@
 &lt;p> &lt;/p>
 &lt;h2 id="work-from-home">Work from home&lt;/h2>
 &lt;p>Work from home 的小確幸就是 8:30 上班可以 8:00 再起床，悠悠哉哉地開電腦。壞處就是沒有看到 mentor 本人，會有不知道工作做得如何的不安感。想一直回報進度又怕對方正在忙其他事情。後來終於回到辦公室，雖然大家都是各忙各的，但有人在旁邊真的會比較有動力。&lt;/p>
-&lt;figure>&lt;img src="desk.jpg" width="60%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/desk.jpg" width="60%" height="auto">&lt;figcaption>
 &lt;h4>我的辦公桌 (雖然只進公司兩天)、識別證和證書&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>
@@ -55,7 +55,7 @@
 &lt;p> &lt;/p>
 &lt;h2 id="結語">結語&lt;/h2>
 &lt;p>回想起來，我的打工或實習似乎總是離不開資料：升大學的暑假在補習班管理學生資料，大二在教育局整理學校資料，碩班在 lab 的研究還有 NTU cool 的工讀也都在碰資料。兩個月的實習很像跑步，剛起步的時候春風得意，好像什麼事都難不倒。跑一段時間後氣喘吁吁，開始有撞牆的感覺。習慣了之後又找回步調，穩定前進。快到終點時好像有道無法突破的檻，覺得看不到希望。不過堅持到最後就輕鬆了，應該說比較不擔心了。小時候學鋼琴，老師說我彈琴看起來很怕，好像琴鍵會咬我一樣。長大後學程式也總是怕怕的，戒慎恐懼敲著鍵盤，好像 error message 會讓電腦爆炸一樣。希望自己可以好好善待心裡莫名的恐懼，反正只要穩紮穩打大步慢走就好了 (Lopers 內梗，get it?)&lt;/p>
-&lt;figure>&lt;img src="card.jpg" width="60%" height="auto"/>&lt;figcaption>
+&lt;figure>&lt;img src="https://andreashih.com/blog/blog/p/%E5%8F%B0%E9%81%94%E9%9B%BB%E5%AD%90%E5%AF%A6%E7%BF%92%E5%BF%83%E5%BE%97-%E5%BE%8C%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%AB-backend-engineer/card.jpg" width="60%" height="auto">&lt;figcaption>
 &lt;h4>HR 辦實習超用心，每個實習生都收到一張主管寫的小卡&lt;/h4>
 &lt;/figcaption>
 &lt;/figure>
